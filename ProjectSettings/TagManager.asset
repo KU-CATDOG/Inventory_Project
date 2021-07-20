@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Armor
-  - Sword
-  - Shield
-  - Shoe
-  - Ring
+  - Wall
+  - EnterRoom
   layers:
   - Default
   - TransparentFX
