@@ -6,7 +6,8 @@ public class Zombie : MonsterClass
 {
 
     float attackRange;
-    float playerSpeed = 5f;     
+    float playerSpeed = 5f;
+    public Rigidbody2D rb;
     protected override void Start()
     {
         base.Start();
@@ -50,11 +51,8 @@ public class Zombie : MonsterClass
     }
     private IEnumerator moveTowardPlayer(float speedMultiplier)     // 플레이어를 향해 움직인다
     {
-        //Debug.Log(GetPlayerPos());
-        //Debug.Log(GetPlayerPos().normalized);
-        //yield return MoveRoutine(GetPlayerPos().normalized, 10f);
-
-        transform.position = Vector2.MoveTowards(transform.position, GetPlayerPos(), playerSpeed * speedMultiplier * Time.deltaTime); // 5f (플레이어 속도) * 몬스터 속도 비율
+        Vector2 direction = (Vector2)(GetPlayerPos() - GetObjectPos()).normalized;
+        rb.MovePosition(rb.position + direction * playerSpeed * speedMultiplier * Time.fixedDeltaTime);
         yield return null;
 
 
