@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SelfDestructRobot : MonsterClass
 {
+    private Rigidbody rb;
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
     float attackRange;
@@ -13,12 +14,13 @@ public class SelfDestructRobot : MonsterClass
     protected override void Start()
     {
         base.Start();
+        rb = GetComponent<Rigidbody>();
         MaxHealth = Health = 50f;
         AttackDamage = 60f;
         MovementSpeed = 1.5f;
         Range = 6f;
         Size = 1f;
-        attackRange = 0f;
+        attackRange = 0.5f;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[0];
 
@@ -35,7 +37,7 @@ public class SelfDestructRobot : MonsterClass
 
         if (FindObjectOfType<Player>() != null) // 플레이어가 살아있는지 확인해야함 !!
         {
-            float distance = distToPlayer();
+            float distance =  distToPlayer();
             if (distance <= Range)       // 플레이어가 시야 안에 들어왔다
             {
                 if (distance <= attackRange) {
@@ -69,8 +71,9 @@ public class SelfDestructRobot : MonsterClass
         //Debug.Log(GetPlayerPos());
         //Debug.Log(GetPlayerPos().normalized);
         //yield return MoveRoutine(GetPlayerPos().normalized, 10f);
+        Vector3 direction = (Vector2)(GetPlayerPos() - GetObjectPos()).normalized;
 
-        transform.position = Vector2.MoveTowards(transform.position, GetPlayerPos(), playerSpeed * speedMultiplier * Time.deltaTime); // 5f (플레이어 속도) * 몬스터 속도 비율
+        rb.MovePosition(rb.position + direction * playerSpeed * speedMultiplier * Time.fixedDeltaTime);// 5f (플레이어 속도) * 몬스터 속도 비율
         yield return null;
 
 
