@@ -50,7 +50,7 @@ public class BrokenRobotCleaner : MonsterClass
                     AfterAttackDelay = false;
                 }
                 nextRoutines.Enqueue(NewActionRoutine(WaitRoutine(0.5f)));
-                for (float i = 0; i <= 0.25f; i += Time.deltaTime)
+                for (int i = 0; i <= 50f; i++)
                     nextRoutines.Enqueue(NewActionRoutine(Distancing(ChooseDir)));
                 nextRoutines.Enqueue(NewActionRoutine(WaitRoutine(0.5f)));
                 do
@@ -97,7 +97,8 @@ public class BrokenRobotCleaner : MonsterClass
         }
 
         if (!Attack)
-            CheckDistance();
+            CheckPlayer();
+        CheckWall();
         yield return null;
     }
 
@@ -110,16 +111,60 @@ public class BrokenRobotCleaner : MonsterClass
             player.GetComponent<Player>().GetDamaged(AttackDamage);
         }
     }
-    private void CheckDistance()
+    private void CheckWall()
+    {
+        RaycastHit2D hit_r = Physics2D.Raycast(transform.position, Vector2.right, 1f, LayerMask.GetMask("Default"));
+        RaycastHit2D hit_l = Physics2D.Raycast(transform.position, Vector2.left, 1f, LayerMask.GetMask("Default"));
+        RaycastHit2D hit_u = Physics2D.Raycast(transform.position, Vector2.up, 1f, LayerMask.GetMask("Default"));
+        RaycastHit2D hit_d = Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.GetMask("Default"));
+
+        Debug.DrawRay(transform.position, 1 * Vector2.right, Color.black);
+        Debug.DrawRay(transform.position, 1 * Vector2.left, Color.black);
+        Debug.DrawRay(transform.position, 1 * Vector2.up, Color.black);
+        Debug.DrawRay(transform.position, 1 * Vector2.down, Color.black);
+
+        if (hit_r.collider != null)
+        {
+            if (hit_r.transform.tag == "Wall")
+            {
+                Contact_rWall = true;
+            }
+        }
+        else Contact_rWall = false;
+
+        if (hit_l.collider != null)
+        {
+            if (hit_l.transform.tag == "Wall")
+            {
+                Contact_lWall = true;
+            }
+        }
+        else Contact_lWall = false;
+
+        if (hit_u.collider != null)
+        {
+            if (hit_u.transform.tag == "Wall")
+            {
+                Contact_uWall = true;
+            }
+        }
+        else Contact_uWall = false;
+
+        if (hit_d.collider != null)
+        {
+            if (hit_d.transform.tag == "Wall")
+            {
+                Contact_dWall = true;
+            }
+        }
+        else Contact_dWall = false;
+    }
+    private void CheckPlayer()
     {
         RaycastHit2D hit_r = Physics2D.Raycast(transform.position, Vector2.right, 1000f, LayerMask.GetMask("Default"));
         RaycastHit2D hit_l = Physics2D.Raycast(transform.position, Vector2.left, 1000f, LayerMask.GetMask("Default"));
         RaycastHit2D hit_u = Physics2D.Raycast(transform.position, Vector2.up, 1000f, LayerMask.GetMask("Default"));
         RaycastHit2D hit_d = Physics2D.Raycast(transform.position, Vector2.down, 1000f, LayerMask.GetMask("Default"));
-        Debug.DrawRay(transform.position, 1000 * Vector2.right, Color.black);
-        Debug.DrawRay(transform.position, 1000 * Vector2.left, Color.black);
-        Debug.DrawRay(transform.position, 1000 * Vector2.up, Color.black);
-        Debug.DrawRay(transform.position, 1000 * Vector2.down, Color.black);
         if (hit_r.collider != null)
         {
             if (hit_r.transform.name == "Player")
@@ -165,19 +210,19 @@ public class BrokenRobotCleaner : MonsterClass
     {
         if (dir == 0)
         {
-            transform.position += Vector3.down * 0.001f;
+            rigid.MovePosition(rigid.position + Vector2.down * Time.fixedDeltaTime);
         }
         else if (dir == 1)
         {
-            transform.position += Vector3.up * 0.001f;
+            rigid.MovePosition(rigid.position + Vector2.up * Time.fixedDeltaTime);
         }
         else if (dir == 2)
         {
-            transform.position += Vector3.left * 0.001f;
+            rigid.MovePosition(rigid.position + Vector2.left * Time.fixedDeltaTime);
         }
         else if (dir == 3)
         {
-            transform.position += Vector3.right * 0.001f;
+            rigid.MovePosition(rigid.position + Vector2.right * Time.fixedDeltaTime);
         }
 
         yield return null;
