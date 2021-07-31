@@ -44,10 +44,13 @@ public abstract class MonsterClass : MonoBehaviour
     {
         return FindObjectOfType<Player>().transform.position;
     }
+    
+
     protected float distToPlayer()    // 오브젝트와 플레이어 거리 반환; 플레이어가 살아있는지 먼저 확인해야함
     {
         return (GetObjectPos() - GetPlayerPos()).magnitude;
     }
+   
     private void NextRoutine()
     {
         if (nextRoutines.Count <= 0)
