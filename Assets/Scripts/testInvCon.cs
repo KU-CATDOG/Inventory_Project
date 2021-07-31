@@ -11,6 +11,8 @@ public class testInvCon : MonoBehaviour
     [SerializeField]
     private GameObject Shield, Shoe, Sword, Ring;
     public GameObject item;
+    public int armorRan, shieldRan, shoeRan, swordRan, ringRan;
+    public List<bool> displayArray;
 
     #region Position List
     [HideInInspector]
@@ -147,7 +149,7 @@ public class testInvCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Input.mousePosition);
+        displayArray = occupiedRect;
     }
 
     void Spawn()
@@ -159,7 +161,6 @@ public class testInvCon : MonoBehaviour
         SpawnRing();
     }
 
-
     void SpawnArmor()
     {
         int k = 0;
@@ -167,88 +168,65 @@ public class testInvCon : MonoBehaviour
         int ran = randArray[k];
         while (k < armorPosList.Count)
         {
-            for (int i = 0; i < Constants.ARMORMAX.x; i++)
+            if (ran < 8)
             {
-                if (ran < Constants.ARMORMAX.y * (i + 1))
+                if (!occupiedRect[ran] && !occupiedRect[ran + 1] && !occupiedRect[ran + 9] && !occupiedRect[ran + 10])
                 {
-                    if (!occupiedRect[ran + i] && !occupiedRect[ran + 1 + i] && !occupiedRect[ran + 9 + i] && !occupiedRect[ran + 10 + i])
-                    {
-                        var go = Instantiate(Armor, armorPosList[ran], Quaternion.identity);
-                        go.transform.SetParent(item.transform, false);
-                        occupiedRect[ran + i] = true;
-                        occupiedRect[ran + 1 + i] = true;
-                        occupiedRect[ran + 9 + i] = true;
-                        occupiedRect[ran + 10 + i] = true;
-                        return;
-                    }
-                    else
-                    {
-                        k++;
-                        ran = randArray[k];
-                        break;
-                    }
+                    var go = Instantiate(Armor, armorPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran] = true;
+                    occupiedRect[ran + 1] = true;
+                    occupiedRect[ran + 9] = true;
+                    occupiedRect[ran + 10] = true;
+                    armorRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
+                }
+            }
+            else if (ran < 16)
+            {
+                if (!occupiedRect[ran + 1] && !occupiedRect[ran + 2] && !occupiedRect[ran + 10] && !occupiedRect[ran + 11])
+                {
+                    var go = Instantiate(Armor, armorPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran + 1] = true;
+                    occupiedRect[ran + 2] = true;
+                    occupiedRect[ran + 10] = true;
+                    occupiedRect[ran + 11] = true;
+                    armorRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
+                }
+            }
+            else
+            {
+                if (!occupiedRect[ran + 2] && !occupiedRect[ran + 3] && !occupiedRect[ran + 11] && !occupiedRect[ran + 12])
+                {
+                    var go = Instantiate(Armor, armorPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran + 2] = true;
+                    occupiedRect[ran + 3] = true;
+                    occupiedRect[ran + 11] = true;
+                    occupiedRect[ran + 12] = true;
+                    armorRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
                 }
             }
         }
-        //while (k < armorPosList.Count)
-        //{
-        //    if (ran < 8)
-        //    {
-        //        if (!occupiedRect[ran] && !occupiedRect[ran + 1] && !occupiedRect[ran + 9] && !occupiedRect[ran + 10])
-        //        {
-        //            var go = Instantiate(Armor, armorPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran] = true;
-        //            occupiedRect[ran + 1] = true;
-        //            occupiedRect[ran + 9] = true;
-        //            occupiedRect[ran + 10] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //    else if (ran < 16)
-        //    {
-        //        if (!occupiedRect[ran + 1] && !occupiedRect[ran + 2] && !occupiedRect[ran + 10] && !occupiedRect[ran + 11])
-        //        {
-        //            var go = Instantiate(Armor, armorPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran + 1] = true;
-        //            occupiedRect[ran + 2] = true;
-        //            occupiedRect[ran + 10] = true;
-        //            occupiedRect[ran + 11] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (!occupiedRect[ran + 2] && !occupiedRect[ran + 3] && !occupiedRect[ran + 11] && !occupiedRect[ran + 12])
-        //        {
-        //            var go = Instantiate(Armor, armorPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran + 2] = true;
-        //            occupiedRect[ran + 3] = true;
-        //            occupiedRect[ran + 11] = true;
-        //            occupiedRect[ran + 12] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //}
     }
-
     void SpawnSword()
     {
         int k = 0;
@@ -256,102 +234,80 @@ public class testInvCon : MonoBehaviour
         int ran = randArray[k];
         while (k < swordPosList.Count)
         {
-            for (int i = 0; i < Constants.SWORDMAX.x; i++)
+            if (ran < 7)
             {
-                if (ran < Constants.SWORDMAX.y * (i + 1))
+                if (!occupiedRect[ran] && !occupiedRect[ran + 1] && !occupiedRect[ran + 2])
                 {
-                    if (!occupiedRect[ran + 2 * i] && !occupiedRect[ran + 1 + 2 * i] && !occupiedRect[ran + 2 + 2 * i])
-                    {
-                        var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
-                        go.transform.SetParent(item.transform, false);
-                        occupiedRect[ran + 2 * i] = true;
-                        occupiedRect[ran + 1 + 2 * i] = true;
-                        occupiedRect[ran + 2 + 2 * i] = true;
-                        return;
-                    }
-                    else
-                    {
-                        k++;
-                        ran = randArray[k];
-                        break;
-                    }
+                    var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran] = true;
+                    occupiedRect[ran + 1] = true;
+                    occupiedRect[ran + 2] = true;
+                    swordRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
+                }
+            }
+            else if (ran < 14)
+            {
+                if (!occupiedRect[ran + 2] && !occupiedRect[ran + 3] && !occupiedRect[ran + 4])
+                {
+                    var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran + 2] = true;
+                    occupiedRect[ran + 3] = true;
+                    occupiedRect[ran + 4] = true;
+                    swordRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
+                }
+            }
+            else if (ran < 21)
+            {
+                if (!occupiedRect[ran + 4] && !occupiedRect[ran + 5] && !occupiedRect[ran + 6])
+                {
+                    var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran + 4] = true;
+                    occupiedRect[ran + 5] = true;
+                    occupiedRect[ran + 6] = true;
+                    swordRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
+                }
+            }
+            else
+            {
+                if (!occupiedRect[ran + 6] && !occupiedRect[ran + 7] && !occupiedRect[ran + 8])
+                {
+                    var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran + 6] = true;
+                    occupiedRect[ran + 7] = true;
+                    occupiedRect[ran + 8] = true;
+                    swordRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
                 }
             }
         }
-        
-        //while (k < swordPosList.Count)
-        //{
-        //    if (ran < 7)
-        //    {
-        //        if (!occupiedRect[ran] && !occupiedRect[ran + 1] && !occupiedRect[ran + 2])
-        //        {
-        //            var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran] = true;
-        //            occupiedRect[ran + 1] = true;
-        //            occupiedRect[ran + 2] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //    else if (ran < 14)
-        //    {
-        //        if (!occupiedRect[ran + 2] && !occupiedRect[ran + 3] && !occupiedRect[ran + 4])
-        //        {
-        //            var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran + 2] = true;
-        //            occupiedRect[ran + 3] = true;
-        //            occupiedRect[ran + 4] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //    else if (ran < 21)
-        //    {
-        //        if (!occupiedRect[ran + 4] && !occupiedRect[ran + 5] && !occupiedRect[ran + 6])
-        //        {
-        //            var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran + 4] = true;
-        //            occupiedRect[ran + 5] = true;
-        //            occupiedRect[ran + 6] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (!occupiedRect[ran + 6] && !occupiedRect[ran + 7] && !occupiedRect[ran + 8])
-        //        {
-        //            var go = Instantiate(Sword, swordPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran + 6] = true;
-        //            occupiedRect[ran + 7] = true;
-        //            occupiedRect[ran + 8] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //}
     }
-
     void SpawnShield()
     {
         int k = 0;
@@ -359,97 +315,76 @@ public class testInvCon : MonoBehaviour
         int ran = randArray[k];
         while (k < shieldPosList.Count)
         {
-            for (int i = 0; i < Constants.SHIELDMAX.x; i++)
+            if (ran < 8)
             {
-                if (ran < Constants.SHIELDMAX.y * (i + 1))
+                if (!occupiedRect[ran] && !occupiedRect[ran + 1])
                 {
-                    if (!occupiedRect[ran + i] && !occupiedRect[ran + 1 + i])
-                    {
-                        var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
-                        go.transform.SetParent(item.transform, false);
-                        occupiedRect[ran + i] = true;
-                        occupiedRect[ran + 1 + i] = true;
-                        return;
-                    }
-                    else
-                    {
-                        k++;
-                        ran = randArray[k];
-                        break;
-                    }
+                    var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran] = true;
+                    occupiedRect[ran + 1] = true;
+                    shieldRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
+                }
+            }
+            else if (ran < 16)
+            {
+                if (!occupiedRect[ran + 1] && !occupiedRect[ran + 2])
+                {
+                    var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran + 1] = true;
+                    occupiedRect[ran + 2] = true;
+                    shieldRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
+                }
+            }
+            else if (ran < 24)
+            {
+                if (!occupiedRect[ran + 2] && !occupiedRect[ran + 3])
+                {
+                    var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran + 2] = true;
+                    occupiedRect[ran + 3] = true;
+                    shieldRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
+                }
+            }
+            else
+            {
+                if (!occupiedRect[ran + 3] && !occupiedRect[ran + 4])
+                {
+                    var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
+                    go.transform.SetParent(item.transform, false);
+                    occupiedRect[ran + 3] = true;
+                    occupiedRect[ran + 4] = true;
+                    shieldRan = ran;
+                    return;
+                }
+                else
+                {
+                    k++;
+                    ran = randArray[k];
                 }
             }
         }
-        
-        //while (k < shieldPosList.Count)
-        //{
-        //    if (ran < 8)
-        //    {
-        //        if (!occupiedRect[ran] && !occupiedRect[ran + 1])
-        //        {
-        //            var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran] = true;
-        //            occupiedRect[ran + 1] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //    else if (ran < 16)
-        //    {
-        //        if (!occupiedRect[ran + 1] && !occupiedRect[ran + 2])
-        //        {
-        //            var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran + 1] = true;
-        //            occupiedRect[ran + 2] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //    else if (ran < 24)
-        //    {
-        //        if (!occupiedRect[ran + 2] && !occupiedRect[ran + 3])
-        //        {
-        //            var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran + 2] = true;
-        //            occupiedRect[ran + 3] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (!occupiedRect[ran + 3] && !occupiedRect[ran + 4])
-        //        {
-        //            var go = Instantiate(Shield, shieldPosList[ran], Quaternion.identity);
-        //            go.transform.SetParent(item.transform, false);
-        //            occupiedRect[ran + 3] = true;
-        //            occupiedRect[ran + 4] = true;
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            k++;
-        //            ran = randArray[k];
-        //        }
-        //    }
-        //}
     }
-
     void SpawnShoe()
     {
         int k = 0;
@@ -463,6 +398,7 @@ public class testInvCon : MonoBehaviour
                 go.transform.SetParent(item.transform, false);
                 occupiedRect[ran] = true;
                 occupiedRect[ran + 9] = true;
+                shoeRan = ran;
                 return;
             }
             else
@@ -472,7 +408,6 @@ public class testInvCon : MonoBehaviour
             }
         }
     }
-
     void SpawnRing()
     {
         int k = 0;
@@ -485,6 +420,7 @@ public class testInvCon : MonoBehaviour
                 var go = Instantiate(Ring, ringPosList[ran], Quaternion.identity);
                 go.transform.SetParent(item.transform, false);
                 occupiedRect[ran] = true;
+                ringRan = ran;
                 return;
             }
             else
@@ -499,7 +435,6 @@ public class testInvCon : MonoBehaviour
     {
         int[] randArray = new int[length];
         bool isSame;
-
         for (int i = 0; i < length; ++i)
         {
             while (true)
