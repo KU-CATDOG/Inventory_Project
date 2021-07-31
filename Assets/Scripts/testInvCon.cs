@@ -1,4 +1,4 @@
-#pragma warning disable IDE0090 // 'new(...)' »ç¿ë
+#pragma warning disable IDE0090 // 'new(...)' ï¿½ï¿½ï¿½
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class testInvCon : MonoBehaviour
 {
-    [Header("#Àåºñ¾ÆÀÌÅÛ"), SerializeField]
+    [Header("#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"), SerializeField]
     private GameObject Armor;
     [SerializeField]
     private GameObject Shield, Shoe, Sword, Ring;

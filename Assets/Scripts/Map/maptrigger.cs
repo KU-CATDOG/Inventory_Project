@@ -9,9 +9,12 @@ public class maptrigger : MonoBehaviour
     public GameObject mapCanvas;
     public GameObject EventSystem;
     public GameObject InvenManager;
-    public GameObject InvenCam;
-    public GameObject MainCam;
     public GameObject InvenBackground;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     void Start()
     {
@@ -29,9 +32,7 @@ public class maptrigger : MonoBehaviour
                 mapCanvas.SetActive(true);
                 EventSystem.SetActive(true);
                 InvenManager.SetActive(true);
-                InvenCam.SetActive(true);
                 InvenBackground.SetActive(true);
-                MainCam.SetActive(false);
                 isopen = true;
             }
             else
@@ -39,9 +40,7 @@ public class maptrigger : MonoBehaviour
                 mapCanvas.SetActive(false);
                 EventSystem.SetActive(false);
                 InvenManager.SetActive(false);
-                InvenCam.SetActive(false);
                 InvenBackground.SetActive(false);
-                MainCam.SetActive(true);
                 isopen = false;
             }
         }
