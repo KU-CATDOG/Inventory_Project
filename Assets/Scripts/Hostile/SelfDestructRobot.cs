@@ -21,6 +21,7 @@ public class SelfDestructRobot : MonsterClass
         Range = 6f;
         Size = 1f;
         attackRange = 0.5f;
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[0];
 
@@ -63,7 +64,10 @@ public class SelfDestructRobot : MonsterClass
         {
             player.GetComponent<Player>().GetDamaged(AttackDamage);
         }
-        
+        if ((FindObjectOfType<Zombie>().transform.position- GetObjectPos()).magnitude <= 1.5f)
+        {
+            zombie.GetComponent<Zombie>().GetDamaged(AttackDamage);
+        }
         Destroy(gameObject);
     }
     private IEnumerator moveTowardPlayer(float speedMultiplier)     // 플레이어를 향해 움직인다
