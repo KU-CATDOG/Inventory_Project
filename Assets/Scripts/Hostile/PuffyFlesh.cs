@@ -44,6 +44,7 @@ public class PuffyFlesh : MonsterClass
 
     private IEnumerator moveTowardPlayer(float speedMultiplier)     // 플레이어를 향해 움직인다
     {
+        Vector2 dir = (GetPlayerPos() - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, GetPlayerPos(), playerSpeed * speedMultiplier * Time.deltaTime); // 5f (플레이어 속도) * 몬스터 속도 비율
         yield return null;
     }
