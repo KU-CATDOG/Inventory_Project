@@ -23,6 +23,7 @@ public class SoundManager : MonoBehaviour
         SetUpBGM();
         if (bgmPlayer != null)
             bgmPlayer.Play();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Start is called before the first frame update
