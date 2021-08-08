@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 059ccd6fffad07a419624251098ecbcc
+guid: 83b7a1e00d6eecf42979cf47c7744e23
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - mainScreen: {instanceID: 0}
-  - settingScreen: {instanceID: 0}
-  - exitScreen: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
