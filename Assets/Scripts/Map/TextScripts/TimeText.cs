@@ -7,7 +7,7 @@ public class TimeText : MonoBehaviour
 {
 
     public Text timeText;
-    
+    public MapTag Tag;
     private float time;
     private int min;
     private void Start()
@@ -21,6 +21,6 @@ public class TimeText : MonoBehaviour
             min = min + 1;
             time = time - 60;
         }
-        timeText.text = "시간: " +"\n"+(min).ToString()+":"+(Mathf.FloorToInt(time) ).ToString();
+        timeText.text = (Tag.tag).ToString()+"층에서 \n 보낸 시간: " +(min).ToString()+":"+(Mathf.FloorToInt(time) ).ToString();
     }
 }
