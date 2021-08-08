@@ -2,33 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class MainUI : MonoBehaviour
+public class InGameUI : MonoBehaviour
 {
-    public GameObject mainScreen;
+    public GameObject gameScreen;
+    public GameObject pauseScreen;
     public GameObject settingScreen;
     public GameObject exitScreen;
-
-
-    public void gameStartButton()
+    
+    public void PauseButton()
     {
-        SceneManager.LoadScene("map0");
+        pauseScreen.SetActive(true);
+        gameScreen.SetActive(false);
     }
+    public void ContinueButton()
+    {
+        pauseScreen.SetActive(false);
+        gameScreen.SetActive(true);
+    }
+
     public void SettingButton()
     {
         settingScreen.SetActive(true);
-        mainScreen.SetActive(false);
+        pauseScreen.SetActive(false);
     }
     public void SettingOutButton()
     {
         settingScreen.SetActive(false);
-        mainScreen.SetActive(true);
+        pauseScreen.SetActive(true);
     }
     public void ExitQuestionButton()
     {
         exitScreen.SetActive(true);
-        mainScreen.SetActive(false);
+        pauseScreen.SetActive(false);
     }
     public void ExitYesButton()
     {
@@ -37,6 +43,6 @@ public class MainUI : MonoBehaviour
     public void ExitNoButton()
     {
         exitScreen.SetActive(false);
-        mainScreen.SetActive(true);
+        pauseScreen.SetActive(true);
     }
 }
