@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4880061475095772141
+--- !u!1 &4148368961027142045
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5739910104464301812}
-  - component: {fileID: 3117640568752798338}
-  - component: {fileID: 4679297242392764504}
-  - component: {fileID: 7531743383415373510}
+  - component: {fileID: 1602926781393871296}
+  - component: {fileID: 1641279376262089464}
+  - component: {fileID: 7592042939093151199}
+  - component: {fileID: -4747334661007952828}
   m_Layer: 5
-  m_Name: Sword
-  m_TagString: Sword
+  m_Name: Ring 2
+  m_TagString: Ring2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &5739910104464301812
+--- !u!224 &1602926781393871296
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4880061475095772141}
+  m_GameObject: {fileID: 4148368961027142045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,24 +35,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 0}
-  m_SizeDelta: {x: 200, y: 245}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3117640568752798338
+--- !u!222 &1641279376262089464
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4880061475095772141}
+  m_GameObject: {fileID: 4148368961027142045}
   m_CullTransparentMesh: 1
---- !u!114 &4679297242392764504
+--- !u!114 &7592042939093151199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4880061475095772141}
+  m_GameObject: {fileID: 4148368961027142045}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -76,16 +76,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7531743383415373510
+--- !u!114 &-4747334661007952828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4880061475095772141}
+  m_GameObject: {fileID: 4148368961027142045}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19688265733ebd744ab8d554e30a3583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryControl: {fileID: 5333845375534640220, guid: 96c823d3d0eacd14c8901b671168f35a, type: 3}
+  armorRan: 0
+  shieldRan: 0
+  shoeRan: 0
+  swordRan: 0
+  ringRan: 0

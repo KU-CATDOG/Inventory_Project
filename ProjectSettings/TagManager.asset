@@ -6,6 +6,28 @@ TagManager:
   tags:
   - Wall
   - EnterRoom
+  - Armor0
+  - Armor1
+  - Armor2
+  - Armor3
+  - Shield0
+  - Shield1
+  - Shield2
+  - Shield3
+  - Sword0
+  - Sword1
+  - Sword2
+  - Sword3
+  - Shoe0
+  - Shoe1
+  - Shoe2
+  - Shoe3
+  - Ring0
+  - Ring1
+  - Ring2
+  - Ring3
+  - Armor
+  - Ring
   layers:
   - Default
   - TransparentFX
