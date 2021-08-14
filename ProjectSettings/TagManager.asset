@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - EnterRoom
+  - Slippery
   layers:
   - Default
   - TransparentFX
