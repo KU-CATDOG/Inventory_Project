@@ -28,6 +28,11 @@ TagManager:
   - Ring3
   - Armor
   - Ring
+  - Shield
+  - Shoe
+  - Sword
+  - Enemy
+  - player
   layers:
   - Default
   - TransparentFX
