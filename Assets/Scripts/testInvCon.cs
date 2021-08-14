@@ -22,6 +22,7 @@ public class testInvCon : MonoBehaviour
     private GameObject[] Ring = new GameObject[4];
     public GameObject item;
     public GameObject playerPositionArrow;
+    public MapLoadTest MapLoad;
     public int playerPosition = 0;
 
     [Header("#Ran Values")]
@@ -31,6 +32,7 @@ public class testInvCon : MonoBehaviour
     public List<int> swordRan = new List<int>();
     public List<int> ringRan = new List<int>();
     public List<bool> displayArray;
+    public List<int> itemLocationList = new List<int>();
 
     #region Position List
     [HideInInspector]
@@ -169,18 +171,24 @@ public class testInvCon : MonoBehaviour
             shoeRan.Add(-1);
             ringRan.Add(-1);
         }
+        for (int i = 0; i < 20; i++)
+        {
+            itemLocationList.Add(-1);
+        }
+        playerPosition = -1;
     }
 
 
     private void Awake()
     {
         Init();
+        Spawn();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Spawn();
+
     }
 
     // Update is called once per frame
@@ -585,62 +593,79 @@ public class testInvCon : MonoBehaviour
     /// </summary>
     public void PlayerPositionShiftRight()
     {
-        if (playerPosition + 9 < 36 && occupiedRect[playerPosition + 9])
+        if (playerPosition == -1 && occupiedRect[playerPosition + 1])
         {
-            playerPosition += 9;
+            MapLoad.SpawnMap();
+            playerPosition = 0;
         }
         else
         {
-            Debug.Log("Cannot move right");
+            if (playerPosition + 9 < 36 && occupiedRect[playerPosition + 9])
+            {
+                playerPosition += 9;
+            }
+            else
+            {
+                Debug.Log("Cannot move right");
+            }
         }
+
     }
     #endregion
 
     public void DisplayPlayerPosition()
     {
-        if (playerPosition < 9)
+        if (playerPosition != -1)
         {
-            for (int i = 0; i < 9; i++)
+            if (playerPosition < 9)
             {
-                if (playerPosition == i)
+                for (int i = 0; i < 9; i++)
                 {
-                    RectTransform rt = (RectTransform)playerPositionArrow.transform;
-                    rt.anchoredPosition = new Vector2(-315, -340 + i * 85);
+                    if (playerPosition == i)
+                    {
+                        RectTransform rt = (RectTransform)playerPositionArrow.transform;
+                        rt.anchoredPosition = new Vector2(-315, -340 + i * 85);
+                    }
                 }
             }
-        }
-        else if (playerPosition < 18)
-        {
-            for (int i = 0; i < 9; i++)
+            else if (playerPosition < 18)
             {
-                if (playerPosition == 9 + i)
+                for (int i = 0; i < 9; i++)
                 {
-                    RectTransform rt = (RectTransform)playerPositionArrow.transform;
-                    rt.anchoredPosition = new Vector2(-105, -340 + i * 85);
+                    if (playerPosition == 9 + i)
+                    {
+                        RectTransform rt = (RectTransform)playerPositionArrow.transform;
+                        rt.anchoredPosition = new Vector2(-105, -340 + i * 85);
+                    }
                 }
             }
-        }
-        else if (playerPosition < 27)
-        {
-            for (int i = 0; i < 9; i++)
+            else if (playerPosition < 27)
             {
-                if (playerPosition == 18 + i)
+                for (int i = 0; i < 9; i++)
                 {
-                    RectTransform rt = (RectTransform)playerPositionArrow.transform;
-                    rt.anchoredPosition = new Vector2(105, -340 + i * 85);
+                    if (playerPosition == 18 + i)
+                    {
+                        RectTransform rt = (RectTransform)playerPositionArrow.transform;
+                        rt.anchoredPosition = new Vector2(105, -340 + i * 85);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    if (playerPosition == 27 + i)
+                    {
+                        RectTransform rt = (RectTransform)playerPositionArrow.transform;
+                        rt.anchoredPosition = new Vector2(315, -340 + i * 85);
+                    }
                 }
             }
         }
         else
         {
-            for (int i = 0; i < 9; i++)
-            {
-                if (playerPosition == 27 + i)
-                {
-                    RectTransform rt = (RectTransform)playerPositionArrow.transform;
-                    rt.anchoredPosition = new Vector2(315, -340 + i * 85);
-                }
-            }
+            RectTransform rt = (RectTransform)playerPositionArrow.transform;
+            rt.anchoredPosition = new Vector2(-525, -340);
         }
     }
 
@@ -648,6 +673,8 @@ public class testInvCon : MonoBehaviour
     {
         List<int> currentRectList = new List<int>();
         List<string> returnList = new List<string>();
+        //List<int> itemLocationList = new List<int>();           //0-3 for armor, 4-7 for shield, 8-11 for sword, 12-15 for shoe, 16-19 for ring
+
         int index = -1;                                         //0 for armor, 1 for shield, 2 for sword, 3 for shoe, 4 for ring
         for (int i = 0; i < 36; i++)
         {
@@ -723,7 +750,7 @@ public class testInvCon : MonoBehaviour
         }
         if (index != -1)
         {
-            if (index == 0)
+            if (index == 0)                                         //if current rect is armor
             {
                 if (currentRectList[0] - 1 >= 0 && currentRectList[0] - 1 != 8 && currentRectList[0] - 1 != 17 && currentRectList[0] - 1 != 26)
                 {
@@ -732,22 +759,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 1]] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 1] + 4] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 1] + 8] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 1] + 12] = currentRectList[0] - 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 1] + 16] = currentRectList[0] - 1;
                         }
                     }
                 }
@@ -758,25 +790,30 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 9]] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 9] + 4] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 9] + 8] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 9] + 12] = currentRectList[0] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 9] + 16] = currentRectList[0] - 9;
                         }
                     }
-                        
+
                 }
                 if (currentRectList[1] - 9 >= 0)
                 {
@@ -785,22 +822,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] - 9]] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] - 9] + 4] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] - 9] + 8] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] - 9] + 12] = currentRectList[1] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] - 9] + 16] = currentRectList[1] - 9;
                         }
                     }
                 }
@@ -811,22 +853,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] + 1]] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_shield[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] + 1] + 4] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_sword[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] + 1] + 8] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] + 1] + 12] = currentRectList[1] + 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] + 1] + 16] = currentRectList[1] + 1;
                         }
                     }
                 }
@@ -837,22 +884,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[2] - 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[2] - 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[2] - 1]] = currentRectList[2] - 1;
                         }
                         else if (occupiedRect_shield[currentRectList[2] - 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[2] - 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[2] - 1] + 4] = currentRectList[2] - 1;
                         }
                         else if (occupiedRect_sword[currentRectList[2] - 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[2] - 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[2] - 1] + 8] = currentRectList[2] - 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[2] - 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[2] - 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[2] - 1] + 12] = currentRectList[2] - 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[2] - 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[2] - 1] + 16] = currentRectList[2] - 1;
                         }
                     }
                 }
@@ -863,22 +915,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[2] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[2] + 9]] = currentRectList[2] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[2] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[2] + 9] + 4] = currentRectList[2] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[2] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[2] + 9] + 8] = currentRectList[2] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[2] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[2] + 9] + 12] = currentRectList[2] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[2] + 9] + 16] = currentRectList[2] + 9;
                         }
                     }
                 }
@@ -889,22 +946,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[3] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[3] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[3] + 9]] = currentRectList[3] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[3] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[3] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[3] + 9] + 4] = currentRectList[3] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[3] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[3] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[3] + 9] + 8] = currentRectList[3] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[3] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[3] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[3] + 9] + 12] = currentRectList[3] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[3] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[3] + 9] + 16] = currentRectList[3] + 9;
                         }
                     }
                 }
@@ -915,27 +977,32 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[3] + 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[3] + 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[3] + 1]] = currentRectList[3] + 1;
                         }
                         else if (occupiedRect_shield[currentRectList[3] + 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[3] + 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[3] + 1] + 4] = currentRectList[3] + 1;
                         }
                         else if (occupiedRect_sword[currentRectList[3] + 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[3] + 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[3] + 1] + 8] = currentRectList[3] + 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[3] + 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[3] + 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[3] + 1] + 12] = currentRectList[3] + 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[3] + 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[3] + 1] + 16] = currentRectList[3] + 1;
                         }
                     }
                 }
             }
-            else if (index == 1)
+            else if (index == 1)                                    //if current rect is shield
             {
                 if (currentRectList[0] - 1 >= 0 && currentRectList[0] - 1 != 8 && currentRectList[0] - 1 != 17 && currentRectList[0] - 1 != 26)
                 {
@@ -944,22 +1011,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 1]] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 1] + 4] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 1] + 8] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 1] + 12] = currentRectList[0] - 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 1] + 16] = currentRectList[0] - 1;
                         }
                     }
                 }
@@ -970,22 +1042,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 9]] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 9] + 4] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 9] + 8] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 9] + 12] = currentRectList[0] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 9] + 16] = currentRectList[0] - 9;
                         }
                     }
 
@@ -997,22 +1074,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] + 9]] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] + 9] + 4] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] + 9] + 8] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] + 9] + 12] = currentRectList[0] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] + 9] + 16] = currentRectList[0] + 9;
                         }
                     }
                 }
@@ -1023,22 +1105,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] + 1]] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_shield[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] + 1] + 4] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_sword[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] + 1] + 8] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] + 1] + 12] = currentRectList[1] + 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] + 1] + 16] = currentRectList[1] + 1;
                         }
                     }
                 }
@@ -1049,22 +1136,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] - 9]] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] - 9] + 4] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] - 9] + 8] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] - 9] + 12] = currentRectList[1] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] - 9] + 16] = currentRectList[1] - 9;
                         }
                     }
                 }
@@ -1075,27 +1167,32 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] + 9]] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] + 9] + 4] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] + 9] + 8] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] + 9] + 12] = currentRectList[1] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] + 9] + 16] = currentRectList[1] + 9;
                         }
                     }
                 }
             }
-            else if (index == 2)
+            else if (index == 2)                                    //if current rect is sword
             {
                 if (currentRectList[0] - 1 >= 0 && currentRectList[0] - 1 != 8 && currentRectList[0] - 1 != 17 && currentRectList[0] - 1 != 26)
                 {
@@ -1104,22 +1201,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 1]] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 1] + 4] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 1] + 8] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 1] + 12] = currentRectList[0] - 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 1] + 16] = currentRectList[0] - 1;
                         }
                     }
                 }
@@ -1130,22 +1232,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 9]] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 9] + 4] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 9] + 8] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 9] + 12] = currentRectList[0] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 9] + 16] = currentRectList[0] - 9;
                         }
                     }
                 }
@@ -1156,22 +1263,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] + 9]] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] + 9] + 4] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] + 9] + 8] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] + 9] + 12] = currentRectList[0] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] + 9] + 16] = currentRectList[0] + 9;
                         }
                     }
                 }
@@ -1182,22 +1294,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] - 9]] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] - 9] + 4] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] - 9] + 8] = currentRectList[1] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] - 9] + 12] = currentRectList[1] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] - 9] + 16] = currentRectList[1] - 9;
                         }
                     }
                 }
@@ -1208,22 +1325,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] + 9]] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] + 9] + 4] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] + 9] + 8] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] + 9] + 12] = currentRectList[1] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] + 9] + 16] = currentRectList[1] + 9;
                         }
                     }
                 }
@@ -1234,22 +1356,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[2] + 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[2] + 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[2] + 1]] = currentRectList[2] + 1;
                         }
                         else if (occupiedRect_shield[currentRectList[2] + 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[2] + 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[2] + 1] + 4] = currentRectList[2] + 1;
                         }
                         else if (occupiedRect_sword[currentRectList[2] + 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[2] + 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[2] + 1] + 8] = currentRectList[2] + 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[2] + 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[2] + 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[2] + 1] + 12] = currentRectList[2] + 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[2] + 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[2] + 1] + 16] = currentRectList[2] + 1;
                         }
                     }
                 }
@@ -1260,22 +1387,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[2] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[2] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[2] - 9]] = currentRectList[2] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[2] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[2] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[2] - 9] + 4] = currentRectList[2] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[2] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[2] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[2] - 9] + 8] = currentRectList[2] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[2] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[2] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[2] - 9] + 12] = currentRectList[2] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[2] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[2] - 9] + 16] = currentRectList[2] - 9;
                         }
                     }
                 }
@@ -1286,27 +1418,32 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[2] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[2] + 9]] = currentRectList[2] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[2] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[2] + 9] + 4] = currentRectList[2] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[2] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[2] + 9] + 8] = currentRectList[2] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[2] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[2] + 9] + 12] = currentRectList[2] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[2] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[2] + 9] + 16] = currentRectList[2] + 9;
                         }
                     }
                 }
             }
-            else if (index == 3)
+            else if (index == 3)                                    //if current rect is shoe
             {
                 if (currentRectList[0] - 1 >= 0 && currentRectList[0] - 1 != 8 && currentRectList[0] - 1 != 17 && currentRectList[0] - 1 != 26)
                 {
@@ -1315,22 +1452,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 1]] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 1] + 4] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 1] + 8] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 1] + 12] = currentRectList[0] - 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 1] + 16] = currentRectList[0] - 1;
                         }
                     }
                 }
@@ -1341,22 +1483,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 9]] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 9] + 4] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 9] + 8] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 9] + 12] = currentRectList[0] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 9] + 16] = currentRectList[0] - 9;
                         }
                     }
                 }
@@ -1367,22 +1514,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] + 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] + 1]] = currentRectList[0] + 1;
                         }
                         else if (occupiedRect_shield[currentRectList[0] + 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] + 1] + 4] = currentRectList[0] + 1;
                         }
                         else if (occupiedRect_sword[currentRectList[0] + 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] + 1] + 8] = currentRectList[0] + 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] + 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] + 1] + 12] = currentRectList[0] + 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] + 1] + 16] = currentRectList[0] + 1;
                         }
                     }
                 }
@@ -1393,22 +1545,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] - 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] - 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] - 1]] = currentRectList[1] - 1;
                         }
                         else if (occupiedRect_shield[currentRectList[1] - 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] - 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] - 1] + 4] = currentRectList[1] - 1;
                         }
                         else if (occupiedRect_sword[currentRectList[1] - 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] - 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] - 1] + 8] = currentRectList[1] - 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] - 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] - 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] - 1] + 12] = currentRectList[1] - 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] - 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] - 1] + 16] = currentRectList[1] - 1;
                         }
                     }
                 }
@@ -1419,22 +1576,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] + 9]] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] + 9] + 4] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] + 9] + 8] = currentRectList[1] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] + 9] + 12] = currentRectList[1] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] + 9] + 16] = currentRectList[1] + 9;
                         }
                     }
                 }
@@ -1445,27 +1607,32 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[1] + 1]] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_shield[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[1] + 1] + 4] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_sword[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[1] + 1] + 8] = currentRectList[1] + 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[1] + 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[1] + 1] + 12] = currentRectList[1] + 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[1] + 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[1] + 1] + 16] = currentRectList[1] + 1;
                         }
                     }
                 }
             }
-            else if (index == 4)
+            else if (index == 4)                                    //if current rect is ring
             {
                 if (currentRectList[0] - 1 >= 0 && currentRectList[0] - 1 != 8 && currentRectList[0] - 1 != 17 && currentRectList[0] - 1 != 26)
                 {
@@ -1474,22 +1641,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 1]] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 1] + 4] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 1] + 8] = currentRectList[0] - 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 1] + 12] = currentRectList[0] - 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 1] + 16] = currentRectList[0] - 1;
                         }
                     }
                 }
@@ -1500,22 +1672,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] - 9]] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shield[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] - 9] + 4] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_sword[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] - 9] + 8] = currentRectList[0] - 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] - 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] - 9] + 12] = currentRectList[0] - 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] - 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] - 9] + 16] = currentRectList[0] - 9;
                         }
                     }
                 }
@@ -1526,22 +1703,27 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] + 9]] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_shield[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] + 9] + 4] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_sword[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] + 9] + 8] = currentRectList[0] + 9;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] + 9] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] + 9] + 12] = currentRectList[0] + 9;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] + 9]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] + 9] + 16] = currentRectList[0] + 9;
                         }
                     }
                 }
@@ -1552,31 +1734,62 @@ public class testInvCon : MonoBehaviour
                         if (occupiedRect_armor[currentRectList[0] + 1] != -1)
                         {
                             returnList.Add("Armor" + occupiedRect_armor[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_armor[currentRectList[0] + 1]] = currentRectList[0] + 1;
                         }
                         else if (occupiedRect_shield[currentRectList[0] + 1] != -1)
                         {
                             returnList.Add("Shield" + occupiedRect_shield[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_shield[currentRectList[0] + 1] + 4] = currentRectList[0] + 1;
                         }
                         else if (occupiedRect_sword[currentRectList[0] + 1] != -1)
                         {
                             returnList.Add("Sword" + occupiedRect_sword[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_sword[currentRectList[0] + 1] + 8] = currentRectList[0] + 1;
                         }
                         else if (occupiedRect_shoe[currentRectList[0] + 1] != -1)
                         {
                             returnList.Add("Shoe" + occupiedRect_shoe[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_shoe[currentRectList[0] + 1] + 12] = currentRectList[0] + 1;
                         }
                         else
                         {
                             returnList.Add("Ring" + occupiedRect_ring[currentRectList[0] + 1]);
+                            itemLocationList[occupiedRect_ring[currentRectList[0] + 1] + 16] = currentRectList[0] + 1;
                         }
                     }
                 }
             }
         }
         returnList = returnList.Distinct().ToList();
-        for (int j = 0; j < returnList.Count; j++)
+        //for (int j = 0; j < returnList.Count; j++)
+        //{
+        //    Debug.Log(returnList[j]);
+        //}
+        for (int k = 0; k < 20; k++)
         {
-            Debug.Log(returnList[j]);
+            if (itemLocationList[k] != -1)
+            {
+                if (k < 4)
+                {
+                    Debug.Log("Armor" + k + " is located at occupiedRect index " + itemLocationList[k]);
+                }
+                else if (k < 8)
+                {
+                    Debug.Log("Shield" + k % 4 + " is located at occupiedRect index " + itemLocationList[k]);
+                }
+                else if (k < 12)
+                {
+                    Debug.Log("Sword" + k % 4 + " is located at occupiedRect index " + itemLocationList[k]);
+                }
+                else if (k < 16)
+                {
+                    Debug.Log("Shoe" + k % 4 + " is located at occupiedRect index " + itemLocationList[k]);
+                }
+                else if (k < 20)
+                {
+                    Debug.Log("Ring" + k % 4 + " is located at occupiedRect index " + itemLocationList[k]);
+                }
+            }
         }
         //return returnList;
     }

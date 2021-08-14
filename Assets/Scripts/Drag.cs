@@ -10,6 +10,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private RectTransform rectTransform;
     private Vector3 initPos;
     private string objTag;
+    public MapLoadTest MapLoad;
     public List<int> armorRan = new List<int>();
     public List<int> shieldRan = new List<int>();
     public List<int> shoeRan = new List<int>();
@@ -23,6 +24,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         rectTransform = GetComponent<RectTransform>();
         invCon = GameObject.Find("InventoryManager").GetComponent<testInvCon>();
+        MapLoad = GameObject.Find("MapLoad").GetComponent<MapLoadTest>();
         //invCon = GameObject.Find("InventoryControl").GetComponent<InventoryControl>();
         for (int i = 0; i < 4; i++)
         {
@@ -44,6 +46,11 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 if (objTag.Contains(i.ToString()))
                 {
+                    if (invCon.playerPosition != -1 && invCon.occupiedRect_armor[invCon.playerPosition] == i)
+                    {
+                        eventData.pointerDrag = null;
+                        return;
+                    }
                     armorRan[i] = invCon.armorRan[i];
                     armorRIV = i;
                     SetArmorRan(false);
@@ -58,6 +65,11 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 if (objTag.Contains(i.ToString()))
                 {
+                    if (invCon.playerPosition != -1 && invCon.occupiedRect_sword[invCon.playerPosition] == i)
+                    {
+                        eventData.pointerDrag = null;
+                        return;
+                    }
                     swordRan[i] = invCon.swordRan[i];
                     swordRIV = i;
                     SetSwordRan(false);
@@ -72,6 +84,11 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 if (objTag.Contains(i.ToString()))
                 {
+                    if (invCon.playerPosition != -1 && invCon.occupiedRect_shield[invCon.playerPosition] == i)
+                    {
+                        eventData.pointerDrag = null;
+                        return;
+                    }
                     shieldRan[i] = invCon.shieldRan[i];
                     shieldRIV = i;
                     SetShieldRan(false);
@@ -86,6 +103,11 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 if (objTag.Contains(i.ToString()))
                 {
+                    if (invCon.playerPosition != -1 && invCon.occupiedRect_shoe[invCon.playerPosition] == i)
+                    {
+                        eventData.pointerDrag = null;
+                        return;
+                    }
                     shoeRan[i] = invCon.shoeRan[i];
                     shoeRIV = i;
                     SetShoeRan(false);
@@ -100,6 +122,11 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 if (objTag.Contains(i.ToString()))
                 {
+                    if (invCon.playerPosition != -1 && invCon.occupiedRect_ring[invCon.playerPosition] == i)
+                    {
+                        eventData.pointerDrag = null;
+                        return;
+                    }
                     ringRan[i] = invCon.ringRan[i];
                     ringRIV = i;
                     SetRingRan(false);
@@ -123,6 +150,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        
         if (Input.mousePosition.x < 545 || Input.mousePosition.x > 1375 || Input.mousePosition.y < 162.5 || Input.mousePosition.y > 917.5)
         {
             rectTransform.anchoredPosition = initPos;
@@ -133,6 +161,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     if (objTag.Contains(i.ToString()))
                     {
                         SetArmorRan(true);
+                        break;
                     }
                 }
             }
@@ -143,6 +172,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     if (objTag.Contains(i.ToString()))
                     {
                         SetSwordRan(true);
+                        break;
                     }
                 }
             }
@@ -153,6 +183,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     if (objTag.Contains(i.ToString()))
                     {
                         SetShieldRan(true);
+                        break;
                     }
                 }
             }
@@ -163,6 +194,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     if (objTag.Contains(i.ToString()))
                     {
                         SetShoeRan(true);
+                        break;
                     }
                 }
             }
@@ -173,12 +205,14 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                     if (objTag.Contains(i.ToString()))
                     {
                         SetRingRan(true);
+                        break;
                     }
                 }
             }
         }
         else
         {
+            MapLoad.DestroySpawnedMap();
             if (objTag.Contains("Armor"))
             {
                 ChkArmor(invCon);
@@ -199,6 +233,12 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 ChkRing(invCon);
             }
+            for (int i = 0; i < 20; i++)
+            {
+                invCon.itemLocationList[i] = -1;
+            }
+            invCon.GetNearbyItems();
+            MapLoad.SpawnMap();
         }
     }
 
@@ -987,6 +1027,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (armorRan[armorRIV] < 8)
             {
+
                 invCon.occupiedRect[armorRan[armorRIV]] = true;
                 invCon.occupiedRect[armorRan[armorRIV] + 1] = true;
                 invCon.occupiedRect[armorRan[armorRIV] + 9] = true;
