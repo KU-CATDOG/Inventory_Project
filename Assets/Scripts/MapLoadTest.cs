@@ -54,6 +54,7 @@ public class MapLoadTest : MonoBehaviour
         {
             positionList.Add(-1);
         }
+
         for (int i = 0; i < 20; i++)
         {
             if (itemLocationList[i] != -1)
@@ -135,21 +136,30 @@ public class MapLoadTest : MonoBehaviour
                     spawnedRect_armor[pos + 10] = 0;
                     armorInstObject = go;
                 }
-
             }
-
         }
 
-        //if (positionList[1] != -1)
-        //{
-        //    int ran = Random.Range(0, shieldMap.Count);
-        //    int pos = CheckAdjacent(1, positionList[1]);
-        //    if (pos != -1)
-        //    {
-        //        var go = Instantiate(shieldMap[ran], Vector2.zero, Quaternion.identity);
-        //        go.transform.SetParent(grid.transform, false);
-        //    }
-        //}
+        if (positionList[1] != -1)
+        {
+            int ran = Random.Range(0, shieldMap.Count);
+            int pos = CheckAdjacent(1, positionList[1]);
+            if (pos != -1)
+            {
+                if (spawnedRect_shield[pos] == -1 && spawnedRect_shield[pos + 1] == -1)
+                {
+                    Debug.Log(pos);
+                    Vector2 posVec2;
+                    posVec2.x = (pos / 9 * 16);
+                    posVec2.y = (pos % 9 * 9);
+                    GameObject go = Instantiate(shieldMap[ran], posVec2, Quaternion.identity);
+                    go.transform.SetParent(grid.transform, false);
+                    spawnedRect_shield[pos] = 0;
+                    spawnedRect_shield[pos + 1] = 0;
+
+                    shieldInstObject = go;
+                }
+            }
+        }
         if (positionList[2] != -1)
         {
             int ran = Random.Range(0, swordMap.Count);
@@ -169,24 +179,7 @@ public class MapLoadTest : MonoBehaviour
                     spawnedRect_sword[pos + 2] = 0;
                     swordInstObject = go;
                 }
-
-                //else
-                //{
-                //    if (invCon.occupiedRect_sword[pos] != -1 && invCon.occupiedRect_sword[pos + 1] != -1 && invCon.occupiedRect_sword[pos + 2] != -1)
-                //    {
-
-                //    }
-                //    else
-                //    {
-                //        Destroy(swordInstObject);
-                //        spawnedRect_sword[pos] = -1;
-                //        spawnedRect_sword[pos + 1] = -1;
-                //        spawnedRect_sword[pos + 2] = -1;
-                //    }
-                //}
-
             }
-
         }
         if (positionList[3] != -1)
         {
@@ -223,18 +216,26 @@ public class MapLoadTest : MonoBehaviour
             }
 
         }
-        //if (positionList[4] != -1)
-        //{
-        //    int ran = Random.Range(0, ringMap.Count);
-        //    int pos = CheckAdjacent(4, positionList[4]);
-        //    if (pos != -1)
-        //    {
-        //        var go = Instantiate(ringMap[ran], Vector2.zero, Quaternion.identity);
-        //        go.transform.SetParent(grid.transform, false);
-        //    }
-        //}
-
-
+        if (positionList[4] != -1)
+        {
+            int ran = Random.Range(0, ringMap.Count);
+            //int pos = CheckAdjacent(4, positionList[4]);
+            int pos = positionList[4];
+            if (pos != -1)
+            {
+                if (spawnedRect_ring[pos] == -1)
+                {
+                    Debug.Log(pos);
+                    Vector2 posVec2;
+                    posVec2.x = (pos / 9 * 16);
+                    posVec2.y = (pos % 9 * 9);
+                    GameObject go = Instantiate(ringMap[ran], posVec2, Quaternion.identity);
+                    go.transform.SetParent(grid.transform, false);
+                    spawnedRect_ring[pos] = 0;
+                    ringInstObject = go;
+                }
+            }
+        }
     }
 
     public void DestroySpawnedMap()
@@ -388,7 +389,7 @@ public class MapLoadTest : MonoBehaviour
         {
             if (cell - 10 >= 0)
             {
-                if (invCon.occupiedRect_ring[cell - 10] == invCon.occupiedRect_ring[cell])
+                if (invCon.occupiedRect_shield[cell - 10] == invCon.occupiedRect_shield[cell])
                 {
                     if (returnVar > cell - 10)
                     {
@@ -398,7 +399,7 @@ public class MapLoadTest : MonoBehaviour
             }
             if (cell - 9 >= 0)
             {
-                if (invCon.occupiedRect_ring[cell - 9] == invCon.occupiedRect_ring[cell])
+                if (invCon.occupiedRect_shield[cell - 9] == invCon.occupiedRect_shield[cell])
                 {
                     if (returnVar > cell - 9)
                     {
@@ -408,7 +409,7 @@ public class MapLoadTest : MonoBehaviour
             }
             if (cell - 9 >= 0)
             {
-                if (invCon.occupiedRect_ring[cell - 8] == invCon.occupiedRect_ring[cell])
+                if (invCon.occupiedRect_shield[cell - 8] == invCon.occupiedRect_shield[cell])
                 {
                     if (returnVar > cell - 8)
                     {
@@ -418,7 +419,7 @@ public class MapLoadTest : MonoBehaviour
             }
             if (cell - 1 >= 0)
             {
-                if (invCon.occupiedRect_ring[cell - 1] == invCon.occupiedRect_ring[cell])
+                if (invCon.occupiedRect_shield[cell - 1] == invCon.occupiedRect_shield[cell])
                 {
                     if (returnVar > cell - 1)
                     {
@@ -428,7 +429,7 @@ public class MapLoadTest : MonoBehaviour
             }
             if (cell + 1 < 36)
             {
-                if (invCon.occupiedRect_ring[cell + 1] == invCon.occupiedRect_ring[cell])
+                if (invCon.occupiedRect_shield[cell + 1] == invCon.occupiedRect_shield[cell])
                 {
                     if (returnVar > cell + 1)
                     {
@@ -438,7 +439,7 @@ public class MapLoadTest : MonoBehaviour
             }
             if (cell + 8 < 36)
             {
-                if (invCon.occupiedRect_ring[cell + 8] == invCon.occupiedRect_ring[cell])
+                if (invCon.occupiedRect_shield[cell + 8] == invCon.occupiedRect_shield[cell])
                 {
                     if (returnVar > cell + 8)
                     {
@@ -448,7 +449,7 @@ public class MapLoadTest : MonoBehaviour
             }
             if (cell + 9 < 36)
             {
-                if (invCon.occupiedRect_ring[cell + 9] == invCon.occupiedRect_ring[cell])
+                if (invCon.occupiedRect_shield[cell + 9] == invCon.occupiedRect_shield[cell])
                 {
                     if (returnVar > cell + 9)
                     {
@@ -458,7 +459,7 @@ public class MapLoadTest : MonoBehaviour
             }
             if (cell + 10 < 36)
             {
-                if (invCon.occupiedRect_ring[cell + 10] == invCon.occupiedRect_ring[cell])
+                if (invCon.occupiedRect_shield[cell + 10] == invCon.occupiedRect_shield[cell])
                 {
                     if (returnVar > cell + 10)
                     {

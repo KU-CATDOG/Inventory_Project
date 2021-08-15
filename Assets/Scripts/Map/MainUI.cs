@@ -13,7 +13,7 @@ public class MainUI : MonoBehaviour
 
     public void gameStartButton()
     {
-        SceneManager.LoadScene("map0");
+        SceneManager.LoadScene("MapLoadTest");
     }
     public void SettingButton()
     {

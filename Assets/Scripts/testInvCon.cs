@@ -609,7 +609,6 @@ public class testInvCon : MonoBehaviour
                 Debug.Log("Cannot move right");
             }
         }
-
     }
     #endregion
 
@@ -676,75 +675,78 @@ public class testInvCon : MonoBehaviour
         //List<int> itemLocationList = new List<int>();           //0-3 for armor, 4-7 for shield, 8-11 for sword, 12-15 for shoe, 16-19 for ring
 
         int index = -1;                                         //0 for armor, 1 for shield, 2 for sword, 3 for shoe, 4 for ring
-        for (int i = 0; i < 36; i++)
+        if (playerPosition != -1)
         {
-            if (playerPosition == i)
+            for (int i = 0; i < 36; i++)
             {
-                if (occupiedRect[playerPosition])
+                if (playerPosition == i)
                 {
-                    if (occupiedRect_armor[playerPosition] != -1)
+                    if (occupiedRect[playerPosition])
                     {
-                        index = 0;
-                        for (int j = 0; j < 36; j++)
+                        if (occupiedRect_armor[playerPosition] != -1)
                         {
-                            if (occupiedRect_armor[j] == occupiedRect_armor[playerPosition])
+                            index = 0;
+                            for (int j = 0; j < 36; j++)
                             {
-                                currentRectList.Add(j);
+                                if (occupiedRect_armor[j] == occupiedRect_armor[playerPosition])
+                                {
+                                    currentRectList.Add(j);
+                                }
                             }
                         }
-                    }
-                    else if (occupiedRect_shield[playerPosition] != -1)
-                    {
-                        index = 1;
-                        for (int j = 0; j < 36; j++)
+                        else if (occupiedRect_shield[playerPosition] != -1)
                         {
-                            if (occupiedRect_shield[j] == occupiedRect_shield[playerPosition])
+                            index = 1;
+                            for (int j = 0; j < 36; j++)
                             {
-                                currentRectList.Add(j);
+                                if (occupiedRect_shield[j] == occupiedRect_shield[playerPosition])
+                                {
+                                    currentRectList.Add(j);
+                                }
                             }
                         }
-                    }
-                    else if (occupiedRect_sword[playerPosition] != -1)
-                    {
-                        index = 2;
-                        for (int j = 0; j < 36; j++)
+                        else if (occupiedRect_sword[playerPosition] != -1)
                         {
-                            if (occupiedRect_sword[j] == occupiedRect_sword[playerPosition])
+                            index = 2;
+                            for (int j = 0; j < 36; j++)
                             {
-                                currentRectList.Add(j);
+                                if (occupiedRect_sword[j] == occupiedRect_sword[playerPosition])
+                                {
+                                    currentRectList.Add(j);
+                                }
                             }
                         }
-                    }
-                    else if (occupiedRect_shoe[playerPosition] != -1)
-                    {
-                        index = 3;
-                        for (int j = 0; j < 36; j++)
+                        else if (occupiedRect_shoe[playerPosition] != -1)
                         {
-                            if (occupiedRect_shoe[j] == occupiedRect_shoe[playerPosition])
+                            index = 3;
+                            for (int j = 0; j < 36; j++)
                             {
-                                currentRectList.Add(j);
+                                if (occupiedRect_shoe[j] == occupiedRect_shoe[playerPosition])
+                                {
+                                    currentRectList.Add(j);
+                                }
                             }
                         }
-                    }
-                    else if (occupiedRect_ring[playerPosition] != -1)
-                    {
-                        index = 4;
-                        for (int j = 0; j < 36; j++)
+                        else if (occupiedRect_ring[playerPosition] != -1)
                         {
-                            if (occupiedRect_ring[j] == occupiedRect_ring[playerPosition])
+                            index = 4;
+                            for (int j = 0; j < 36; j++)
                             {
-                                currentRectList.Add(j);
+                                if (occupiedRect_ring[j] == occupiedRect_ring[playerPosition])
+                                {
+                                    currentRectList.Add(j);
+                                }
                             }
+                        }
+                        else
+                        {
+                            Debug.Log("Value not valid");
                         }
                     }
                     else
                     {
-                        Debug.Log("Value not valid");
+                        Debug.Log("Player is not positioned on an item");
                     }
-                }
-                else
-                {
-                    Debug.Log("Player is not positioned on an item");
                 }
             }
         }
@@ -1757,6 +1759,32 @@ public class testInvCon : MonoBehaviour
                             itemLocationList[occupiedRect_ring[currentRectList[0] + 1] + 16] = currentRectList[0] + 1;
                         }
                     }
+                }
+            }
+        }
+        else if (playerPosition == -1)
+        {
+            if (occupiedRect[0])
+            {
+                if (occupiedRect_armor[0] != -1)
+                {
+                    itemLocationList[occupiedRect_armor[0]] = 0;
+                }
+                else if (occupiedRect_shield[0] != -1)
+                {
+                    itemLocationList[occupiedRect_shield[0] + 4] = 0;
+                }
+                else if (occupiedRect_sword[0] != -1)
+                {
+                    itemLocationList[occupiedRect_sword[0] + 8] = 0;
+                }
+                else if (occupiedRect_shoe[0] != -1)
+                {
+                    itemLocationList[occupiedRect_shoe[0] + 12] = 0;
+                }
+                else if (occupiedRect_ring[0] != -1)
+                {
+                    itemLocationList[occupiedRect_ring[0] + 16] = 0;
                 }
             }
         }

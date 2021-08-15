@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
 
     public List<Items> Inventory;
 
+    public testInvCon invCon;
 
 
     // Start is called before the first frame update
@@ -42,7 +43,7 @@ public class Player : MonoBehaviour
     {
         attackDamage = 10f;
         moveSpeed = 5f;
-        maxHealth = health = 10;
+        maxHealth = health = 100;
         additionalDMG = attackDamage;
         additionalMS = moveSpeed;
 
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
             additionalDMG += Inventory[i].damage;
             tenacity += Inventory[i].tenacity;
         }
+
     }
 
     // Update is called once per frame
@@ -127,4 +129,60 @@ public class Player : MonoBehaviour
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }
+
+    private void PlayerShift()
+    {
+        int compareXPos, compareYPos;
+        int xPos, yPos;
+        if (transform.position.x < -8)
+        {
+            xPos = -1;
+        }
+        else if (transform.position.x < 8)
+        {
+            xPos = 0;
+        }
+        else if (transform.position.x < 24)
+        {
+            xPos = 1;
+        }
+        else if (transform.position.x < 40)
+        {
+            xPos = 2;
+        }
+        else if (transform.position.x < 56)
+        {
+            xPos = 3;
+        }
+        else
+        {
+            Debug.Log("Out of X Bounds");
+        }
+        if (transform.position.y < 4)
+        {
+            yPos = -1;
+        }
+        else if (transform.position.y < 8)
+        {
+            yPos = 0;
+        }
+        else if (transform.position.y < 24)
+        {
+            yPos = 1;
+        }
+        else if (transform.position.y < 40)
+        {
+            yPos = 2;
+        }
+        else if (transform.position.y < 56)
+        {
+            yPos = 3;
+        }
+        else
+        {
+            Debug.Log("Out of Y Bounds");
+        }
+    }
+
+
 }
