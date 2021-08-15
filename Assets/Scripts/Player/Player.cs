@@ -132,56 +132,7 @@ public class Player : MonoBehaviour
 
     private void PlayerShift()
     {
-        int compareXPos, compareYPos;
-        int xPos, yPos;
-        if (transform.position.x < -8)
-        {
-            xPos = -1;
-        }
-        else if (transform.position.x < 8)
-        {
-            xPos = 0;
-        }
-        else if (transform.position.x < 24)
-        {
-            xPos = 1;
-        }
-        else if (transform.position.x < 40)
-        {
-            xPos = 2;
-        }
-        else if (transform.position.x < 56)
-        {
-            xPos = 3;
-        }
-        else
-        {
-            Debug.Log("Out of X Bounds");
-        }
-        if (transform.position.y < 4)
-        {
-            yPos = -1;
-        }
-        else if (transform.position.y < 8)
-        {
-            yPos = 0;
-        }
-        else if (transform.position.y < 24)
-        {
-            yPos = 1;
-        }
-        else if (transform.position.y < 40)
-        {
-            yPos = 2;
-        }
-        else if (transform.position.y < 56)
-        {
-            yPos = 3;
-        }
-        else
-        {
-            Debug.Log("Out of Y Bounds");
-        }
+        
     }
 
 
