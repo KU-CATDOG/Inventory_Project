@@ -598,6 +598,11 @@ public class testInvCon : MonoBehaviour
             MapLoad.SpawnMap();
             playerPosition = 0;
         }
+        else if (playerPosition == 35)
+        {
+            playerPosition = 36;
+            Debug.Log("You reached to the end of the map!");
+        }
         else
         {
             if (playerPosition + 9 < 36 && occupiedRect[playerPosition + 9])
