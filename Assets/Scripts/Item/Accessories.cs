@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Accessories : MonoBehaviour
+public class Accessories : Items
 {
-    public float shieldDamage;
-    public float defense;
-    public float moveSpeed;
-    public float damage;
-    public float tenacity;
+    
 
     public AccessoryType Type;
     private int b;
-    void Start()
+    void Awake()
     {
         b = Random.Range(0, 4);
         switch (b)
@@ -44,7 +40,7 @@ public class Accessories : MonoBehaviour
 
 public enum AccessoryType
 {
-    산소통, 복사열_차단기, 파인애플워치, 절대반지
+    없음, 산소통, 복사열_차단기, 파인애플워치, 절대반지
 }
         
    

@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoes : MonoBehaviour
+public class Shoes : Items
 {
-    public float shieldDamage;
-    public float defense;
-    public float moveSpeed;
-    public float damage;
-    public float tenacity;
+   
 
     public ShoeType Type;
     private int b;
-    void Start()
+    void Awake()
     {
         b = Random.Range(0, 4);
         switch (b)
@@ -44,5 +40,5 @@ public class Shoes : MonoBehaviour
 
 public enum ShoeType
 {
-    에어_요단, 스페이스부츠, 카본부츠, 헤르메스의_신발
+    없음, 에어_요단, 스페이스부츠, 카본부츠, 헤르메스의_신발
 }

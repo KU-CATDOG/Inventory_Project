@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shields : MonoBehaviour
+public class Shields : Items
 {
-    public float shieldDamage;
-    public float defense;
-    public float moveSpeed;
-    public float damage;
-    public float tenacity;
+    
 
     public ShieldType Type;
     private int b;
-    void Start()
+    void Awake()
     {
         b = Random.Range(0, 4);
         switch (b)
@@ -44,5 +40,5 @@ public class Shields : MonoBehaviour
 
 public enum ShieldType
 {
-    플라스틱_방패, 합금_방패, 탄소섬유_방패, 에너지_방패
+    없음, 플라스틱_방패, 합금_방패, 탄소섬유_방패, 에너지_방패
 }

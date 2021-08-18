@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Armors : MonoBehaviour
+public class Armors : Items
 {
-    public float shieldDamage;
-    public float defense;
-    public float moveSpeed;
-    public float damage;
-    public float tenacity;
+    
 
     public ArmorType Type;
     private int b;
-    void Start()
+    void Awake()
     {
         b = Random.Range(0, 4);
         switch (b)
@@ -44,5 +40,5 @@ public class Armors : MonoBehaviour
 
 public enum ArmorType
 {
-    ¿¬±¸º¹, ¿ìÁÖº¹, Ä«º»_½´Æ®, ¹æÅºÀ¯¸®_°©¿Ê
+    ¾øÀ½, ¿¬±¸º¹, ¿ìÁÖº¹, Ä«º»_½´Æ®, ¹æÅºÀ¯¸®_°©¿Ê
 }

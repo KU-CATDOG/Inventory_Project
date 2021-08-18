@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Swords : MonoBehaviour
+public class Swords : Items
 {
-    public float shieldDamage;
-    public float defense;
-    public float moveSpeed;
-    public float damage;
-    public float tenacity;
-
+    
+    
     public SwordType Type;
     private int b;
-    void Start()
+    void Awake()
     {
         b = Random.Range(0, 4);
         switch (b)
@@ -40,9 +36,10 @@ public class Swords : MonoBehaviour
         }
 
     }
+    
 }
 
 public enum SwordType
 {
-    파이프, 도끼, 빠루, 라이트세이버
+    없음, 파이프, 도끼, 빠루, 라이트세이버
 }
