@@ -16,21 +16,24 @@ public class Accessories : Items
             case 0:
                 tenacity = Random.Range(1, 3);
                 Type = AccessoryType.산소통;
+                gameObject.name = "산소통";
                 break;
 
             case 1:
                 tenacity = Random.Range(3, 5);
                 Type = AccessoryType.복사열_차단기;
+                gameObject.name = "복사열_차단기";
                 break;
 
             case 2:
                 tenacity = Random.Range(5, 7);
                 Type = AccessoryType.파인애플워치;
+                gameObject.name = "파인애플워치";
                 break;
 
             case 3:
                 tenacity = 7;
-                Type = AccessoryType.절대반지;
+                gameObject.name = "절대반지";
                 break;
 
         }

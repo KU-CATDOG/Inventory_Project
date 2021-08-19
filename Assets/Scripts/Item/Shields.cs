@@ -16,21 +16,25 @@ public class Shields : Items
             case 0:
                 shieldDamage = Random.Range(5, 9);
                 Type = ShieldType.플라스틱_방패;
+                gameObject.name = "플라스틱_방패";
                 break;
 
             case 1:
                 shieldDamage = Random.Range(7, 12);
                 Type = ShieldType.합금_방패;
+                gameObject.name = "합금_방패";
                 break;
 
             case 2:
                 shieldDamage = Random.Range(10, 16);
                 Type = ShieldType.탄소섬유_방패;
+                gameObject.name = "탄소섬유_방패";
                 break;
 
             case 3:
                 shieldDamage = Random.Range(14, 21);
                 Type = ShieldType.에너지_방패;
+                gameObject.name = "에너지_방패";
                 break;
 
         }

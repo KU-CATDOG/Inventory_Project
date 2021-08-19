@@ -16,21 +16,25 @@ public class Swords : Items
             case 0:
                 damage = Random.Range(5, 11);
                 Type = SwordType.파이프;
+                gameObject.name = "파이프";
                 break;
 
             case 1:
                 damage = Random.Range(10, 17);
                 Type = SwordType.도끼;
+                gameObject.name = "도끼";
                 break;
 
             case 2:
                 damage = Random.Range(20, 41);
                 Type = SwordType.빠루;
+                gameObject.name = "빠루";
                 break;
 
             case 3:
                 damage = 50;
                 Type = SwordType.라이트세이버;
+                gameObject.name = "라이트세이버";
                 break;
 
         }
