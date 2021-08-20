@@ -30,5 +30,10 @@ public class ClearJudge : MonoBehaviour
             Clear = true;
             Debug.Log("Clear");
         }
+        if (Monster.Length != 0&&Clear)
+        {
+            Clear = false;
+            Debug.Log("not Clear");
+        }
     }
 }
