@@ -212,7 +212,6 @@ MonoBehaviour:
   attackSpeed: 0
   moveSpeed: 5
   isInvincible: 0
-<<<<<<< HEAD
   additionalMS: 0
   additionalDMG: 0
   attackPoint: {fileID: 5825729551452355532}
@@ -226,8 +225,6 @@ MonoBehaviour:
   attackRate: 2
   rb: {fileID: 7870126863497452339}
   Inventory: []
-=======
-  rb: {fileID: 4458960030868008931}
   SpeedUp: []
   SpeedDown: []
->>>>>>> origin/MapFeatures
+
