@@ -109,7 +109,6 @@ public class ItemDrop : MonoBehaviour
         if (Pos != -1)
         {
             int a, b;
-
             a = Random.Range(0, 5);
             while (dropCount == 0)
             {

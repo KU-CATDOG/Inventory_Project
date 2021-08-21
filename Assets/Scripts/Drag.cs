@@ -150,7 +150,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
+
         if (Input.mousePosition.x < 545 || Input.mousePosition.x > 1375 || Input.mousePosition.y < 162.5 || Input.mousePosition.y > 917.5)
         {
             rectTransform.anchoredPosition = initPos;
