@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        movement = movement.normalized;
 
         if (Vector2.Distance(movement, Vector2.zero) < 0.01f)
         {
