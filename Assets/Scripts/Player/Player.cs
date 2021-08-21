@@ -37,6 +37,15 @@ public class Player : MonoBehaviour
 
     public testInvCon invCon;
 
+    //포션 맵 변수
+    Vector2 moveDir;
+    bool isSlippery = false;
+
+    //신발 맵 변수
+    public List<GameObject> SpeedUp, SpeedDown;
+    bool isOnSU = false;
+    bool isOnSD = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +65,18 @@ public class Player : MonoBehaviour
             tenacity += Inventory[i].tenacity;
         }
 
+        if (FindObjectOfType<SpeedUp>() != null)
+        {
+            for (int i = 0; i < FindObjectsOfType<SpeedUp>().Length; i++)
+                SpeedUp.Add(FindObjectsOfType<SpeedUp>()[i].gameObject);
+        }
+        if (FindObjectOfType<SpeedDown>() != null)
+        {
+            for (int i = 0; i < FindObjectsOfType<SpeedDown>().Length; i++)
+                SpeedDown.Add(FindObjectsOfType<SpeedDown>()[i].gameObject);
+        }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -74,7 +94,7 @@ public class Player : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if(Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -82,19 +102,31 @@ public class Player : MonoBehaviour
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
+        moveDir = new Vector2(movement.x, movement.y);
 
+        if (isOnSU)
+            moveSpeed = 7f;
+        else if (isOnSD)
+            moveSpeed = 3f;
+        else
+            moveSpeed = 5f;
     }
 
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * additionalMS * Time.fixedDeltaTime);
+        if (isSlippery)
+            rb.AddForce(moveDir, ForceMode2D.Force);
+        else
+            rb.velocity = moveDir * moveSpeed;  //이동을 담당하는 코드가 바뀜
+                                                //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(hit.position, attackRange, enemyLayers);
 
-        foreach(Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<MonsterClass>().GetDamaged(additionalDMG);
             Debug.Log("Enemy damage taken " + additionalDMG);
@@ -107,7 +139,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Damage taken  " + damage);
             health -= damage;
-            if(health <= 0)
+            if (health <= 0)
             {
                 Debug.Log("Player died");
                 gameObject.SetActive(false);
@@ -115,6 +147,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (SpeedUp.Contains(collision.gameObject))
+            isOnSU = true;
+        if (SpeedDown.Contains(collision.gameObject))
+            isOnSD = true;
+        if (collision.CompareTag("Slippery"))
+            isSlippery = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (SpeedUp.Contains(collision.gameObject))
+            isOnSU = false;
+        if (SpeedDown.Contains(collision.gameObject))
+            isOnSD = false;
+        if (collision.CompareTag("Slippery"))
+            isSlippery = false;
+    }
     private void OnDrawGizmos()
     {
         if (hit == null) return;
@@ -124,7 +175,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
@@ -132,8 +183,6 @@ public class Player : MonoBehaviour
 
     private void PlayerShift()
     {
-        
+
     }
-
-
 }
