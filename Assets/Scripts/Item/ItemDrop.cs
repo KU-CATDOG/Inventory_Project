@@ -53,15 +53,8 @@ public class ItemDrop : MonoBehaviour
     void Update()
     {
         curplayerPos = invCon.playerPosition;
-        if (curplayerPos < 0)
-        {
-            curplayerPos = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            tabPressed = 1;
 
-        }
+
         /*if(curplayerPos != pastplayerPos&& tabPressed == 1)
         {
             curShieldOccupied = invCon.occupiedRect_shield[curplayerPos];
@@ -89,6 +82,14 @@ public class ItemDrop : MonoBehaviour
             //Debug.Log(invCon.occupiedRect_shield[1]);
             
         }*/
+        if (tabPressed == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                tabPressed = 1;
+
+            }
+        }
         if (clearJudge.Clear == true && dropOnce == 0 && invCon.playerPosition != -1 && tabPressed == 1)
         {
             dropDifferentItem(curplayerPos);
