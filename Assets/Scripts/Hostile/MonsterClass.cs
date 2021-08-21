@@ -30,7 +30,15 @@ public abstract class MonsterClass : MonoBehaviour
     }
     public virtual void GetDamaged(float damage)
     {
-        Health -= damage;
+        if(GameObject.Find("ArmorArtifact") != null && gameObject.name != "ArmorArtifact")
+        {
+
+        }
+        else
+        {
+            Health -= damage;
+            Debug.Log("Enemy damage taken " + damage);
+        }
         if (Health <= 0)
         {
             Destroy(gameObject);
