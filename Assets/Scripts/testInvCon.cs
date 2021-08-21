@@ -207,7 +207,7 @@ public class testInvCon : MonoBehaviour
         SpawnRing(0);
     }
 
-    void SpawnArmor(int i)
+    public void SpawnArmor(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(armorPosList.Count, 0, armorPosList.Count);
@@ -286,7 +286,7 @@ public class testInvCon : MonoBehaviour
         }
 
     }
-    void SpawnSword(int i)
+    public void SpawnSword(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(swordPosList.Count, 0, swordPosList.Count);
@@ -379,7 +379,7 @@ public class testInvCon : MonoBehaviour
             }
         }
     }
-    void SpawnShield(int i)
+    public void SpawnShield(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(shieldPosList.Count, 0, shieldPosList.Count);
@@ -464,7 +464,7 @@ public class testInvCon : MonoBehaviour
             }
         }
     }
-    void SpawnShoe(int i)
+    public void SpawnShoe(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(shoePosList.Count, 0, shoePosList.Count);
@@ -489,7 +489,7 @@ public class testInvCon : MonoBehaviour
             }
         }
     }
-    void SpawnRing(int i)
+    public void SpawnRing(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(ringPosList.Count, 0, ringPosList.Count);

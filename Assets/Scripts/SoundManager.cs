@@ -55,4 +55,17 @@ public class SoundManager : MonoBehaviour
         sfxPlayer.clip = clips[0];
         sfxPlayer.Play();
     }
+
+    public void PlayerAttack()
+    {
+        sfxPlayer.PlayOneShot(clips[1]);
+    }
+    public void PlayerDamaged()
+    {
+        sfxPlayer.PlayOneShot(clips[2]);
+    }
+    public void PlayerWalk()
+    {
+        sfxPlayer.PlayOneShot(clips[3]);
+    }
 }

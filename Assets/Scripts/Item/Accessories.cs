@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Accessories : MonoBehaviour
+public class Accessories : Items
 {
-    public float shieldDamage;
-    public float defense;
-    public float moveSpeed;
-    public float damage;
-    public float tenacity;
+    
 
     public AccessoryType Type;
     private int b;
-    void Start()
+    void Awake()
     {
         b = Random.Range(0, 4);
         switch (b)
@@ -20,21 +16,24 @@ public class Accessories : MonoBehaviour
             case 0:
                 tenacity = Random.Range(1, 3);
                 Type = AccessoryType.산소통;
+                gameObject.name = "산소통";
                 break;
 
             case 1:
                 tenacity = Random.Range(3, 5);
                 Type = AccessoryType.복사열_차단기;
+                gameObject.name = "복사열_차단기";
                 break;
 
             case 2:
                 tenacity = Random.Range(5, 7);
                 Type = AccessoryType.파인애플워치;
+                gameObject.name = "파인애플워치";
                 break;
 
             case 3:
                 tenacity = 7;
-                Type = AccessoryType.절대반지;
+                gameObject.name = "절대반지";
                 break;
 
         }
@@ -44,7 +43,7 @@ public class Accessories : MonoBehaviour
 
 public enum AccessoryType
 {
-    산소통, 복사열_차단기, 파인애플워치, 절대반지
+    없음, 산소통, 복사열_차단기, 파인애플워치, 절대반지
 }
         
    

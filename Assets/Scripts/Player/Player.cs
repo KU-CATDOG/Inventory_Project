@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     bool isOnSU = false;
     bool isOnSD = false;
 
+    float moveSoundTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +95,15 @@ public class Player : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if (Vector2.Distance(movement, Vector2.zero) < 0.01f)
+        {
+            moveSoundTime = Time.time + 0.1f;
+        }
+        if (Time.time >= moveSoundTime)
+        {
+            SoundManager.instance.PlayerWalk();
+            moveSoundTime = Time.time + 0.3f;
+        }
         if (Time.time >= nextAttackTime)
         {
             if (Input.GetMouseButtonDown(0))
@@ -103,6 +113,7 @@ public class Player : MonoBehaviour
             }
         }
         moveDir = new Vector2(movement.x, movement.y);
+        moveDir = moveDir.normalized;
 
         if (isOnSU)
             moveSpeed = 7f;
@@ -124,6 +135,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
+        SoundManager.instance.PlayerAttack();
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(hit.position, attackRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -138,6 +150,7 @@ public class Player : MonoBehaviour
         if (!isInvincible)
         {
             Debug.Log("Damage taken  " + damage);
+            SoundManager.instance.PlayerDamaged();
             health -= damage;
             if (health <= 0)
             {
