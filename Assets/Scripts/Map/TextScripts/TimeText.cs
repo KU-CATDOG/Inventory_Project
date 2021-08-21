@@ -17,10 +17,11 @@ public class TimeText : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        if (time >= 60){
+        if (time >= 60)
+        {
             min = min + 1;
             time = time - 60;
         }
-        timeText.text = (Tag.tag).ToString()+"층에서 \n 보낸 시간: " +(min).ToString()+":"+(Mathf.FloorToInt(time) ).ToString();
+        timeText.text = (Tag.tag).ToString() + "층에서 \n 보낸 시간: " + (min).ToString() + ":" + (Mathf.FloorToInt(time)).ToString();
     }
 }

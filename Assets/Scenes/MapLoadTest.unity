@@ -4855,6 +4855,7 @@ MonoBehaviour:
   shoes: {fileID: 4965134633496673019, guid: 861aa3f1068d2ba418f3038377a45e42, type: 3}
   sword: {fileID: 5510289782615069573, guid: 7aea0c8672254ba4a968e359c99d7eaf, type: 3}
   accessories: {fileID: 8282937874645588551, guid: 58b0ecea53d2b504ba886e68e60323bd, type: 3}
+  mapLoad: {fileID: 418968166}
   InventoryManager: {fileID: 1955532313}
   dropOnce: 0
   dropCount: 0
@@ -7009,6 +7010,10 @@ PrefabInstance:
       propertyPath: invCon
       value: 
       objectReference: {fileID: 1955532316}
+    - target: {fileID: 7870126863497452338, guid: 1587898a9efabc04a9bd1fc5effd1142, type: 3}
+      propertyPath: InventoryManager
+      value: 
+      objectReference: {fileID: 1955532313}
     - target: {fileID: 7870126863497452341, guid: 1587898a9efabc04a9bd1fc5effd1142, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16

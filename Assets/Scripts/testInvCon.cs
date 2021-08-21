@@ -207,7 +207,11 @@ public class testInvCon : MonoBehaviour
         SpawnRing(0);
     }
 
-    public void SpawnArmor(int i)
+    /// <summary>
+    /// returns true if successfully spawned, false vice versa
+    /// </summary>
+    /// <param name="i"></param>
+    public bool SpawnArmor(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(armorPosList.Count, 0, armorPosList.Count);
@@ -229,7 +233,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_armor[ran + 9] = i;
                     occupiedRect_armor[ran + 10] = i;
                     armorRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -252,7 +256,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_armor[ran + 10] = i;
                     occupiedRect_armor[ran + 11] = i;
                     armorRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -275,7 +279,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_armor[ran + 11] = i;
                     occupiedRect_armor[ran + 12] = i;
                     armorRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -284,9 +288,14 @@ public class testInvCon : MonoBehaviour
                 }
             }
         }
-
+        return false;
     }
-    public void SpawnSword(int i)
+
+    /// <summary>
+    /// returns true if successfully spawned, false vice versa
+    /// </summary>
+    /// <param name="i"></param>
+    public bool SpawnSword(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(swordPosList.Count, 0, swordPosList.Count);
@@ -306,7 +315,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_sword[ran + 1] = i;
                     occupiedRect_sword[ran + 2] = i;
                     swordRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -327,7 +336,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_sword[ran + 3] = i;
                     occupiedRect_sword[ran + 4] = i;
                     swordRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -348,7 +357,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_sword[ran + 5] = i;
                     occupiedRect_sword[ran + 6] = i;
                     swordRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -369,7 +378,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_sword[ran + 7] = i;
                     occupiedRect_sword[ran + 8] = i;
                     swordRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -378,8 +387,13 @@ public class testInvCon : MonoBehaviour
                 }
             }
         }
+        return false;
     }
-    public void SpawnShield(int i)
+    /// <summary>
+    /// returns true if successfully spawned, false vice versa
+    /// </summary>
+    /// <param name="i"></param>
+    public bool SpawnShield(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(shieldPosList.Count, 0, shieldPosList.Count);
@@ -397,7 +411,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_shield[ran] = i;
                     occupiedRect_shield[ran + 1] = i;
                     shieldRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -416,7 +430,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_shield[ran + 1] = i;
                     occupiedRect_shield[ran + 2] = i;
                     shieldRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -435,7 +449,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_shield[ran + 2] = i;
                     occupiedRect_shield[ran + 3] = i;
                     shieldRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -454,7 +468,7 @@ public class testInvCon : MonoBehaviour
                     occupiedRect_shield[ran + 3] = i;
                     occupiedRect_shield[ran + 4] = i;
                     shieldRan[i] = ran;
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -463,8 +477,14 @@ public class testInvCon : MonoBehaviour
                 }
             }
         }
+        return false;
     }
-    public void SpawnShoe(int i)
+
+    /// <summary>
+    /// returns true if successfully spawned, false vice versa
+    /// </summary>
+    /// <param name="i"></param>
+    public bool SpawnShoe(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(shoePosList.Count, 0, shoePosList.Count);
@@ -480,7 +500,7 @@ public class testInvCon : MonoBehaviour
                 occupiedRect_ring[ran] = i;
                 occupiedRect_ring[ran + 9] = i;
                 shoeRan[i] = ran;
-                return;
+                return true;
             }
             else
             {
@@ -488,8 +508,14 @@ public class testInvCon : MonoBehaviour
                 ran = randArray[k];
             }
         }
+        return false;
     }
-    public void SpawnRing(int i)
+
+    /// <summary>
+    /// returns true if successfully spawned, false vice versa
+    /// </summary>
+    /// <param name="i"></param>
+    public bool SpawnRing(int i)
     {
         int k = 0;
         int[] randArray = GetRandomInt(ringPosList.Count, 0, ringPosList.Count);
@@ -503,7 +529,7 @@ public class testInvCon : MonoBehaviour
                 occupiedRect[ran] = true;
                 occupiedRect_ring[ran] = i;
                 ringRan[i] = ran;
-                return;
+                return true;
             }
             else
             {
@@ -511,6 +537,7 @@ public class testInvCon : MonoBehaviour
                 ran = randArray[k];
             }
         }
+        return false;
     }
 
     public int[] GetRandomInt(int length, int min, int max)

@@ -11,12 +11,13 @@ public class ItemDrop : MonoBehaviour
     public Transform sword;
     public Transform accessories;
 
+    public MapLoadTest mapLoad;
     Player player;
     testInvCon invCon;
 
     public GameObject InventoryManager;
-    public int dropOnce,dropCount;
-    int pastplayerPos=0;
+    public int dropOnce, dropCount;
+    int pastplayerPos = 0;
     int curplayerPos;
     int tabPressed = 0;
 
@@ -32,11 +33,11 @@ public class ItemDrop : MonoBehaviour
     int curArmorOccupied;
     int curAccessoryOccupied;
 
-    int pastShieldOccupied=-1;
-    int pastSwordOccupied=-1;
-    int pastShoesOccupied=-1;
-    int pastArmorOccupied=-1;
-    int pastAccessoryOccupied=-1;
+    int pastShieldOccupied = -1;
+    int pastSwordOccupied = -1;
+    int pastShoesOccupied = -1;
+    int pastArmorOccupied = -1;
+    int pastAccessoryOccupied = -1;
 
 
     // Start is called before the first frame update
@@ -53,15 +54,8 @@ public class ItemDrop : MonoBehaviour
     void Update()
     {
         curplayerPos = invCon.playerPosition;
-        if (curplayerPos < 0)
-        {
-            curplayerPos = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            tabPressed = 1;
 
-        }
+
         /*if(curplayerPos != pastplayerPos&& tabPressed == 1)
         {
             curShieldOccupied = invCon.occupiedRect_shield[curplayerPos];
@@ -89,9 +83,19 @@ public class ItemDrop : MonoBehaviour
             //Debug.Log(invCon.occupiedRect_shield[1]);
             
         }*/
-        if (clearJudge.Clear == true && dropOnce == 0 && invCon.playerPosition != -1 && tabPressed == 1)
+        if (tabPressed == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                tabPressed = 1;
+
+            }
+        }
+        if (clearJudge.Clear == true && dropOnce == 0 && curplayerPos != -1 && tabPressed == 1)
         {
             dropDifferentItem(curplayerPos);
+            invCon.GetNearbyItems();
+            mapLoad.SpawnMap();
             dropOnce++;
         }
         if (clearJudge.Clear == false)
@@ -99,141 +103,224 @@ public class ItemDrop : MonoBehaviour
             dropOnce = 0;
         }
     }
-        
-     private void dropDifferentItem(int Pos)
-     {
 
-         int a, b;
-
-         a = Random.Range(0, 5);
-         while (dropCount == 0)
-         {
-             switch (a)
-             {
-                 case 0:
-                     if (invCon.occupiedRect_shield[Pos] != -1)//만약 같은 맵이면 다시 뽑기
-                     {
-                         break;
-                     }
-                    Instantiate(shield);
-                    invCon.SpawnShield(shieldSpawnCount);
-                    
-                    shieldSpawnCount++;
-                    dropCount++;
-                 break;
-
-                 case 1:
-                     if (invCon.occupiedRect_armor[Pos] != -1)
-                     {
-                         break;
-                     }
-                     Instantiate(armor);
-                    invCon.SpawnArmor(armorSpawnCount);
-                    armorSpawnCount++;
-                    dropCount++;
-                     break;
-
-                 case 2:
-                     if (invCon.occupiedRect_shoe[Pos] != -1)
-                     {
-                         break;
-                     }
-                     Instantiate(shoes);
-                    invCon.SpawnShoe(shoesSpawnCount);
-                    shoesSpawnCount++;
-                    dropCount++;
-                     break;
-
-                 case 3:
-                     if (invCon.occupiedRect_sword[Pos] != -1)
-                     {
-                         break;
-                     }
-                     Instantiate(sword);
-                    invCon.SpawnSword(swordSpawnCount);
-                    swordSpawnCount++;
-                     dropCount++;
-                     break;
-
-                 case 4:
-                     if (invCon.occupiedRect_ring[Pos] != -1)
-                     {
-                         break;
-                     }
-                     Instantiate(accessories);
-                    invCon.SpawnRing(accessorySpawnCount);
-                    accessorySpawnCount++;
-                     dropCount++;
-                     break;
-             }
-         }
-
-         do
-         {
-             b = Random.Range(0, 5);
-         } while (a == b);//서로 다른 아이템 뽑게 하기
-         while (dropCount == 1)
-         {
-            switch (b)
+    private void dropDifferentItem(int Pos)
+    {
+        if (Pos != -1)
+        {
+            int a, b;
+            a = Random.Range(0, 5);
+            while (dropCount == 0)
             {
-                case 0:
-                    if (invCon.occupiedRect_shield[Pos] != -1)//만약 같은 맵이면 다시 뽑기
-                    {
+                switch (a)
+                {
+                    case 0:
+                        if (invCon.occupiedRect_shield[Pos] != -1)//만약 같은 맵이면 다시 뽑기
+                        {
+                            break;
+                        }
+                        Instantiate(shield);
+                        if (invCon.SpawnShield(shieldSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        shieldSpawnCount++;
+                        dropCount++;
                         break;
-                    }
-                    Instantiate(shield);
-                    invCon.SpawnShield(shieldSpawnCount);
 
-                    shieldSpawnCount++;
-                    dropCount++;
-                    break;
-
-                case 1:
-                    if (invCon.occupiedRect_armor[Pos] != -1)
-                    {
+                    case 1:
+                        if (invCon.occupiedRect_armor[Pos] != -1)
+                        {
+                            break;
+                        }
+                        Instantiate(armor);
+                        if (invCon.SpawnArmor(armorSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        
+                        armorSpawnCount++;
+                        dropCount++;
                         break;
-                    }
-                    Instantiate(armor);
-                    invCon.SpawnArmor(armorSpawnCount);
-                    armorSpawnCount++;
-                    dropCount++;
-                    break;
 
-                case 2:
-                    if (invCon.occupiedRect_shoe[Pos] != -1)
-                    {
+                    case 2:
+                        if (invCon.occupiedRect_shoe[Pos] != -1)
+                        {
+                            break;
+                        }
+                        Instantiate(shoes);
+                        if (invCon.SpawnShoe(shoesSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        
+                        shoesSpawnCount++;
+                        dropCount++;
                         break;
-                    }
-                    Instantiate(shoes);
-                    invCon.SpawnShoe(shoesSpawnCount);
-                    shoesSpawnCount++;
-                    dropCount++;
-                    break;
 
-                case 3:
-                    if (invCon.occupiedRect_sword[Pos] != -1)
-                    {
-                        break;
-                    }
-                    Instantiate(sword);
-                    invCon.SpawnSword(swordSpawnCount);
-                    swordSpawnCount++;
-                    dropCount++;
-                    break;
+                    case 3:
+                        if (invCon.occupiedRect_sword[Pos] != -1)
+                        {
+                            break;
+                        }
+                        Instantiate(sword);
+                        if (invCon.SpawnSword(swordSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
 
-                case 4:
-                    if (invCon.occupiedRect_ring[Pos] != -1)
-                    {
+                        
+                        swordSpawnCount++;
+                        dropCount++;
                         break;
-                    }
-                    Instantiate(accessories);
-                    invCon.SpawnRing(accessorySpawnCount);
-                    accessorySpawnCount++;
-                    dropCount++;
-                    break;
+
+                    case 4:
+                        if (invCon.occupiedRect_ring[Pos] != -1)
+                        {
+                            break;
+                        }
+                        Instantiate(accessories);
+                        if (invCon.SpawnRing(accessorySpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        
+                        accessorySpawnCount++;
+                        dropCount++;
+                        break;
+                }
             }
-            dropCount = 0;
+
+            do
+            {
+                b = Random.Range(0, 5);
+            } while (a == b);//서로 다른 아이템 뽑게 하기
+            while (dropCount == 1)
+            {
+                switch (b)
+                {
+                    case 0:
+                        if (invCon.occupiedRect_shield[Pos] != -1)//만약 같은 맵이면 다시 뽑기
+                        {
+                            break;
+                        }
+                        Instantiate(shield);
+                        if (invCon.SpawnShield(shieldSpawnCount))
+                        {
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        shieldSpawnCount++;
+                        dropCount++;
+                        break;
+
+                    case 1:
+                        if (invCon.occupiedRect_armor[Pos] != -1)
+                        {
+                            break;
+                        }
+                        Instantiate(armor);
+                        if (invCon.SpawnArmor(armorSpawnCount))
+                        {
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                        armorSpawnCount++;
+                        dropCount++;
+                        break;
+
+                    case 2:
+                        if (invCon.occupiedRect_shoe[Pos] != -1)
+                        {
+                            break;
+                        }
+                        Instantiate(shoes);
+                        if (invCon.SpawnShoe(shoesSpawnCount))
+                        {
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                        shoesSpawnCount++;
+                        dropCount++;
+                        break;
+
+                    case 3:
+                        if (invCon.occupiedRect_sword[Pos] != -1)
+                        {
+                            break;
+                        }
+                        Instantiate(sword);
+                        if (invCon.SpawnSword(swordSpawnCount))
+                        {
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+
+                        swordSpawnCount++;
+                        dropCount++;
+                        break;
+
+                    case 4:
+                        if (invCon.occupiedRect_ring[Pos] != -1)
+                        {
+                            break;
+                        }
+                        Instantiate(accessories);
+                        if (invCon.SpawnRing(accessorySpawnCount))
+                        {
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                        accessorySpawnCount++;
+                        dropCount++;
+                        break;
+                }
+                dropCount = 0;
+            }
         }
-     }
-     
+        else
+        {
+            Debug.Log("Player is at starting position");
+        }
+    }
+
 }
