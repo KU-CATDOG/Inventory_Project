@@ -109,7 +109,6 @@ public class ItemDrop : MonoBehaviour
         if (Pos != -1)
         {
             int a, b;
-            bool shieldSpawnAble = true;
             a = Random.Range(0, 5);
             while (dropCount == 0)
             {
@@ -138,6 +137,7 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        Instantiate(armor);
                         if (invCon.SpawnArmor(armorSpawnCount))
                         {
                             
@@ -146,8 +146,7 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        Instantiate(armor);
-                        invCon.SpawnArmor(armorSpawnCount);
+                        
                         armorSpawnCount++;
                         dropCount++;
                         break;
@@ -157,6 +156,7 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        Instantiate(shoes);
                         if (invCon.SpawnShoe(shoesSpawnCount))
                         {
                             
@@ -165,8 +165,7 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        Instantiate(shoes);
-                        invCon.SpawnShoe(shoesSpawnCount);
+                        
                         shoesSpawnCount++;
                         dropCount++;
                         break;
@@ -176,6 +175,7 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        Instantiate(sword);
                         if (invCon.SpawnSword(swordSpawnCount))
                         {
                             
@@ -185,8 +185,7 @@ public class ItemDrop : MonoBehaviour
                             break;
                         }
 
-                        Instantiate(sword);
-                        invCon.SpawnSword(swordSpawnCount);
+                        
                         swordSpawnCount++;
                         dropCount++;
                         break;
@@ -196,6 +195,7 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        Instantiate(accessories);
                         if (invCon.SpawnRing(accessorySpawnCount))
                         {
                             
@@ -204,8 +204,7 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        Instantiate(accessories);
-                        invCon.SpawnRing(accessorySpawnCount);
+                        
                         accessorySpawnCount++;
                         dropCount++;
                         break;
@@ -228,7 +227,7 @@ public class ItemDrop : MonoBehaviour
                         Instantiate(shield);
                         if (invCon.SpawnShield(shieldSpawnCount))
                         {
-                            
+
                         }
                         else
                         {
@@ -243,16 +242,16 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        Instantiate(armor);
                         if (invCon.SpawnArmor(armorSpawnCount))
                         {
-                            
+
                         }
                         else
                         {
                             break;
                         }
-                        Instantiate(armor);
-                        invCon.SpawnArmor(armorSpawnCount);
+
                         armorSpawnCount++;
                         dropCount++;
                         break;
@@ -262,16 +261,16 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        Instantiate(shoes);
                         if (invCon.SpawnShoe(shoesSpawnCount))
                         {
-                            
+
                         }
                         else
                         {
                             break;
                         }
-                        Instantiate(shoes);
-                        invCon.SpawnShoe(shoesSpawnCount);
+
                         shoesSpawnCount++;
                         dropCount++;
                         break;
@@ -281,17 +280,17 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        Instantiate(sword);
                         if (invCon.SpawnSword(swordSpawnCount))
                         {
-                            
+
                         }
                         else
                         {
                             break;
                         }
 
-                        Instantiate(sword);
-                        invCon.SpawnSword(swordSpawnCount);
+
                         swordSpawnCount++;
                         dropCount++;
                         break;
@@ -301,16 +300,16 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        Instantiate(accessories);
                         if (invCon.SpawnRing(accessorySpawnCount))
                         {
-                            
+
                         }
                         else
                         {
                             break;
                         }
-                        Instantiate(accessories);
-                        invCon.SpawnRing(accessorySpawnCount);
+
                         accessorySpawnCount++;
                         dropCount++;
                         break;
