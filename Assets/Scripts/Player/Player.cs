@@ -36,7 +36,8 @@ public class Player : MonoBehaviour
     public List<Items> Inventory;
 
     public testInvCon invCon;
-
+    public GameObject InventoryManager;
+    private int inventoryOpened;
     //Æ÷¼Ç ¸Ê º¯¼ö
     Vector2 moveDir;
     bool isSlippery = false;
@@ -82,6 +83,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OpenInventoryOnce();
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector3 cursorDir = mousePosition - attackPoint.position;
@@ -197,5 +199,18 @@ public class Player : MonoBehaviour
     private void PlayerShift()
     {
 
+    }
+
+    private void OpenInventoryOnce()
+    {
+        if (inventoryOpened == 0)
+        {
+            inventoryOpened = 1;
+            if (InventoryManager.gameObject.activeSelf == false)
+            {
+                InventoryManager.gameObject.SetActive(true);
+            }
+            InventoryManager.gameObject.SetActive(false);
+        }
     }
 }
