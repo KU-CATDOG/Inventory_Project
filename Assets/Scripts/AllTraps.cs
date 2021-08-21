@@ -16,10 +16,7 @@ public class AllTraps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-            Slippery();
-        if (Input.GetKeyDown(KeyCode.T))
-            StartCoroutine(Sword(1f, 1f));
+
     }
 
     //칼
@@ -69,6 +66,6 @@ public class AllTraps : MonoBehaviour
     //체력 포션
     public void Slippery() //미끄러지는 효과
     {
-        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * player.GetComponent<Player>().additionalMS);
+        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")), ForceMode2D.Force);
     }
 }
