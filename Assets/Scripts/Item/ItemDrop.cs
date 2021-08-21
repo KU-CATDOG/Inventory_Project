@@ -109,6 +109,7 @@ public class ItemDrop : MonoBehaviour
         if (Pos != -1)
         {
             int a, b;
+            bool shieldSpawnAble = true;
             a = Random.Range(0, 5);
             while (dropCount == 0)
             {
@@ -120,14 +121,28 @@ public class ItemDrop : MonoBehaviour
                             break;
                         }
                         Instantiate(shield);
-                        invCon.SpawnShield(shieldSpawnCount);
-
+                        if (invCon.SpawnShield(shieldSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
                         shieldSpawnCount++;
                         dropCount++;
                         break;
 
                     case 1:
                         if (invCon.occupiedRect_armor[Pos] != -1)
+                        {
+                            break;
+                        }
+                        if (invCon.SpawnArmor(armorSpawnCount))
+                        {
+                            
+                        }
+                        else
                         {
                             break;
                         }
@@ -142,6 +157,14 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        if (invCon.SpawnShoe(shoesSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
                         Instantiate(shoes);
                         invCon.SpawnShoe(shoesSpawnCount);
                         shoesSpawnCount++;
@@ -153,6 +176,15 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        if (invCon.SpawnSword(swordSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
+
                         Instantiate(sword);
                         invCon.SpawnSword(swordSpawnCount);
                         swordSpawnCount++;
@@ -161,6 +193,14 @@ public class ItemDrop : MonoBehaviour
 
                     case 4:
                         if (invCon.occupiedRect_ring[Pos] != -1)
+                        {
+                            break;
+                        }
+                        if (invCon.SpawnRing(accessorySpawnCount))
+                        {
+                            
+                        }
+                        else
                         {
                             break;
                         }
@@ -186,14 +226,28 @@ public class ItemDrop : MonoBehaviour
                             break;
                         }
                         Instantiate(shield);
-                        invCon.SpawnShield(shieldSpawnCount);
-
+                        if (invCon.SpawnShield(shieldSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
                         shieldSpawnCount++;
                         dropCount++;
                         break;
 
                     case 1:
                         if (invCon.occupiedRect_armor[Pos] != -1)
+                        {
+                            break;
+                        }
+                        if (invCon.SpawnArmor(armorSpawnCount))
+                        {
+                            
+                        }
+                        else
                         {
                             break;
                         }
@@ -208,6 +262,14 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        if (invCon.SpawnShoe(shoesSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
                         Instantiate(shoes);
                         invCon.SpawnShoe(shoesSpawnCount);
                         shoesSpawnCount++;
@@ -219,6 +281,15 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
+                        if (invCon.SpawnSword(swordSpawnCount))
+                        {
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
+
                         Instantiate(sword);
                         invCon.SpawnSword(swordSpawnCount);
                         swordSpawnCount++;
@@ -227,6 +298,14 @@ public class ItemDrop : MonoBehaviour
 
                     case 4:
                         if (invCon.occupiedRect_ring[Pos] != -1)
+                        {
+                            break;
+                        }
+                        if (invCon.SpawnRing(accessorySpawnCount))
+                        {
+                            
+                        }
+                        else
                         {
                             break;
                         }
