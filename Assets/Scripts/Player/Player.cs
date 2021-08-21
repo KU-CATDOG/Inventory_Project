@@ -141,7 +141,6 @@ public class Player : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<MonsterClass>().GetDamaged(additionalDMG);
-            Debug.Log("Enemy damage taken " + additionalDMG);
         }
     }
 
