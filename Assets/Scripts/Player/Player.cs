@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
             }
         }
         moveDir = new Vector2(movement.x, movement.y);
+        moveDir = moveDir.normalized;
 
         if (isOnSU)
             moveSpeed = 7f;
