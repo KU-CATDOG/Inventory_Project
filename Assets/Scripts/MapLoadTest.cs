@@ -18,11 +18,11 @@ public class MapLoadTest : MonoBehaviour
     public List<int> spawnedRect_shoe = new List<int>();
     public List<int> spawnedRect_ring = new List<int>();
     private List<GameObject> instObjs = new List<GameObject>();
-    private GameObject armorInstObject;
-    private GameObject shieldInstObject;
-    private GameObject swordInstObject;
-    private GameObject shoeInstObject;
-    private GameObject ringInstObject;
+    public List<GameObject> armorInstObject;
+    public List<GameObject> shieldInstObject;
+    public List<GameObject> swordInstObject;
+    public List<GameObject> shoeInstObject;
+    public List<GameObject> ringInstObject;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,15 @@ public class MapLoadTest : MonoBehaviour
             spawnedRect_sword.Add(-1);
             spawnedRect_shoe.Add(-1);
             spawnedRect_ring.Add(-1);
+        }
+        GameObject obj = new GameObject("name");
+        for (int i = 0; i < 4; i++)
+        {
+            armorInstObject.Add(obj);
+            shieldInstObject.Add(obj);
+            swordInstObject.Add(obj);
+            shoeInstObject.Add(obj);
+            ringInstObject.Add(obj);
         }
     }
 
@@ -50,7 +59,7 @@ public class MapLoadTest : MonoBehaviour
     public void SpawnMap()
     {
         List<int> positionList = new List<int>();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 20; i++)
         {
             positionList.Add(-1);
         }
@@ -65,7 +74,7 @@ public class MapLoadTest : MonoBehaviour
                     {
                         if (invCon.occupiedRect_armor[j] == i)
                         {
-                            positionList[0] = j;
+                            positionList[i] = j;
                             break;
                         }
                     }
@@ -76,7 +85,7 @@ public class MapLoadTest : MonoBehaviour
                     {
                         if (invCon.occupiedRect_shield[j] == i % 4)
                         {
-                            positionList[1] = j;
+                            positionList[i] = j;
                             break;
                         }
                     }
@@ -87,7 +96,7 @@ public class MapLoadTest : MonoBehaviour
                     {
                         if (invCon.occupiedRect_sword[j] == i % 4)
                         {
-                            positionList[2] = j;
+                            positionList[i] = j;
                             break;
                         }
                     }
@@ -98,7 +107,7 @@ public class MapLoadTest : MonoBehaviour
                     {
                         if (invCon.occupiedRect_shoe[j] == i % 4)
                         {
-                            positionList[3] = j;
+                            positionList[i] = j;
                             break;
                         }
                     }
@@ -109,131 +118,135 @@ public class MapLoadTest : MonoBehaviour
                     {
                         if (invCon.occupiedRect_ring[j] == i % 4)
                         {
-                            positionList[4] = j;
+                            positionList[i] = j;
                             break;
                         }
                     }
                 }
             }
         }
-        if (positionList[0] != -1)
+        for (int i = 0; i < 20; i++)
         {
-            int ran = Random.Range(0, armorMap.Count);
-            int pos = CheckAdjacent(0, positionList[0]);
-            if (pos != -1)
+            if (i < 4)
             {
-                if (spawnedRect_armor[pos] == -1 && spawnedRect_armor[pos + 1] == -1 && spawnedRect_armor[pos + 9] == -1 && spawnedRect_armor[pos + 10] == -1)
+                if (positionList[i] != -1)
                 {
-                    Debug.Log(pos);
-                    Vector2 posVec2;
-                    posVec2.x = (pos / 9 * 16) + 7;
-                    posVec2.y = (pos % 9 * 9);
-                    GameObject go = Instantiate(armorMap[ran], posVec2, Quaternion.identity);
-                    go.transform.SetParent(grid.transform, false);
-                    spawnedRect_armor[pos] = 0;
-                    spawnedRect_armor[pos + 1] = 0;
-                    spawnedRect_armor[pos + 9] = 0;
-                    spawnedRect_armor[pos + 10] = 0;
-                    armorInstObject = go;
+                    int ran = Random.Range(0, armorMap.Count);
+                    int pos = CheckAdjacent(i, positionList[i]);
+                    if (pos != -1)
+                    {
+                        if (spawnedRect_armor[pos] == -1 && spawnedRect_armor[pos + 1] == -1 && spawnedRect_armor[pos + 9] == -1 && spawnedRect_armor[pos + 10] == -1)
+                        {
+                            Debug.Log(pos);
+                            Vector2 posVec2;
+                            posVec2.x = (pos / 9 * 16) + 7;
+                            posVec2.y = (pos % 9 * 9);
+                            GameObject go = Instantiate(armorMap[ran], posVec2, Quaternion.identity);
+                            go.transform.SetParent(grid.transform, false);
+                            spawnedRect_armor[pos] = i;
+                            spawnedRect_armor[pos + 1] = i;
+                            spawnedRect_armor[pos + 9] = i;
+                            spawnedRect_armor[pos + 10] = i;
+                            armorInstObject[i] = go;
+                        }
+                    }
                 }
             }
-        }
-
-        if (positionList[1] != -1)
-        {
-            int ran = Random.Range(0, shieldMap.Count);
-            int pos = CheckAdjacent(1, positionList[1]);
-            if (pos != -1)
+            else if (i < 8)
             {
-                if (spawnedRect_shield[pos] == -1 && spawnedRect_shield[pos + 1] == -1)
+                if (positionList[i] != -1)
                 {
-                    Debug.Log(pos);
-                    Vector2 posVec2;
-                    posVec2.x = (pos / 9 * 16);
-                    posVec2.y = (pos % 9 * 9);
-                    GameObject go = Instantiate(shieldMap[ran], posVec2, Quaternion.identity);
-                    go.transform.SetParent(grid.transform, false);
-                    spawnedRect_shield[pos] = 0;
-                    spawnedRect_shield[pos + 1] = 0;
-
-                    shieldInstObject = go;
+                    int ran = Random.Range(0, shieldMap.Count);
+                    int pos = CheckAdjacent(i, positionList[i]);
+                    if (pos != -1)
+                    {
+                        if (spawnedRect_shield[pos] == -1 && spawnedRect_shield[pos + 1] == -1)
+                        {
+                            Debug.Log(pos);
+                            Vector2 posVec2;
+                            posVec2.x = (pos / 9 * 16);
+                            posVec2.y = (pos % 9 * 9);
+                            GameObject go = Instantiate(shieldMap[ran], posVec2, Quaternion.identity);
+                            go.transform.SetParent(grid.transform, false);
+                            spawnedRect_shield[pos] = i;
+                            spawnedRect_shield[pos + 1] = i;
+                            shieldInstObject[i % 4] = go;
+                        }
+                    }
                 }
             }
-        }
-        if (positionList[2] != -1)
-        {
-            int ran = Random.Range(0, swordMap.Count);
-            int pos = CheckAdjacent(2, positionList[2]);
-            if (pos != -1)
+            else if (i < 12)
             {
-                if (spawnedRect_sword[pos] == -1 && spawnedRect_sword[pos + 1] == -1 && spawnedRect_sword[pos + 2] == -1)
+                if (positionList[i] != -1)
                 {
-                    Debug.Log(pos);
-                    Vector2 posVec2;
-                    posVec2.x = pos / 9 * 16;
-                    posVec2.y = (pos % 9 * 9) + 9;
-                    GameObject go = Instantiate(swordMap[ran], posVec2, Quaternion.identity);
-                    go.transform.SetParent(grid.transform, false);
-                    spawnedRect_sword[pos] = 0;
-                    spawnedRect_sword[pos + 1] = 0;
-                    spawnedRect_sword[pos + 2] = 0;
-                    swordInstObject = go;
+                    int ran = Random.Range(0, swordMap.Count);
+                    int pos = CheckAdjacent(i, positionList[i]);
+                    if (pos != -1)
+                    {
+                        if (spawnedRect_sword[pos] == -1 && spawnedRect_sword[pos + 1] == -1 && spawnedRect_sword[pos + 2] == -1)
+                        {
+                            Debug.Log(pos);
+                            Vector2 posVec2;
+                            posVec2.x = pos / 9 * 16;
+                            posVec2.y = (pos % 9 * 9) + 9;
+                            GameObject go = Instantiate(swordMap[ran], posVec2, Quaternion.identity);
+                            go.transform.SetParent(grid.transform, false);
+                            spawnedRect_sword[pos] = i;
+                            spawnedRect_sword[pos + 1] = i;
+                            spawnedRect_sword[pos + 2] = i;
+                            swordInstObject[i % 4] = go;
+                        }
+                    }
                 }
             }
-        }
-        if (positionList[3] != -1)
-        {
-            int ran = Random.Range(0, shoeMap.Count);
-            int pos = CheckAdjacent(3, positionList[3]);
-            if (pos != -1)
+            else if (i < 16)
             {
-                if (spawnedRect_shoe[pos] == -1 && spawnedRect_shoe[pos + 9] == -1)
+                if (positionList[i] != -1)
                 {
-                    Debug.Log(pos);
-                    Vector2 posVec2;
-                    posVec2.x = (pos / 9 * 16) + 7;
-                    posVec2.y = pos % 9 * 9;
-                    GameObject go = Instantiate(shoeMap[ran], posVec2, Quaternion.identity);
-                    go.transform.SetParent(grid.transform, false);
-                    spawnedRect_shoe[pos] = 0;
-                    spawnedRect_shoe[pos + 9] = 0;
-                    shoeInstObject = go;
+                    int ran = Random.Range(0, shoeMap.Count);
+                    int pos = CheckAdjacent(i, positionList[i]);
+                    if (pos != -1)
+                    {
+                        if (spawnedRect_shoe[pos] == -1 && spawnedRect_shoe[pos + 9] == -1)
+                        {
+                            Debug.Log(pos);
+                            Vector2 posVec2;
+                            posVec2.x = (pos / 9 * 16) + 7;
+                            posVec2.y = pos % 9 * 9;
+                            GameObject go = Instantiate(shoeMap[ran], posVec2, Quaternion.identity);
+                            go.transform.SetParent(grid.transform, false);
+                            spawnedRect_shoe[pos] = i;
+                            spawnedRect_shoe[pos + 9] = i;
+                            shoeInstObject[i % 4] = go;
+                        }
+                    }
                 }
-                //else
-                //{
-                //    if (invCon.occupiedRect_shoe[pos] != -1 && invCon.occupiedRect_shoe[pos + 9] != -1)
-                //    {
-
-                //    }
-                //    else
-                //    {
-                //        Destroy(shoeInstObject);
-                //        spawnedRect_shoe[pos] = -1;
-                //        spawnedRect_shoe[pos + 9] = -1;
-                //    }
-                //}
-
             }
-
-        }
-        if (positionList[4] != -1)
-        {
-            int ran = Random.Range(0, ringMap.Count);
-            //int pos = CheckAdjacent(4, positionList[4]);
-            int pos = positionList[4];
-            if (pos != -1)
+            else if (i < 20)
             {
-                if (spawnedRect_ring[pos] == -1)
+                if (positionList[i] != -1)
                 {
-                    Debug.Log(pos);
-                    Vector2 posVec2;
-                    posVec2.x = (pos / 9 * 16);
-                    posVec2.y = (pos % 9 * 9);
-                    GameObject go = Instantiate(ringMap[ran], posVec2, Quaternion.identity);
-                    go.transform.SetParent(grid.transform, false);
-                    spawnedRect_ring[pos] = 0;
-                    ringInstObject = go;
+                    int ran = Random.Range(0, ringMap.Count);
+                    int pos = positionList[i];
+                    if (pos != -1)
+                    {
+                        if (spawnedRect_ring[pos] == -1)
+                        {
+                            Debug.Log(pos);
+                            Vector2 posVec2;
+                            posVec2.x = (pos / 9 * 16);
+                            posVec2.y = (pos % 9 * 9);
+                            GameObject go = Instantiate(ringMap[ran], posVec2, Quaternion.identity);
+                            go.transform.SetParent(grid.transform, false);
+                            spawnedRect_ring[pos] = i;
+                            ringInstObject[i % 4] = go;
+                        }
+                    }
                 }
+            }
+            else
+            {
+                Debug.Log("Item is not a wearable item");
             }
         }
     }
@@ -242,50 +255,50 @@ public class MapLoadTest : MonoBehaviour
     {
         for (int k = 0; k < 36; k++)
         {
-            if (spawnedRect_armor[k] == 0)
+            if (spawnedRect_armor[k] != -1)
             {
                 if (invCon.occupiedRect_armor[k] == -1)
                 {
-                    Destroy(armorInstObject);
+                    Destroy(armorInstObject[spawnedRect_armor[k]]);
                     spawnedRect_armor[k] = -1;
                     spawnedRect_armor[k + 1] = -1;
                     spawnedRect_armor[k + 9] = -1;
                     spawnedRect_armor[k + 10] = -1;
                 }
             }
-            if (spawnedRect_shield[k] == 0)
+            if (spawnedRect_shield[k] != -1)
             {
                 if (invCon.occupiedRect_shield[k] == -1)
                 {
-                    Destroy(shieldInstObject);
+                    Destroy(shieldInstObject[spawnedRect_shield[k] % 4]);
                     spawnedRect_shield[k] = -1;
                     spawnedRect_shield[k + 1] = -1;
                 }
             }
-            if (spawnedRect_sword[k] == 0)
+            if (spawnedRect_sword[k] != -1)
             {
                 if (invCon.occupiedRect_sword[k] == -1)
                 {
-                    Destroy(swordInstObject);
+                    Destroy(swordInstObject[spawnedRect_sword[k] % 4]);
                     spawnedRect_sword[k] = -1;
                     spawnedRect_sword[k + 1] = -1;
                     spawnedRect_sword[k + 2] = -1;
                 }
             }
-            if (spawnedRect_shoe[k] == 0)
+            if (spawnedRect_shoe[k] !=-1)
             {
                 if (invCon.occupiedRect_shoe[k] == -1)
                 {
-                    Destroy(shoeInstObject);
+                    Destroy(shoeInstObject[spawnedRect_shoe[k] % 4]);
                     spawnedRect_shoe[k] = -1;
                     spawnedRect_shoe[k + 9] = -1;
                 }
             }
-            if (spawnedRect_ring[k] == 0)
+            if (spawnedRect_ring[k] != -1)
             {
                 if (invCon.occupiedRect_ring[k] == -1)
                 {
-                    Destroy(ringInstObject);
+                    Destroy(ringInstObject[spawnedRect_ring[k] % 4]);
                     spawnedRect_ring[k] = -1;
                 }
             }
@@ -295,13 +308,13 @@ public class MapLoadTest : MonoBehaviour
 
     /// <summary>
     /// returns smallest coord of the cell, -1 if type not in range 0-4
-    /// first argument: 0 for armor, 1 for shield, 2 for sword, 3 for shoe, 4 for ring
+    /// first argument: 0-4 for armor, 5-8 for shield, 9-12 for sword, 13-16 for shoe, 17-20 for ring
     /// second argument: known cell
     /// </summary>
     int CheckAdjacent(int type, int cell)
     {
         int returnVar = cell;
-        if (type == 0)
+        if (type < 4)
         {
             if (cell - 10 >= 0)
             {
@@ -385,7 +398,7 @@ public class MapLoadTest : MonoBehaviour
             }
             return returnVar;
         }
-        else if (type == 1)
+        else if (type < 8)
         {
             if (cell - 10 >= 0)
             {
@@ -469,7 +482,7 @@ public class MapLoadTest : MonoBehaviour
             }
             return returnVar;
         }
-        else if (type == 2)
+        else if (type < 12)
         {
             if (cell - 10 >= 0)
             {
@@ -553,7 +566,7 @@ public class MapLoadTest : MonoBehaviour
             }
             return returnVar;
         }
-        else if (type == 3)
+        else if (type < 16)
         {
             if (cell - 10 >= 0)
             {
@@ -637,7 +650,7 @@ public class MapLoadTest : MonoBehaviour
             }
             return returnVar;
         }
-        else if (type == 4)
+        else if (type < 20)
         {
             if (cell - 10 >= 0)
             {

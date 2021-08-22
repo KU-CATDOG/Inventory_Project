@@ -389,6 +389,7 @@ public class testInvCon : MonoBehaviour
         }
         return false;
     }
+
     /// <summary>
     /// returns true if successfully spawned, false vice versa
     /// </summary>
@@ -497,8 +498,8 @@ public class testInvCon : MonoBehaviour
                 go.transform.SetParent(item.transform, false);
                 occupiedRect[ran] = true;
                 occupiedRect[ran + 9] = true;
-                occupiedRect_ring[ran] = i;
-                occupiedRect_ring[ran + 9] = i;
+                occupiedRect_shoe[ran] = i;
+                occupiedRect_shoe[ran + 9] = i;
                 shoeRan[i] = ran;
                 return true;
             }
@@ -1853,6 +1854,4 @@ public class testInvCon : MonoBehaviour
         }
         //return returnList;
     }
-
-
 }

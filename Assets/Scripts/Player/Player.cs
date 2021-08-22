@@ -66,7 +66,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OpenInventoryOnce();
+        if (inventoryOpened == 0)
+        {
+            OpenInventoryOnce();
+        }
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector3 cursorDir = mousePosition - attackPoint.position;
@@ -154,15 +157,11 @@ public class Player : MonoBehaviour
 
     private void OpenInventoryOnce()
     {
-        if (inventoryOpened == 0)
+        inventoryOpened = 1;
+        if (InventoryManager.gameObject.activeSelf == false)
         {
-            inventoryOpened = 1;
-            if (InventoryManager.gameObject.activeSelf == false)
-            {
-                InventoryManager.gameObject.SetActive(true);
-            }
-            InventoryManager.gameObject.SetActive(false);
+            InventoryManager.gameObject.SetActive(true);
         }
-
+        InventoryManager.gameObject.SetActive(false);
     }
 }
