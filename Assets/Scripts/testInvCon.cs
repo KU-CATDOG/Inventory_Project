@@ -237,8 +237,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
             else if (ran < 16)
@@ -260,8 +260,9 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
+
                 }
             }
             else
@@ -283,8 +284,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
         }
@@ -319,8 +320,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
             else if (ran < 14)
@@ -340,8 +341,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
             else if (ran < 21)
@@ -361,8 +362,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
             else
@@ -382,8 +383,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
         }
@@ -416,8 +417,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
             else if (ran < 16)
@@ -435,8 +436,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
             else if (ran < 24)
@@ -454,8 +455,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
             else
@@ -473,8 +474,8 @@ public class testInvCon : MonoBehaviour
                 }
                 else
                 {
-                    k++;
                     ran = randArray[k];
+                    k++;
                 }
             }
         }
@@ -505,8 +506,8 @@ public class testInvCon : MonoBehaviour
             }
             else
             {
-                k++;
                 ran = randArray[k];
+                k++;
             }
         }
         return false;
@@ -534,8 +535,8 @@ public class testInvCon : MonoBehaviour
             }
             else
             {
-                k++;
                 ran = randArray[k];
+                k++;
             }
         }
         return false;
