@@ -9,7 +9,8 @@ public class InGameUI : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject settingScreen;
     public GameObject exitScreen;
-    
+    public GameObject itemSelectScreen;
+
     public void PauseButton()
     {
         pauseScreen.SetActive(true);
@@ -44,5 +45,15 @@ public class InGameUI : MonoBehaviour
     {
         exitScreen.SetActive(false);
         pauseScreen.SetActive(true);
+    }
+    public void goItemSelectScreen()
+    {
+        itemSelectScreen.SetActive(true);
+    }
+    
+    public void itemSelectButton()
+    {
+        gameScreen.SetActive(true);
+        itemSelectScreen.SetActive(false);
     }
 }
