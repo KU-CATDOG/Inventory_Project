@@ -2,30 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDrop : MonoBehaviour
+public class ItemDropSelect : MonoBehaviour
 {
     public ClearJudge clearJudge;
-    public Transform shield;
-    public Transform armor;
-    public Transform shoes;
-    public Transform sword;
-    public Transform accessories;
+    //public Transform shield;
+    //public Transform armor;
+    //public Transform shoes;
+    //public Transform sword;
+    //public Transform accessories;
 
     public MapLoadTest mapLoad;
+    public InGameUI inGameUI;
     Player player;
     testInvCon invCon;
 
     public GameObject InventoryManager;
-    public int dropOnce, dropCount;
+    public int makeOnce, makeCount;
     int pastplayerPos = 0;
     int curplayerPos;
     int tabPressed = 0;
 
-    int swordSpawnCount = 1;
-    int shieldSpawnCount = 1;
-    int shoesSpawnCount = 1;
-    int armorSpawnCount = 1;
-    int accessorySpawnCount = 1;
+    public int swordSpawnCount = 1;
+    public int shieldSpawnCount = 1;
+    public int shoesSpawnCount = 1;
+    public int armorSpawnCount = 1;
+    public int accessorySpawnCount = 1;
 
     int curShieldOccupied;
     int curSwordOccupied;
@@ -39,13 +40,18 @@ public class ItemDrop : MonoBehaviour
     int pastArmorOccupied = -1;
     int pastAccessoryOccupied = -1;
 
+    
+
+    public int Item1;//1 방패, 2 검, 3 신발, 4 갑옷, 5 장신구
+    public int Item2;
+
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         invCon = InventoryManager.GetComponent<testInvCon>();
-        dropOnce = 0; dropCount = 0;
+        makeOnce = 0; makeCount = 0;
 
 
     }
@@ -91,45 +97,42 @@ public class ItemDrop : MonoBehaviour
 
             }
         }
-        if (clearJudge.Clear == true && dropOnce == 0 && curplayerPos != -1 && tabPressed == 1)
+        if (clearJudge.Clear == true && makeOnce == 0 && curplayerPos != -1 && tabPressed == 1)
         {
-            dropDifferentItem(curplayerPos);
+            makeDifferentItem(curplayerPos,0,0);
             invCon.GetNearbyItems();
             mapLoad.SpawnMap();
-            dropOnce++;
+            makeOnce++;
+            inGameUI.goItemSelectScreen();
         }
         if (clearJudge.Clear == false)
         {
-            dropOnce = 0;
+            makeOnce = 0;
         }
     }
 
-    private void dropDifferentItem(int Pos)
+    private void makeDifferentItem(int Pos,int a,int b)
     {
         if (Pos != -1)
         {
-            int a, b;
-            a = Random.Range(0, 5);
-            while (dropCount == 0)
+            
+            
+            while (makeCount == 0)
             {
+                a = Random.Range(0, 5);
                 switch (a)
                 {
+                    
                     case 0:
                         if (invCon.occupiedRect_shield[Pos] != -1)//만약 같은 맵이면 다시 뽑기
                         {
                             break;
                         }
-                        //Instantiate(shield);
-                        if (invCon.SpawnShield(shieldSpawnCount))
-                        {
-                            
-                        }
                         else
                         {
-                            break;
+                            Item1 = 1;
+                            makeCount++;
                         }
-                        shieldSpawnCount++;
-                        dropCount++;
                         break;
 
                     case 1:
@@ -137,18 +140,12 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        //Instantiate(armor);
-                        if (invCon.SpawnArmor(armorSpawnCount))
-                        {
-                            
-                        }
                         else
                         {
-                            break;
+                            Item1 = 2;
+                            makeCount++;
                         }
-                        
-                        armorSpawnCount++;
-                        dropCount++;
+
                         break;
 
                     case 2:
@@ -156,18 +153,11 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        //Instantiate(shoes);
-                        if (invCon.SpawnShoe(shoesSpawnCount))
-                        {
-                            
-                        }
                         else
                         {
-                            break;
+                            Item1 = 3;
+                            makeCount++;
                         }
-                        
-                        shoesSpawnCount++;
-                        dropCount++;
                         break;
 
                     case 3:
@@ -175,19 +165,11 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        //Instantiate(sword);
-                        if (invCon.SpawnSword(swordSpawnCount))
-                        {
-                            
-                        }
                         else
                         {
-                            break;
+                            Item1 = 4;
+                            makeCount++;
                         }
-
-                        
-                        swordSpawnCount++;
-                        dropCount++;
                         break;
 
                     case 4:
@@ -195,46 +177,34 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        //Instantiate(accessories);
-                        if (invCon.SpawnRing(accessorySpawnCount))
-                        {
-                            
-                        }
                         else
                         {
-                            break;
+                            Item1 = 5;
+                            makeCount++;
                         }
-                        
-                        accessorySpawnCount++;
-                        dropCount++;
                         break;
                 }
             }
 
-            do
+            
+            while (makeCount == 1)
             {
-                b = Random.Range(0, 5);
-            } while (a == b);//서로 다른 아이템 뽑게 하기
-            while (dropCount == 1)
-            {
-                switch (b)
+                do
+                {
+                    b = Random.Range(0, 5);
+                } while (a == b);//서로 다른 아이템 뽑게 하기
+            switch (b)
                 {
                     case 0:
                         if (invCon.occupiedRect_shield[Pos] != -1)//만약 같은 맵이면 다시 뽑기
                         {
                             break;
                         }
-                        //Instantiate(shield);
-                        if (invCon.SpawnShield(shieldSpawnCount))
-                        {
-
-                        }
                         else
                         {
-                            break;
+                            Item2 = 1;
+                            makeCount++;
                         }
-                        shieldSpawnCount++;
-                        dropCount++;
                         break;
 
                     case 1:
@@ -242,18 +212,12 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        //Instantiate(armor);
-                        if (invCon.SpawnArmor(armorSpawnCount))
-                        {
-
-                        }
                         else
                         {
-                            break;
+                            Item2 = 2;
+                            makeCount++;
                         }
 
-                        armorSpawnCount++;
-                        dropCount++;
                         break;
 
                     case 2:
@@ -261,18 +225,11 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        //Instantiate(shoes);
-                        if (invCon.SpawnShoe(shoesSpawnCount))
-                        {
-
-                        }
                         else
                         {
-                            break;
+                            Item2 = 3;
+                            makeCount++;
                         }
-
-                        shoesSpawnCount++;
-                        dropCount++;
                         break;
 
                     case 3:
@@ -280,19 +237,11 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        //Instantiate(sword);
-                        if (invCon.SpawnSword(swordSpawnCount))
-                        {
-
-                        }
                         else
                         {
-                            break;
+                            Item2 = 4;
+                            makeCount++;
                         }
-
-
-                        swordSpawnCount++;
-                        dropCount++;
                         break;
 
                     case 4:
@@ -300,22 +249,18 @@ public class ItemDrop : MonoBehaviour
                         {
                             break;
                         }
-                        //Instantiate(accessories);
-                        if (invCon.SpawnRing(accessorySpawnCount))
-                        {
-
-                        }
                         else
                         {
-                            break;
+                            Item2 = 5;
+                            makeCount++;
                         }
-
-                        accessorySpawnCount++;
-                        dropCount++;
                         break;
                 }
-                dropCount = 0;
+                
             }
+            makeCount = 0;
+            Debug.Log("Item1=" + Item1);
+            Debug.Log("Item2=" + Item2);
         }
         else
         {
