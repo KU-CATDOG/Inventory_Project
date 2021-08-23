@@ -22,11 +22,11 @@ public class ItemDropSelect : MonoBehaviour
     int curplayerPos;
     int tabPressed = 0;
 
-    int swordSpawnCount = 1;
-    int shieldSpawnCount = 1;
-    int shoesSpawnCount = 1;
-    int armorSpawnCount = 1;
-    int accessorySpawnCount = 1;
+    public int swordSpawnCount = 1;
+    public int shieldSpawnCount = 1;
+    public int shoesSpawnCount = 1;
+    public int armorSpawnCount = 1;
+    public int accessorySpawnCount = 1;
 
     int curShieldOccupied;
     int curSwordOccupied;
@@ -42,8 +42,8 @@ public class ItemDropSelect : MonoBehaviour
 
     
 
-    int Item1;//1 πÊ∆–, 2 ∞À, 3 Ω≈πﬂ, 4 ∞©ø , 5 ¿ÂΩ≈±∏
-    int Item2;
+    public int Item1;//1 πÊ∆–, 2 ∞À, 3 Ω≈πﬂ, 4 ∞©ø , 5 ¿ÂΩ≈±∏
+    public int Item2;
 
 
     // Start is called before the first frame update

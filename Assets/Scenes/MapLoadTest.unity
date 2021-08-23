@@ -690,7 +690,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 461817481}
         m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
-        m_MethodName: ContinueButton
+        m_MethodName: item1Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1033,7 +1033,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 461817481}
         m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
-        m_MethodName: SettingButton
+        m_MethodName: item2Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1197,6 +1197,7 @@ GameObject:
   - component: {fileID: 190851624}
   - component: {fileID: 190851626}
   - component: {fileID: 190851625}
+  - component: {fileID: 190851627}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1245,10 +1246,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1265,6 +1266,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190851623}
   m_CullTransparentMesh: 1
+--- !u!114 &190851627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190851623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fd17a7cd159384a969166f04254585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item1Text: {fileID: 190851625}
+  itemDropSelect: {fileID: 1025317951}
 --- !u!1 &194423913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,6 +2310,8 @@ MonoBehaviour:
   settingScreen: {fileID: 1026593638}
   exitScreen: {fileID: 782437124}
   itemSelectScreen: {fileID: 380109178}
+  itemDropSelect: {fileID: 1025317951}
+  invCon: {fileID: 1955532316}
 --- !u!114 &461817482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5380,6 +5397,13 @@ MonoBehaviour:
   InventoryManager: {fileID: 1955532313}
   makeOnce: 0
   makeCount: 0
+  swordSpawnCount: 1
+  shieldSpawnCount: 1
+  shoesSpawnCount: 1
+  armorSpawnCount: 1
+  accessorySpawnCount: 1
+  Item1: 0
+  Item2: 0
 --- !u!4 &1025317952
 Transform:
   m_ObjectHideFlags: 0
@@ -11797,6 +11821,7 @@ GameObject:
   - component: {fileID: 1944757033}
   - component: {fileID: 1944757035}
   - component: {fileID: 1944757034}
+  - component: {fileID: 1944757036}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -11845,10 +11870,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 2
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -11865,6 +11890,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944757032}
   m_CullTransparentMesh: 1
+--- !u!114 &1944757036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944757032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4cc1f5eccf260641b14ba9483312aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item2Text: {fileID: 1944757034}
+  itemDropSelect: {fileID: 1025317951}
 --- !u!1 &1955532313
 GameObject:
   m_ObjectHideFlags: 0
