@@ -6,21 +6,24 @@ using UnityEngine;
 
 public class SelfDestructRobot : MonsterClass
 {
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
+    public Transform hit;
+    public LayerMask enemyLayers;
     float attackRange;
+
     float playerSpeed = 5f;
     protected override void Start()
     {
         base.Start();
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         MaxHealth = Health = 50f;
         AttackDamage = 60f;
         MovementSpeed = 1.5f;
         Range = 6f;
         Size = 1f;
-        attackRange = 0.5f;
+        attackRange = 2f;
         
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[0];
@@ -42,6 +45,7 @@ public class SelfDestructRobot : MonsterClass
             if (distance <= Range)       // 플레이어가 시야 안에 들어왔다
             {
                 if (distance <= attackRange) {
+                    Debug.Log("triggered");
                     nextRoutines.Enqueue(NewActionRoutine(explosion(1.5f)));    // 플레이어를 공격한다
                     
                 } 
@@ -57,16 +61,18 @@ public class SelfDestructRobot : MonsterClass
     private IEnumerator explosion(float firstDelay)   // 플레이어에게 근접공격
     {
         GameObject player = FindObjectOfType<Player>().gameObject;
-        GameObject zombie = FindObjectOfType<Zombie>().gameObject;
-        spriteRenderer.sprite = sprites[1];
+        
+        //spriteRenderer.sprite = sprites[1];
         yield return new WaitForSeconds(firstDelay);
-        if(distToPlayer()<= 1.5f)
+        if(distToPlayer()<= 2f)
         {
             player.GetComponent<Player>().GetDamaged(AttackDamage);
         }
-        if ((FindObjectOfType<Zombie>().transform.position- GetObjectPos()).magnitude <= 1.5f)
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(hit.position, attackRange, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
         {
-            zombie.GetComponent<Zombie>().GetDamaged(AttackDamage);
+            enemy.GetComponent<MonsterClass>().GetDamaged(AttackDamage);
         }
         Destroy(gameObject);
     }
@@ -75,7 +81,19 @@ public class SelfDestructRobot : MonsterClass
         //Debug.Log(GetPlayerPos());
         //Debug.Log(GetPlayerPos().normalized);
         //yield return MoveRoutine(GetPlayerPos().normalized, 10f);
-        Vector3 direction = (Vector2)(GetPlayerPos() - GetObjectPos()).normalized;
+        Vector2 direction = (Vector2)(GetPlayerPos() - GetObjectPos()).normalized;
+        if(direction.x>0&& direction.x> Mathf.Abs(direction.y))//오른쪽으로 감
+        {
+            spriteRenderer.sprite = sprites[1];
+        }
+        else if(direction.x < 0 && direction.x < -Mathf.Abs(direction.y))
+        {
+            spriteRenderer.sprite = sprites[2];
+        }
+        else
+        {
+            spriteRenderer.sprite = sprites[0];
+        }
 
         rb.MovePosition(rb.position + direction * playerSpeed * speedMultiplier * Time.fixedDeltaTime);// 5f (플레이어 속도) * 몬스터 속도 비율
         yield return null;
