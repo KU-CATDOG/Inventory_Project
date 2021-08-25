@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Berserker : MonsterClass
 {
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
     float attackRange;
@@ -14,7 +14,7 @@ public class Berserker : MonsterClass
     protected override void Start()
     {
         base.Start();
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         MaxHealth = Health = 80f;
         //Health = 10f; //반피 이하 실험용
         AttackDamage = 15f;
@@ -39,7 +39,7 @@ public class Berserker : MonsterClass
         {
             AttackDamage = 30f;
             MovementSpeed = 1.5f;
-            spriteRenderer.sprite = sprites[1];
+            //spriteRenderer.sprite = sprites[1];
         }
         if (FindObjectOfType<Player>() != null) // 플레이어가 살아있는지 확인해야함 !!
         {
@@ -73,7 +73,23 @@ public class Berserker : MonsterClass
         //Debug.Log(GetPlayerPos());
         //Debug.Log(GetPlayerPos().normalized);
         //yield return MoveRoutine(GetPlayerPos().normalized, 10f);
-        Vector3 direction = (Vector2)(GetPlayerPos() - GetObjectPos()).normalized;
+        Vector2 direction = (Vector2)(GetPlayerPos() - GetObjectPos()).normalized;
+        if (direction.x > 0 && direction.x > Mathf.Abs(direction.y))//오른쪽으로 감
+        {
+            spriteRenderer.sprite = sprites[1];
+        }
+        else if (direction.x < 0 && direction.x < -Mathf.Abs(direction.y))
+        {
+            spriteRenderer.sprite = sprites[2];
+        }
+        else if(direction.y>0)
+        {
+            spriteRenderer.sprite = sprites[3];
+        }
+        else
+        {
+            spriteRenderer.sprite = sprites[0];
+        }
 
         rb.MovePosition(rb.position + direction * playerSpeed * speedMultiplier * Time.fixedDeltaTime);// 5f (플레이어 속도) * 몬스터 속도 비율
         yield return null;
