@@ -20,6 +20,8 @@ public class BrokenRobotCleaner : MonsterClass
 
     GameObject player;
     Rigidbody2D rigid;
+    public Sprite[] sprites = new Sprite[3];
+    SpriteRenderer sr;
 
     protected override void Start()
     {
@@ -30,6 +32,7 @@ public class BrokenRobotCleaner : MonsterClass
         Size = 1f;
         player = GameObject.FindObjectOfType<Player>().gameObject;
         rigid = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
     public override void GetDamaged(float damage)
     {
@@ -83,15 +86,23 @@ public class BrokenRobotCleaner : MonsterClass
         switch (dir)
         {
             case 0:
+                sr.sprite = sprites[0];
+                sr.flipX = false;
                 rigid.MovePosition(rigid.position + Vector2.up * Time.fixedDeltaTime * Speed * playerSpeed);
                 break;
             case 1:
+                sr.sprite = sprites[1];
+                sr.flipX = false;
                 rigid.MovePosition(rigid.position + Vector2.down * Time.fixedDeltaTime * Speed * playerSpeed);
                 break;
             case 2:
+                sr.sprite = sprites[2];
+                sr.flipX = true;
                 rigid.MovePosition(rigid.position + Vector2.right * Time.fixedDeltaTime * Speed * playerSpeed);
                 break;
             case 3:
+                sr.sprite = sprites[2];
+                sr.flipX = false;
                 rigid.MovePosition(rigid.position + Vector2.left * Time.fixedDeltaTime * Speed * playerSpeed);
                 break;
         }
@@ -115,8 +126,8 @@ public class BrokenRobotCleaner : MonsterClass
     {
         RaycastHit2D hit_r = Physics2D.Raycast(transform.position, Vector2.right, 1f, LayerMask.GetMask("Default"));
         RaycastHit2D hit_l = Physics2D.Raycast(transform.position, Vector2.left, 1f, LayerMask.GetMask("Default"));
-        RaycastHit2D hit_u = Physics2D.Raycast(transform.position, Vector2.up, 1f, LayerMask.GetMask("Default"));
-        RaycastHit2D hit_d = Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.GetMask("Default"));
+        RaycastHit2D hit_u = Physics2D.Raycast(transform.position, Vector2.up, 1.5f, LayerMask.GetMask("Default"));
+        RaycastHit2D hit_d = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, LayerMask.GetMask("Default"));
 
         Debug.DrawRay(transform.position, 1 * Vector2.right, Color.black);
         Debug.DrawRay(transform.position, 1 * Vector2.left, Color.black);
