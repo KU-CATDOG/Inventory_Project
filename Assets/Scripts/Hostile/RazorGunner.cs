@@ -14,6 +14,10 @@ public class RazorGunner : MonsterClass
     public bool contact_down = false;
 
     bool run = false;
+    public Transform sideAttackPos;
+
+    SpriteRenderer sr;
+    Animator anim;
     enum Run_dir
     {
         right,
@@ -31,6 +35,8 @@ public class RazorGunner : MonsterClass
         AttackDamage = 12f;
         MovementSpeed = 0.5f;
         Size = 1f;
+        anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
     public override void GetDamaged(float damage)
     {
@@ -48,6 +54,7 @@ public class RazorGunner : MonsterClass
                 nextRoutines.Enqueue(NewActionRoutine(moveOppositeOfPlayer(MovementSpeed)));
             }
 
+            nextRoutines.Enqueue(NewActionRoutine(AnimationSet()));
             nextRoutines.Enqueue(NewActionRoutine(WaitRoutine(0.5f)));
             nextRoutines.Enqueue(NewActionRoutine(ShootGun(Bullet, BulletPower)));
             nextRoutines.Enqueue(NewActionRoutine(WaitRoutine(1f)));
@@ -59,6 +66,30 @@ public class RazorGunner : MonsterClass
 
     private IEnumerator moveOppositeOfPlayer(float speedMultiplier)
     {
+        Vector2 playerDir = (GetPlayerPos() - transform.position).normalized;
+        if (playerDir.x < -0.6f)
+        {
+            anim.SetBool("Side", true);
+            anim.SetFloat("Blend", -1);
+        }
+        else if (playerDir.x > 0.6f)
+        {
+            anim.SetBool("Side", true);
+            anim.SetFloat("Blend", 1);
+        }
+        else
+        {
+            anim.SetBool("Side", false);
+        }
+        if (playerDir.y > 0)
+        {
+            anim.SetBool("Front", false);
+        }
+        else if (playerDir.y < 0)
+        {
+            anim.SetBool("Front", true);
+        }
+
         if (!contact_right && !contact_up && !contact_left && !contact_down)
         {
             Vector3 pos = transform.position;
@@ -171,17 +202,38 @@ public class RazorGunner : MonsterClass
 
     private IEnumerator ShootGun(GameObject bullet, float power)
     {
-        Vector3 direction = (GetPlayerPos() - transform.position).normalized;
+        Vector3 startPos;
+        if (!anim.GetBool("Side"))
+            startPos = transform.position;
+        else
+            startPos = sideAttackPos.position;
+
+        Vector3 direction = (GetPlayerPos() - startPos).normalized;
         GameObject b = Instantiate(bullet);
-        b.transform.position = transform.position;
+        b.transform.position = startPos;
         b.GetComponent<Bullet>().Damage = AttackDamage;
 
-        Vector3 new_dir = GetPlayerPos() - transform.position;
+        Vector3 new_dir = GetPlayerPos() - startPos;
         float angle = Mathf.Atan2(new_dir.y, new_dir.x) * Mathf.Rad2Deg;
         b.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         b.GetComponent<Rigidbody2D>().AddForce(direction * power);
 
         yield return null;
+    }
+
+    IEnumerator AnimationSet()
+    {
+        anim.SetBool("Shoot", true);
+        StartCoroutine(SetFalse());
+
+        yield return null;
+    }
+
+    IEnumerator SetFalse()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        anim.SetBool("Shoot", false);
     }
 }
