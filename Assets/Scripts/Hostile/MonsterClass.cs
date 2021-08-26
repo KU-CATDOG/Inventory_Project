@@ -18,7 +18,8 @@ public abstract class MonsterClass : MonoBehaviour
 
     protected virtual void Start()
     {
-
+        GameObject player = GameObject.FindGameObjectWithTag("player");
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     private void Update()
