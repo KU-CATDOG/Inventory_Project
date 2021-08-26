@@ -5,11 +5,14 @@ using UnityEngine;
 public class ConsumeItem : MonoBehaviour
 {
     GameObject player;
+    int itemCount;
+    bool isInRoom = false;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>().gameObject;
+        itemCount = 0;
     }
 
     // Update is called once per frame
@@ -19,15 +22,42 @@ public class ConsumeItem : MonoBehaviour
             HealPlayer();
         if (Input.GetKeyDown(KeyCode.M))
             DamagePlayer();
+        if (Input.GetKeyDown(KeyCode.N))
+            itemCount++;
+        if (Input.GetKeyDown(KeyCode.R))
+            isInRoom = !isInRoom;
     }
 
-    void HealPlayer()
+    /*public void Consume()
     {
-        if (player.GetComponent<Player>().health + 10 <= player.GetComponent<Player>().maxHealth)
-            player.GetComponent<Player>().health += 10;
+        if (itemCount > 0)
+        {
+            //function
+            itemCount--;
+        }
         else
-            player.GetComponent<Player>().health = player.GetComponent<Player>().maxHealth;
-        Debug.Log(player.GetComponent<Player>().health);
+        {
+            Debug.Log("There's no items!");
+        }
+    }*/
+
+    void HealPlayer()   //힐 기능, 아이템 개수에 따라 사용 제한
+    {
+        if (itemCount > 0 && !isInRoom)
+        {
+            //function
+            if (player.GetComponent<Player>().health + 10 <= player.GetComponent<Player>().maxHealth)
+                player.GetComponent<Player>().health += 10;
+            else
+                player.GetComponent<Player>().health = player.GetComponent<Player>().maxHealth;
+            Debug.Log(player.GetComponent<Player>().health);
+            
+            itemCount--;
+        }
+        else
+        {
+            Debug.Log("There's no items!");
+        }
     }
 
     void DamagePlayer()

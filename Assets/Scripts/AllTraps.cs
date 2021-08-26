@@ -16,7 +16,8 @@ public class AllTraps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.J))
+            Slippery();
     }
 
     //칼
@@ -30,7 +31,7 @@ public class AllTraps : MonoBehaviour
         swordBlock.GetComponent<SpriteRenderer>().sprite = idleSprite;
     }
 
-    private IEnumerator Sword(float attackDelay, float idleDelay)
+    public IEnumerator Sword(float attackDelay, float idleDelay)
     {
         yield return new WaitForSeconds(attackDelay);
         SwordUp();
@@ -60,7 +61,6 @@ public class AllTraps : MonoBehaviour
     public void PushBlock() //움직이는 벽 밀기(이속 감소)
     {
         player.GetComponent<Player>().additionalMS = 3f;
-        //pushingBlock.transform.Translate(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * Time.deltaTime);
     }
 
     //체력 포션
