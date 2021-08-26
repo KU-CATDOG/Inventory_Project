@@ -42,10 +42,14 @@ public class Player : MonoBehaviour
 
     float moveSoundTime = 0;
 
+    private Animator anim;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         attackDamage = 10f;
         moveSpeed = 5f;
         maxHealth = health = 100;
@@ -83,6 +87,20 @@ public class Player : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized;
+
+        #region animation
+        if (Mathf.Abs(movement.x) > 0f)
+        {
+            anim.SetBool("MovingX", true);
+            if (movement.x > 0f) GetComponent<SpriteRenderer>().flipX = true;
+            else GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            anim.SetBool("MovingX", false);
+        }
+
+        #endregion
 
         if (Vector2.Distance(movement, Vector2.zero) < 0.01f)
         {
@@ -144,10 +162,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        }
+        //if (collision.gameObject.tag == "Enemy")
+        //{
+        //    Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //}
     }
 
     private void PlayerShift()
