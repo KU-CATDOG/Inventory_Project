@@ -31,11 +31,12 @@ public class Berserker : MonsterClass
     public override void GetDamaged(float damage)
     {
         base.GetDamaged(damage);
+        
     }
     protected override Queue<IEnumerator> DecideNextRoutine()
     {
         Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
-        if(Health< MaxHealth / 2)
+        if (Health < MaxHealth / 2)
         {
             AttackDamage = 30f;
             MovementSpeed = 1.5f;
@@ -82,7 +83,7 @@ public class Berserker : MonsterClass
         {
             spriteRenderer.sprite = sprites[2];
         }
-        else if(direction.y>0)
+        else if (direction.y > 0)
         {
             spriteRenderer.sprite = sprites[3];
         }
@@ -102,8 +103,8 @@ public class Berserker : MonsterClass
         //Debug.Log(GetPlayerPos().normalized);
         //yield return MoveRoutine(GetPlayerPos().normalized, 10f);
         Vector3 ObjectPos = GetObjectPos();
-        Vector3 vector1 = new Vector3(1, 0, 0);
-        Vector3 vector2 = new Vector3(0, 1, 0);
+        Vector3 vector1 = new Vector3(2, 0, 0);
+        Vector3 vector2 = new Vector3(0, 2, 0);
         int a = Random.Range(0, 4);
         switch (a)
         {

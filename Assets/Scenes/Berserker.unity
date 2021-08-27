@@ -1086,6 +1086,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Berserker 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6463325290277435073, guid: 1309b15be35058244b417687b0dfd9cb, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463325290277435073, guid: 1309b15be35058244b417687b0dfd9cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463325290277435073, guid: 1309b15be35058244b417687b0dfd9cb, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6463325290277435075, guid: 1309b15be35058244b417687b0dfd9cb, type: 3}
       propertyPath: m_RootOrder
       value: 1
