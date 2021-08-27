@@ -15,11 +15,13 @@ public class InGameUI : MonoBehaviour
 
     public void PauseButton()
     {
+        Time.timeScale = 0;
         pauseScreen.SetActive(true);
         gameScreen.SetActive(false);
     }
     public void ContinueButton()
     {
+        Time.timeScale = 1;
         pauseScreen.SetActive(false);
         gameScreen.SetActive(true);
     }

@@ -29,6 +29,7 @@ public class maptrigger : MonoBehaviour
         {
             if(!isopen)
             {
+                Time.timeScale = 0;
                 mapCanvas.SetActive(true);
                 EventSystem.SetActive(true);
                 InvenManager.SetActive(true);
@@ -37,6 +38,7 @@ public class maptrigger : MonoBehaviour
             }
             else
             {
+                Time.timeScale = 1;
                 mapCanvas.SetActive(false);
                 EventSystem.SetActive(false);
                 InvenManager.SetActive(false);
