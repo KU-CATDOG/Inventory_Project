@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AllTraps : MonoBehaviour
 {
-    GameObject player;
+    public GameObject player;
     public GameObject pushingBlock, swordBlock;
     public Sprite idleSprite, attackSprite;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>().gameObject;
+        //player = FindObjectOfType<Player>().gameObject;
     }
 
     // Update is called once per frame
@@ -33,12 +33,20 @@ public class AllTraps : MonoBehaviour
 
     public IEnumerator Sword(float attackDelay, float idleDelay)
     {
-        yield return new WaitForSeconds(attackDelay);
-        SwordUp();
-        if ((player.transform.position - swordBlock.transform.position).magnitude <= 1.3f)
-            player.GetComponent<Player>().GetDamaged(5f);
-        yield return new WaitForSeconds(idleDelay);
-        SwordDown();
+        while (FindObjectOfType<Player>() != null)
+        {
+            yield return new WaitForSeconds(attackDelay);
+            SwordUp();
+            if ((player.transform.position - swordBlock.transform.position).magnitude <= 1.3f)
+            {
+                player.GetComponent<Player>().GetDamaged(5f);
+                //Debug.Log("on trap");
+            }
+
+            yield return new WaitForSeconds(idleDelay);
+            SwordDown();
+        }
+            
     }
 
     //½Å¹ß
