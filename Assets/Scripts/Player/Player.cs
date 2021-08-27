@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public bool isInvincible = false;
 
+    public int direction;
+
     #region Stats
     private float shieldDmg = 0f;
     private float defense = 0f;
@@ -81,7 +83,24 @@ public class Player : MonoBehaviour
 
         float cursorAngle = Mathf.Atan2(cursorDir.y, cursorDir.x) * Mathf.Rad2Deg;
         bool isCursorRight = cursorAngle < 90 && cursorAngle > -90;
-        attackPoint.localScale = new Vector3(1, isCursorRight ? 1 : -1, 1);
+        if(cursorAngle > -45 && cursorAngle <= 45) // right
+        {
+            direction = 1;
+        } else if(cursorAngle > 45 && cursorAngle <= 135) // up
+        {
+            direction = 2;
+        } else if(cursorAngle > -135 && cursorAngle <= -45) // down
+        {
+            direction = 4;
+        }
+        else
+        {
+            direction = 3; // left
+        }
+
+        //Debug.Log(direction);
+        //Debug.Log(cursorAngle);
+        //attackPoint.localScale = new Vector3(1, isCursorRight ? 1 : -1, 1);
         attackPoint.rotation = Quaternion.Euler(0, 0, cursorAngle);
 
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -89,15 +108,26 @@ public class Player : MonoBehaviour
         movement = movement.normalized;
 
         #region animation
-        if (Mathf.Abs(movement.x) > 0f)
+        if (direction == 1)
         {
-            anim.SetBool("MovingX", true);
-            if (movement.x > 0f) GetComponent<SpriteRenderer>().flipX = true;
-            else GetComponent<SpriteRenderer>().flipX = false;
+            anim.SetInteger("Direction", 1);
+            GetComponent<SpriteRenderer>().flipX = true;
+            Debug.Log("Set");
         }
-        else
+        if (direction == 2)
         {
-            anim.SetBool("MovingX", false);
+            anim.SetInteger("Direction", 2);
+
+        }
+        if (direction == 3)
+        {
+            anim.SetInteger("Direction", 3);
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        if (direction == 4)
+        {
+            anim.SetInteger("Direction", 2);
+
         }
 
         #endregion
@@ -162,10 +192,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.gameObject.tag == "Enemy")
-        //{
-        //    Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        //}
+
     }
 
     private void PlayerShift()
