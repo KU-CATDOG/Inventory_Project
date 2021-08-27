@@ -31,7 +31,7 @@ public class maptrigger : MonoBehaviour
             {
                 Time.timeScale = 0;
                 mapCanvas.SetActive(true);
-                EventSystem.SetActive(true);
+                //EventSystem.SetActive(true);
                 InvenManager.SetActive(true);
                 InvenBackground.SetActive(true);
                 isopen = true;
@@ -40,7 +40,7 @@ public class maptrigger : MonoBehaviour
             {
                 Time.timeScale = 1;
                 mapCanvas.SetActive(false);
-                EventSystem.SetActive(false);
+                //EventSystem.SetActive(false);
                 InvenManager.SetActive(false);
                 InvenBackground.SetActive(false);
                 isopen = false;
