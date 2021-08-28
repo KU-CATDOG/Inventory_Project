@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
 
     private Animator anim;
 
+    private Vector3 oldPos, newPos;
+    public PlayerDirection playerDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +69,7 @@ public class Player : MonoBehaviour
             additionalDMG += Inventory[i].damage;
             tenacity += Inventory[i].tenacity;
         }
-
+        oldPos = gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -84,13 +86,15 @@ public class Player : MonoBehaviour
 
         float cursorAngle = Mathf.Atan2(cursorDir.y, cursorDir.x) * Mathf.Rad2Deg;
         bool isCursorRight = cursorAngle < 90 && cursorAngle > -90;
-        if(cursorAngle > -45 && cursorAngle <= 45) // right
+        if (cursorAngle > -45 && cursorAngle <= 45) // right
         {
             direction = 1;
-        } else if(cursorAngle > 45 && cursorAngle <= 135) // up
+        }
+        else if (cursorAngle > 45 && cursorAngle <= 135) // up
         {
             direction = 2;
-        } else if(cursorAngle > -135 && cursorAngle <= -45) // down
+        }
+        else if (cursorAngle > -135 && cursorAngle <= -45) // down
         {
             direction = 4;
         }
@@ -98,7 +102,7 @@ public class Player : MonoBehaviour
         {
             direction = 3; // left
         }
-
+        Debug.Log(rb.velocity);
         //Debug.Log(direction);
         //Debug.Log(cursorAngle);
         //attackPoint.localScale = new Vector3(1, isCursorRight ? 1 : -1, 1);
@@ -156,11 +160,13 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * additionalMS * Time.fixedDeltaTime);
+        playerDirection = MoveDirDetection();
+        Debug.Log(playerDirection);
     }
 
     private void Attack()
     {
-        if(Time.timeScale == 1)
+        if (Time.timeScale == 1)
             SoundManager.instance.PlayerAttack();
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(hit.position, attackRange, enemyLayers);
 
@@ -190,7 +196,7 @@ public class Player : MonoBehaviour
                     gameObject.SetActive(false);
                 }
             }
-            
+
         }
     }
 
@@ -206,6 +212,44 @@ public class Player : MonoBehaviour
 
     }
 
+    private PlayerDirection MoveDirDetection()
+    {
+        newPos = gameObject.transform.position;
+        float xDiff = newPos.x - oldPos.x;
+        float yDiff = newPos.y - oldPos.y;
+        oldPos = newPos;
+        if (Mathf.Abs(xDiff) > Mathf.Abs(yDiff))                    //if x difference is greater than that of y
+        {
+            if (xDiff > 0)
+            {
+                return PlayerDirection.right;
+            }
+            else
+            {
+                return PlayerDirection.left;
+            }
+        }
+        else if (Mathf.Abs(xDiff) < Mathf.Abs(yDiff))
+        {
+            if (yDiff > 0)
+            {
+                return PlayerDirection.up;
+            }
+            else
+            {
+                return PlayerDirection.down;
+            }
+        }
+        else if (xDiff != 0)
+        {
+            return PlayerDirection.diagonal;                        //not really used but for debugging
+        }
+        else
+        {
+            return PlayerDirection.still;
+        }
+        
+    }
     private void PlayerShift()
     {
 
@@ -220,4 +264,6 @@ public class Player : MonoBehaviour
         }
         InventoryManager.gameObject.SetActive(false);
     }
+
+    public enum PlayerDirection { left, right, up, down, still, diagonal };
 }

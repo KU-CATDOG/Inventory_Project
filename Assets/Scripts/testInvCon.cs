@@ -578,75 +578,93 @@ public class testInvCon : MonoBehaviour
     /// <summary>
     /// temporary function
     /// </summary>
-    public void PlayerPositionShiftUp()
+    public bool PlayerPositionShiftUp()
     {
         if (playerPosition + 1 < 36 && (playerPosition + 1) % 9 != 0 && occupiedRect[playerPosition + 1])
         {
             playerPosition += 1;
+            return true;
         }
         else
         {
             Debug.Log("Cannot move upwards");
+            return false;
         }
     }
     /// <summary>
     /// temporary function
     /// </summary>
-    public void PlayerPositionShiftDown()
+    public bool PlayerPositionShiftDown()
     {
         if (playerPosition - 1 >= 0 && (playerPosition) % 9 != 0 && occupiedRect[playerPosition - 1])
         {
             playerPosition -= 1;
+            return true;
         }
         else
         {
             Debug.Log("Cannot move downwards");
+            return false;
         }
     }
     /// <summary>
     /// temporary function
     /// </summary>
-    public void PlayerPositionShiftLeft()
+    public bool PlayerPositionShiftLeft()
     {
-        if (playerPosition != 36)
+        if (playerPosition == 36 && occupiedRect[playerPosition - 1])
         {
-            if (playerPosition - 9 >= 0 && occupiedRect[playerPosition - 9])
-            {
-                playerPosition -= 9;
-            }
+            playerPosition = 35;
+            return true;
+        }
+        else if (playerPosition == 0)
+        {
+            playerPosition = -1;
+            Debug.Log("You reached to the end of the map! (1)");
+            return true;
         }
         else
         {
-            Debug.Log("Cannot move left");
+            if (playerPosition != 36&& playerPosition - 9 >= 0 && occupiedRect[playerPosition - 9])
+            {
+                playerPosition -= 9;
+                return true;
+            }
+            else
+            {
+                Debug.Log("Cannot move left");
+                return false;
+            }
         }
     }
     /// <summary>
     /// temporary function
     /// </summary>
-    public void PlayerPositionShiftRight()
+    public bool PlayerPositionShiftRight()
     {
         if (playerPosition == -1 && occupiedRect[playerPosition + 1])
         {
             MapLoad.SpawnMap();
             playerPosition = 0;
+            return true;
         }
         else if (playerPosition == 35)
         {
             playerPosition = 36;
             Debug.Log("You reached to the end of the map!");
+            return true;
         }
         else
         {
-            if (playerPosition != -1)
+            if (playerPosition != -1&& playerPosition + 9 < 36 && occupiedRect[playerPosition + 9])
             {
-                if (playerPosition + 9 < 36 && occupiedRect[playerPosition + 9])
-                {
-                    playerPosition += 9;
-                }
+                playerPosition += 9;
+                return true;
             }
             else
             {
                 Debug.Log("Cannot move right");
+                return false;
             }
         }
     }
