@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float attackSpeed;
     public float moveSpeed;
     public bool isInvincible = false;
+    public bool onceBlockDamage = false;
 
     #region Stats
     private float shieldDmg = 0f;
@@ -142,14 +143,23 @@ public class Player : MonoBehaviour
     {
         if (!isInvincible)
         {
-            Debug.Log("Damage taken  " + damage);
-            SoundManager.instance.PlayerDamaged();
-            health -= damage;
-            if (health <= 0)
+            if (onceBlockDamage == true)
             {
-                Debug.Log("Player died");
-                gameObject.SetActive(false);
+                Debug.Log(damage + "Damage blocked");
+                onceBlockDamage = false;
             }
+            else
+            {
+                Debug.Log("Damage taken  " + damage);
+                SoundManager.instance.PlayerDamaged();
+                health -= damage;
+                if (health <= 0)
+                {
+                    Debug.Log("Player died");
+                    gameObject.SetActive(false);
+                }
+            }
+            
         }
     }
 
