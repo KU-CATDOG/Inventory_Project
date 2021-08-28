@@ -580,7 +580,7 @@ public class testInvCon : MonoBehaviour
     /// </summary>
     public void PlayerPositionShiftUp()
     {
-        if (playerPosition + 1 < 36 && occupiedRect[playerPosition + 1])
+        if (playerPosition + 1 < 36 && (playerPosition + 1) % 9 != 0 && occupiedRect[playerPosition + 1])
         {
             playerPosition += 1;
         }
@@ -594,7 +594,7 @@ public class testInvCon : MonoBehaviour
     /// </summary>
     public void PlayerPositionShiftDown()
     {
-        if (playerPosition - 1 >= 0 && occupiedRect[playerPosition - 1])
+        if (playerPosition - 1 >= 0 && (playerPosition) % 9 != 0 && occupiedRect[playerPosition - 1])
         {
             playerPosition -= 1;
         }
@@ -608,9 +608,12 @@ public class testInvCon : MonoBehaviour
     /// </summary>
     public void PlayerPositionShiftLeft()
     {
-        if (playerPosition - 9 >= 0 && occupiedRect[playerPosition - 9])
+        if (playerPosition != 36)
         {
-            playerPosition -= 9;
+            if (playerPosition - 9 >= 0 && occupiedRect[playerPosition - 9])
+            {
+                playerPosition -= 9;
+            }
         }
         else
         {
@@ -634,9 +637,12 @@ public class testInvCon : MonoBehaviour
         }
         else
         {
-            if (playerPosition + 9 < 36 && occupiedRect[playerPosition + 9])
+            if (playerPosition != -1)
             {
-                playerPosition += 9;
+                if (playerPosition + 9 < 36 && occupiedRect[playerPosition + 9])
+                {
+                    playerPosition += 9;
+                }
             }
             else
             {
