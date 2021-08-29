@@ -51,11 +51,15 @@ public class AllTraps : MonoBehaviour
         {
             yield return new WaitForSeconds(attackDelay);
             SwordUp();
-            if ((player.transform.position - swordBlock.transform.position).magnitude <= 1.3f)
+            for(int i=0; i<swordBlocks.Length; i++)
             {
-                player.GetComponent<Player>().GetDamaged(5f);
-                //Debug.Log("on trap");
+                if ((player.transform.position - swordBlocks[i].transform.position).magnitude <= 1.3f)
+                {
+                    player.GetComponent<Player>().GetDamaged(5f);
+                    //Debug.Log("on trap");
+                }
             }
+
 
             yield return new WaitForSeconds(idleDelay);
             SwordDown();
