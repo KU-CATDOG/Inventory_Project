@@ -8,6 +8,11 @@ public class Zombie : MonsterClass
     float attackRange;
     float playerSpeed = 5f;
     public Rigidbody2D rb;
+    public Sprite front, back, left, right;
+    public SpriteRenderer spriteRenderer;
+    public Animator anim;
+    //public Animation anim;
+
     protected override void Start()
     {
         base.Start();
@@ -45,6 +50,35 @@ public class Zombie : MonsterClass
     {
         GameObject player = FindObjectOfType<Player>().gameObject;
         yield return new WaitForSeconds(firstDelay);
+        //움직이는 애니메이션
+        if (spriteRenderer.sprite == left)
+        {
+            anim.SetBool("LeftAttack", true);
+            anim.SetBool("RightAttack", false);
+            anim.SetBool("FrontAttack", false);
+            anim.SetBool("BackAttack", false);
+        }
+        else if (spriteRenderer.sprite == right)
+        {
+            anim.SetBool("LeftAttack", false);
+            anim.SetBool("RightAttack", true);
+            anim.SetBool("FrontAttack", false);
+            anim.SetBool("BackAttack", false);
+        }
+        else if (spriteRenderer.sprite == back)
+        {
+            anim.SetBool("LeftAttack", false);
+            anim.SetBool("RightAttack", false);
+            anim.SetBool("FrontAttack", false);
+            anim.SetBool("BackAttack", true);
+        }
+        else
+        {
+            anim.SetBool("LeftAttack", false);
+            anim.SetBool("RightAttack", false);
+            anim.SetBool("FrontAttack", true);
+            anim.SetBool("BackAttack", false);
+        }
         player.GetComponent<Player>().GetDamaged(AttackDamage);
         yield return new WaitForSeconds(secondDelay);
 
@@ -53,8 +87,37 @@ public class Zombie : MonsterClass
     {
         Vector2 direction = (Vector2)(GetPlayerPos() - GetObjectPos()).normalized;
         rb.MovePosition(rb.position + direction * playerSpeed * speedMultiplier * Time.fixedDeltaTime);
+        if (direction.x < -0.7f)
+        {
+            anim.SetBool("OnLeft", true);
+            anim.SetBool("OnRight", false);
+            anim.SetBool("OnFront", false);
+            anim.SetBool("OnBack", false);
+        }
+        else if (direction.x > 0.7f)
+        {
+            anim.SetBool("OnLeft", false);
+            anim.SetBool("OnRight", true);
+            anim.SetBool("OnFront", false);
+            anim.SetBool("OnBack", false);
+        }
+        else
+        {
+            if (direction.y > 0)
+            {
+                anim.SetBool("OnLeft", false);
+                anim.SetBool("OnRight", false);
+                anim.SetBool("OnFront", false);
+                anim.SetBool("OnBack", true);
+            }
+            else
+            {
+                anim.SetBool("OnLeft", false);
+                anim.SetBool("OnRight", false);
+                anim.SetBool("OnFront", true);
+                anim.SetBool("OnBack", false);
+            }
+        }
         yield return null;
-
-
     }
 }
