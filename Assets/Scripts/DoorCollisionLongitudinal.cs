@@ -7,6 +7,7 @@ public class DoorCollisionLongitudinal : MonoBehaviour
     public Player player;
     public testInvCon invCon;
     private Vector2 savePos;
+    public MapLoadTest mapLoad;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,12 @@ public class DoorCollisionLongitudinal : MonoBehaviour
             {
                 collision.transform.position = savePos;
             }
+            else
+            {
+                mapLoad.DestroySpawnedMap();
+                invCon.GetNearbyItems();
+                mapLoad.SpawnMap();
+            }
         }
         else if (player.playerDirection == Player.PlayerDirection.down)
         {
@@ -46,6 +53,12 @@ public class DoorCollisionLongitudinal : MonoBehaviour
             if (!isSuccess)
             {
                 collision.transform.position = savePos;
+            }
+            else
+            {
+                mapLoad.DestroySpawnedMap();
+                invCon.GetNearbyItems();
+                mapLoad.SpawnMap();
             }
         }
         else

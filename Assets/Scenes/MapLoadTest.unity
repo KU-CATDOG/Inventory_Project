@@ -202,6 +202,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -267,6 +271,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -498,6 +506,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -647,6 +659,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
@@ -717,6 +733,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
@@ -1261,6 +1281,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -1661,7 +1685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3742503497304558395, guid: 4004590afe737284fa8a72902b052ffc, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3742503497304558395, guid: 4004590afe737284fa8a72902b052ffc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1987,6 +2011,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
@@ -2311,6 +2339,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!4 &237194567 stripped
@@ -2394,6 +2426,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!4 &271803061 stripped
@@ -2480,6 +2516,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -2572,6 +2612,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &329713713 stripped
@@ -2746,6 +2790,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
@@ -3017,6 +3065,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -3055,7 +3107,7 @@ RectTransform:
   m_Children:
   - {fileID: 792077814}
   m_Father: {fileID: 666240249}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3293,6 +3345,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -3505,6 +3561,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -3716,6 +3776,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!224 &476987067 stripped
@@ -3874,6 +3938,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &493473667
@@ -3904,7 +3972,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666240249}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3987,6 +4055,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &506535001
@@ -4956,6 +5028,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -5068,6 +5144,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!224 &641129306 stripped
@@ -5202,13 +5282,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1844082373}
   - {fileID: 835781354}
+  - {fileID: 493473668}
   - {fileID: 750804338}
   - {fileID: 1632987602}
   - {fileID: 78036396}
   - {fileID: 293516971}
   - {fileID: 2086940518}
-  - {fileID: 493473668}
   - {fileID: 1424438621}
   - {fileID: 1855100977}
   - {fileID: 409058579}
@@ -5216,7 +5297,7 @@ RectTransform:
   - {fileID: 2020487170}
   - {fileID: 1468698848}
   m_Father: {fileID: 1676468920}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5568,6 +5649,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &708902943
@@ -5832,6 +5917,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &730150632
@@ -5893,6 +5982,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -6157,6 +6250,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -6258,6 +6355,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -6335,6 +6436,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!4 &776512611 stripped
@@ -6658,6 +6763,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -6816,7 +6925,7 @@ RectTransform:
   - {fileID: 1441553301}
   - {fileID: 832418503}
   m_Father: {fileID: 666240249}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7059,6 +7168,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -7164,6 +7277,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -7354,6 +7471,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &920261189
@@ -7415,6 +7536,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -7527,6 +7652,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &924609848
@@ -7588,6 +7717,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -7653,6 +7786,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
@@ -7906,6 +8043,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &964716036
@@ -7967,6 +8108,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -8032,6 +8177,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -8335,6 +8484,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!224 &999742233 stripped
@@ -8418,6 +8571,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &1004510586
@@ -8698,7 +8855,7 @@ RectTransform:
   m_Children:
   - {fileID: 1203247791}
   m_Father: {fileID: 666240249}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8870,6 +9027,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!224 &1081677569 stripped
@@ -9109,6 +9270,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -9226,6 +9391,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &1166629190
@@ -9338,6 +9507,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &1194592603
@@ -9411,6 +9584,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &1201810990
@@ -9811,6 +9988,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!4 &1275356628 stripped
@@ -9882,94 +10063,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5508cffd825b124ca674c49085ab301, type: 3}
---- !u!1 &1307826389
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1307826391}
-  - component: {fileID: 1307826390}
-  m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!212 &1307826390
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307826389}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.6265083, g: 0.5235849, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1307826391
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307826389}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16, y: 0, z: 0}
-  m_LocalScale: {x: 27.669355, y: 14.316296, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1676468920}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1329125978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10041,6 +10144,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &1330291346
@@ -10181,6 +10288,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -10379,6 +10490,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -10712,6 +10827,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &1398283482
@@ -10773,6 +10892,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -11064,7 +11187,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666240249}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11222,6 +11345,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
@@ -11260,7 +11387,7 @@ RectTransform:
   m_Children:
   - {fileID: 708902944}
   m_Father: {fileID: 666240249}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11388,7 +11515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5948678745365675820, guid: fb803847152bea849ac50a77775b8dda, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5948678745365675820, guid: fb803847152bea849ac50a77775b8dda, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11549,7 +11676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 616617569868844699, guid: 447eb0dedd328224ba0d4991aff7071b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 616617569868844699, guid: 447eb0dedd328224ba0d4991aff7071b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11684,6 +11811,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -11889,11 +12020,11 @@ PrefabInstance:
       objectReference: {fileID: 1955532313}
     - target: {fileID: 7870126863497452341, guid: 1587898a9efabc04a9bd1fc5effd1142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16
+      value: -9.79
       objectReference: {fileID: 0}
     - target: {fileID: 7870126863497452341, guid: 1587898a9efabc04a9bd1fc5effd1142, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1587898a9efabc04a9bd1fc5effd1142, type: 3}
@@ -11956,6 +12087,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
@@ -12072,6 +12207,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!224 &1599633492 stripped
@@ -12213,6 +12352,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -12375,6 +12518,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -12452,6 +12599,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &1625892247
@@ -12822,7 +12973,7 @@ MonoBehaviour:
   mapCanvas: {fileID: 666240248}
   EventSystem: {fileID: 2036922018}
   InvenManager: {fileID: 1955532313}
-  InvenBackground: {fileID: 1307826389}
+  InvenBackground: {fileID: 1844082372}
 --- !u!4 &1676468920
 Transform:
   m_ObjectHideFlags: 0
@@ -12834,7 +12985,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1307826391}
   - {fileID: 666240249}
   - {fileID: 2036922021}
   - {fileID: 1955532315}
@@ -12912,6 +13062,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &1683349292
@@ -13176,6 +13330,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &1706462116
@@ -13901,6 +14059,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &1722286308
@@ -14107,6 +14269,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &1731803648
@@ -14257,6 +14423,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -14387,7 +14557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1602926781393871296, guid: 5cbdbb52242aadd4d8bf6d8811d41f7a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1602926781393871296, guid: 5cbdbb52242aadd4d8bf6d8811d41f7a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14688,6 +14858,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1 &1791502734
@@ -14969,6 +15143,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &1806483459
@@ -15042,6 +15220,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!224 &1807307586 stripped
@@ -15108,6 +15290,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -15173,6 +15359,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -15347,6 +15537,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!4 &1841725923 stripped
@@ -15354,6 +15548,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 359732638042822107, guid: e5508cffd825b124ca674c49085ab301, type: 3}
   m_PrefabInstance: {fileID: 749278347}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1844082372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1844082373}
+  - component: {fileID: 1844082375}
+  - component: {fileID: 1844082374}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1844082373
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844082372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 12, z: 1}
+  m_Children: []
+  m_Father: {fileID: 666240249}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1844082374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844082372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.627451, g: 0.5254902, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1844082375
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844082372}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1848139092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15495,7 +15764,7 @@ RectTransform:
   m_Children:
   - {fileID: 1330291347}
   m_Father: {fileID: 666240249}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15665,6 +15934,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -17502,6 +17775,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &1922637589
@@ -17769,6 +18046,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!4 &1938423894 stripped
@@ -17944,6 +18225,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -17989,7 +18274,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1676468920}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1955532316
 MonoBehaviour:
@@ -18126,6 +18411,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &1965156850
@@ -18199,6 +18488,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &1965270391
@@ -18260,6 +18553,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (4)
@@ -18337,6 +18634,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!224 &1987753815 stripped
@@ -18443,6 +18744,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (3)
@@ -18687,7 +18992,7 @@ RectTransform:
   m_Children:
   - {fileID: 1731803649}
   m_Father: {fileID: 666240249}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18896,7 +19201,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1676468920}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2037619637
 PrefabInstance:
@@ -18957,6 +19262,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -19022,6 +19331,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right)
@@ -19099,6 +19412,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &2048107738
@@ -19160,6 +19477,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (2)
@@ -19225,6 +19546,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 359732638042822110, guid: e5508cffd825b124ca674c49085ab301, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     - target: {fileID: 359732638042822111, guid: e5508cffd825b124ca674c49085ab301, type: 3}
       propertyPath: m_Name
       value: DoorCollisionDetector(Left,Right) (1)
@@ -19517,6 +19842,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!1001 &2099818953
@@ -19590,6 +19919,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329713715}
+    - target: {fileID: 5972892478434674673, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
+      propertyPath: mapLoad
+      value: 
+      objectReference: {fileID: 418968166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18130121b9b9e3429e6e7c741af6052, type: 3}
 --- !u!4 &2117705114 stripped
@@ -19638,7 +19971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5739910104464301812, guid: 867ed0c927a51ab4990da582fa4bac86, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5739910104464301812, guid: 867ed0c927a51ab4990da582fa4bac86, type: 3}
       propertyPath: m_AnchorMax.x
