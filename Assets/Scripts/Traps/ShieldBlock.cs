@@ -14,6 +14,7 @@ public class ShieldBlock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        trapMgr = GameObject.Find("TrapMgr").GetComponent<AllTraps>();
         onceInvincible = trapMgr.player.GetComponent<Player>().onceBlockDamage;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = activatedSprite;
@@ -31,7 +32,7 @@ public class ShieldBlock : MonoBehaviour
     {
         while (FindObjectOfType<Player>() != null)
         {
-
+            Debug.Log((trapMgr.player.transform.position - gameObject.transform.position).magnitude);
 
             if ((trapMgr.player.transform.position - gameObject.transform.position).magnitude <= 1.3f && onceInvincible == false)
             {

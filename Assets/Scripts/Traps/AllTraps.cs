@@ -7,10 +7,17 @@ public class AllTraps : MonoBehaviour
     public GameObject player;
     public GameObject pushingBlock, swordBlock;
     public Sprite idleSprite, attackSprite;
+    public GameObject[] swordBlocks;
     // Start is called before the first frame update
     void Start()
     {
-        //player = FindObjectOfType<Player>().gameObject;
+
+    }
+    private void Awake()
+    {
+        player = GameObject.Find("Player");
+        pushingBlock = GameObject.Find("MovingWall");
+        //swordBlock = FindObjectsOfTypeAll<swordTrap>;
     }
 
     // Update is called once per frame
@@ -23,12 +30,19 @@ public class AllTraps : MonoBehaviour
     //Į
     public void SwordUp()
     {
-        swordBlock.GetComponent<SpriteRenderer>().sprite = attackSprite;
+        for(int i=0; i<swordBlocks.Length; i++)
+        {
+            swordBlocks[i].GetComponent<SpriteRenderer>().sprite = attackSprite;
+        }
+
     }
 
     public void SwordDown()
     {
-        swordBlock.GetComponent<SpriteRenderer>().sprite = idleSprite;
+        for (int i = 0; i < swordBlocks.Length; i++)
+        {
+            swordBlocks[i].GetComponent<SpriteRenderer>().sprite = idleSprite;
+        }
     }
 
     public IEnumerator Sword(float attackDelay, float idleDelay)
