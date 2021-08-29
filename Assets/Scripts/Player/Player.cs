@@ -166,6 +166,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
+        anim.SetTrigger("Attack");
         if (Time.timeScale == 1)
             SoundManager.instance.PlayerAttack();
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(hit.position, attackRange, enemyLayers);
