@@ -190,6 +190,7 @@ public class Player : MonoBehaviour
                 Debug.Log("Damage taken  " + damage);
                 SoundManager.instance.PlayerDamaged();
                 health -= damage;
+                StartCoroutine(DamagedRoutine());
                 if (health <= 0)
                 {
                     Debug.Log("Player died");
@@ -210,6 +211,35 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
+    }
+
+    private IEnumerator DamagedRoutine()
+    {
+        isInvincible = true;
+
+        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        float startTime = Time.time;
+        while (Time.time - startTime < 1)
+        {
+            foreach (SpriteRenderer child in spriteRenderers)
+            {
+                child.color = new Color(1, 1, 1, 0);
+            }
+            yield return new WaitForSeconds(0.1f);
+
+            foreach (SpriteRenderer child in spriteRenderers)
+            {
+                child.color = new Color(1, 1, 1, 1);
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        foreach (SpriteRenderer child in spriteRenderers)
+        {
+            child.color = new Color(1, 1, 1, 1);
+        }
+        isInvincible = false;
     }
 
     private PlayerDirection MoveDirDetection()

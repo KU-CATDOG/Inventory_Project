@@ -91,7 +91,7 @@ Transform:
   m_GameObject: {fileID: 7870126863497452337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.268325, y: 0.23431718, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_Children:
   - {fileID: 5825729551452355532}
   m_Father: {fileID: 0}
@@ -213,6 +213,8 @@ MonoBehaviour:
   attackSpeed: 0
   moveSpeed: 5
   isInvincible: 0
+  onceBlockDamage: 0
+  direction: 0
   additionalMS: 0
   additionalDMG: 0
   attackPoint: {fileID: 5825729551452355532}
@@ -228,6 +230,7 @@ MonoBehaviour:
   Inventory: []
   invCon: {fileID: 0}
   InventoryManager: {fileID: 0}
+  playerDirection: 0
 --- !u!95 &8716108003464607818
 Animator:
   serializedVersion: 3
