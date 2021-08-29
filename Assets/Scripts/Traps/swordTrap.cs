@@ -9,6 +9,7 @@ public class swordTrap : MonoBehaviour
     public AllTraps trapMgr;
     void Start()
     {
+        trapMgr = GameObject.Find("TrapMgr").GetComponent<AllTraps>();
         swordSpike = trapMgr.Sword(1f, 1f);
         StartCoroutine(swordSpike);
 
@@ -18,17 +19,23 @@ public class swordTrap : MonoBehaviour
         
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
     // Update is called once per frame
-    
-        /*private Queue<IEnumerator> DecideNextRoutine()
-        {
-            Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
-        if (FindObjectOfType<Player>() != null)
-        {
-            nextRoutines.Enqueue(Sword(1f, 1f));
-        }
-            
-            return nextRoutines;
-        }*/
+
+    /*private Queue<IEnumerator> DecideNextRoutine()
+    {
+        Queue<IEnumerator> nextRoutines = new Queue<IEnumerator>();
+    if (FindObjectOfType<Player>() != null)
+    {
+        nextRoutines.Enqueue(Sword(1f, 1f));
+    }
+
+        return nextRoutines;
+    }*/
+
+
 
 }

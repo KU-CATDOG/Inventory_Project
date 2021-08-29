@@ -3168,8 +3168,9 @@ GameObject:
   - component: {fileID: 998846011}
   - component: {fileID: 998846010}
   - component: {fileID: 998846009}
+  - component: {fileID: 998846012}
   m_Layer: 0
-  m_Name: MiscFloor
+  m_Name: FastFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3196,7 +3197,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998846007}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -3605,6 +3606,21 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &998846012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998846007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97c21748e6ee1d44bd799402d388c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedUpTime: 0
+  trapMgr: {fileID: 0}
+  speedDownBlock: {fileID: 0}
 --- !u!1001 &1308090967
 PrefabInstance:
   m_ObjectHideFlags: 0

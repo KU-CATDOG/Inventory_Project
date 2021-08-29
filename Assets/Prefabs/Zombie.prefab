@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2751924122502623012}
   - component: {fileID: 4612247003450163362}
   - component: {fileID: 7504663018894412980}
-  - component: {fileID: 4920921637176358252}
   m_Layer: 10
   m_Name: Zombie
   m_TagString: Enemy
@@ -48,12 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4612247003450163362}
-  front: {fileID: 345705310000539554, guid: d6d1d094431004941af958d1f3e78bbb, type: 3}
-  back: {fileID: -1557715155349209333, guid: c08711ca70d086d4b9fe0708304ca871, type: 3}
-  left: {fileID: 5194573086302836436, guid: b714085150f3cb8489896cdfb48e501a, type: 3}
-  right: {fileID: 2734157668398602222, guid: 07f558c81f98b3647b0fb0b00cac7bd8, type: 3}
-  spriteRenderer: {fileID: 2751924122502623012}
-  anim: {fileID: 4920921637176358252}
 --- !u!212 &2751924122502623012
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -94,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5194573086302836436, guid: b714085150f3cb8489896cdfb48e501a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18e79501f7585f9498e47ac113d2530c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -139,35 +132,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.009342551, y: -0.056055546}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1466666, y: 2.1533334}
+    oldSize: {x: 1.5, y: 2.25}
     newSize: {x: 10, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.2712748, y: 1.9813147}
   m_EdgeRadius: 0
---- !u!95 &4920921637176358252
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751924122502623009}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8901b076dfd053c449a2d05c3e3485f2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

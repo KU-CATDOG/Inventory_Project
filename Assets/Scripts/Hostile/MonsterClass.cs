@@ -38,12 +38,29 @@ public abstract class MonsterClass : MonoBehaviour
         else
         {
             Health -= damage;
+            StartCoroutine(DamageRoutine());
             Debug.Log("Enemy damage taken " + damage);
         }
         if (Health <= 0)
         {
             Destroy(gameObject);
         }
+    }
+    private IEnumerator DamageRoutine()
+    {
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        for (float t = 0; t < 0.25f; t += Time.deltaTime)
+        {
+            foreach (var renderer in renderers)
+            {
+                if (renderer)
+                {
+                    renderer.color = Color.Lerp(Color.red, Color.white, t * 4);
+                }
+            }
+            yield return null;
+        }
+
     }
     protected Vector3 GetObjectPos()    // 현재 오브젝트 벡터3 반환
     {
