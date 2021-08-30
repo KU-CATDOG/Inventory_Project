@@ -96,3 +96,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapMgr: {fileID: 0}
+  idleSprite: {fileID: 21300000, guid: a5e0323d7efb5f345b6ca9d31aca6f65, type: 3}
+  attackSprite: {fileID: 21300000, guid: 809be57ae182a274a97d1382ca37e1d8, type: 3}

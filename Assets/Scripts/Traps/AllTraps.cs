@@ -6,7 +6,7 @@ public class AllTraps : MonoBehaviour
 {
     public GameObject player;
     public GameObject pushingBlock, swordBlock;
-    public Sprite idleSprite, attackSprite;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class AllTraps : MonoBehaviour
     }
 
     //칼
-    public void SwordUp()
+    /*public void SwordUp()
     {
         swordBlock.GetComponent<SpriteRenderer>().sprite = attackSprite;
     }
@@ -47,7 +47,7 @@ public class AllTraps : MonoBehaviour
             SwordDown();
         }
             
-    }
+    }*/
 
     //신발
     public void PlayerSpeedUp()    //속도 증가
