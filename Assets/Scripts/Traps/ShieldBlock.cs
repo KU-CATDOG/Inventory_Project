@@ -33,7 +33,7 @@ public class ShieldBlock : MonoBehaviour
         {
 
 
-            if ((trapMgr.player.transform.position - gameObject.transform.position).magnitude <= 1.3f && onceInvincible == false)
+            if (Mathf.Abs(trapMgr.player.transform.position.x - gameObject.transform.position.x) < 0.5 && Mathf.Abs(trapMgr.player.transform.position.y - gameObject.transform.position.y) < 0.5 && onceInvincible == false)
             {
                 onceInvincible = true;
                 trapMgr.player.GetComponent<Player>().onceBlockDamage = true;

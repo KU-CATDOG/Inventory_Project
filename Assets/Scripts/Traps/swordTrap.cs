@@ -37,7 +37,7 @@ public class swordTrap : MonoBehaviour
         {
             yield return new WaitForSeconds(attackDelay);
             SwordUp();
-            if ((trapMgr.player.transform.position - gameObject.transform.position).magnitude <= 1.3f)
+            if (Mathf.Abs(trapMgr.player.transform.position.x - gameObject.transform.position.x)<0.5&& Mathf.Abs(trapMgr.player.transform.position.y - gameObject.transform.position.y) < 0.5)
             {
                 trapMgr.player.GetComponent<Player>().GetDamaged(5f);
                 //Debug.Log("on trap");

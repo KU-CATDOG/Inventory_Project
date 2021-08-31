@@ -17,7 +17,7 @@ public class SpeedUpBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((trapMgr.player.transform.position - gameObject.transform.position).magnitude <= 1.3f)
+        if(Mathf.Abs(trapMgr.player.transform.position.x - gameObject.transform.position.x) < 0.5 && Mathf.Abs(trapMgr.player.transform.position.y - gameObject.transform.position.y) < 0.5)
         {
             speedUpTime = duration;
             speedDownBlock.speedDownTime = 0f;
