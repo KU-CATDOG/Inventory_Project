@@ -16,6 +16,8 @@ public abstract class MonsterClass : MonoBehaviour
     public float Range { get; protected set; }
     public float Size { get; protected set; }
 
+    public EnemyCounter ec;
+
     protected virtual void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("player");
@@ -43,6 +45,7 @@ public abstract class MonsterClass : MonoBehaviour
         }
         if (Health <= 0)
         {
+            ec.MonsterCount--;
             Destroy(gameObject);
         }
     }

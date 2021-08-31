@@ -1277,6 +1277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8838493650954121150}
+  - component: {fileID: 7172886545928867296}
   m_Layer: 0
   m_Name: map_shoe3
   m_TagString: Untagged
@@ -1303,6 +1304,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7172886545928867296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838493650954121137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 319831ff43a12184cb8bc93346f22302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterCount: 0
 --- !u!1 &8838493651334647610
 GameObject:
   m_ObjectHideFlags: 0

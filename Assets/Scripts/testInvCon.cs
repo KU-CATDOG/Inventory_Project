@@ -183,6 +183,7 @@ public class testInvCon : MonoBehaviour
     {
         Init();
         Spawn();
+        FindObjectOfType<ClearJudge>().inv = this;
     }
 
     // Start is called before the first frame update
