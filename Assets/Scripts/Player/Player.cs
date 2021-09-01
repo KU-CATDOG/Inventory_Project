@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
 
     public Items[] Inventory;
     public GameObject inv;
+    private int tempInt;
 
     public testInvCon invCon;
 
@@ -77,14 +78,7 @@ public class Player : MonoBehaviour
         Inventory = inv.GetComponentsInChildren<Items>();
         curItemCount = Inventory.Length;
 
-        for(int i=0; i<Inventory.Length; i++)
-        {
-            shieldDmg += Inventory[i].shieldDamage;
-            defense += Inventory[i].defense;
-            additionalMS += Inventory[i].moveSpeed;
-            additionalDMG += Inventory[i].damage;
-            tenacity += Inventory[i].tenacity;
-        }
+
 
         oldPos = gameObject.transform.position;
     }
@@ -175,10 +169,27 @@ public class Player : MonoBehaviour
 
         Inventory = inv.GetComponentsInChildren<Items>();
         int invCount = Inventory.Length;
-        if(invCount != curItemCount)
+
+        if (tempInt == 0)
         {
-            curItemCount = invCount;
-            addItem();
+            for (int i = 0; i < Inventory.Length; i++)
+            {
+                shieldDmg += Inventory[i].shieldDamage;
+                defense += Inventory[i].defense;
+                additionalMS += Inventory[i].moveSpeed;
+                additionalDMG += Inventory[i].damage;
+                tenacity += Inventory[i].tenacity;
+            }
+            tempInt++;
+            curItemCount = Inventory.Length;
+        }
+        else
+        {
+            if (invCount != curItemCount)
+            {
+                addItem();
+                curItemCount = invCount;
+            }
         }
     }
 
@@ -186,19 +197,18 @@ public class Player : MonoBehaviour
     public void addItem()
     {
         Inventory = inv.GetComponentsInChildren<Items>();
-        shieldDmg = 0f;
-        defense = 0f;
-        additionalMS = 0f;
-        additionalDMG = 0f;
-        tenacity = 0f;
-        for (int i = 0; i < Inventory.Length; i++)
-        {
-            shieldDmg += Inventory[i].shieldDamage;
-            defense += Inventory[i].defense;
-            additionalMS += Inventory[i].moveSpeed;
-            additionalDMG += Inventory[i].damage;
-            tenacity += Inventory[i].tenacity;
-        }
+        float tshieldDmg = Inventory[Inventory.Length - 1].shieldDamage;
+        float tdefense = Inventory[Inventory.Length - 1].defense;
+        float tadditionalMS = Inventory[Inventory.Length - 1].moveSpeed + 5f;
+        float tadditionalDMG = Inventory[Inventory.Length - 1].damage + 10f;
+        float ttenacity = Inventory[Inventory.Length - 1].tenacity;
+
+        if (tshieldDmg > shieldDmg) shieldDmg = tshieldDmg;
+        if (tdefense > defense) defense = tdefense;
+        if (tadditionalMS > additionalMS) additionalMS = tadditionalMS;
+        if (tadditionalDMG > additionalDMG) additionalDMG = tadditionalDMG;
+        if (ttenacity > tenacity) tenacity = ttenacity;
+
     }
     private void FixedUpdate()
     {
@@ -324,7 +334,7 @@ public class Player : MonoBehaviour
         {
             return PlayerDirection.still;
         }
-        
+
     }
     private void PlayerShift()
     {

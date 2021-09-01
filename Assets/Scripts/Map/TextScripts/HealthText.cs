@@ -16,6 +16,6 @@ public class HealthText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HealthUI.text = "체력:"+(player.GetComponent<Player>().health).ToString()+"/" +(player.GetComponent<Player>().maxHealth).ToString();
+        HealthUI.text = "체력:"+((int)player.GetComponent<Player>().health).ToString()+"/" +(player.GetComponent<Player>().maxHealth).ToString();
     }
 }
