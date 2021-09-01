@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 
 
@@ -24,6 +25,8 @@ public class testInvCon : MonoBehaviour
     public GameObject playerPositionArrow;
     public MapLoadTest MapLoad;
     public int playerPosition = 0;
+    public GameObject itemTemplate;
+    public GameObject itemTemplates;
 
     [Header("#Ran Values")]
     public List<int> armorRan = new List<int>();
@@ -224,6 +227,37 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Armor[i], armorPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Armor;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(2, 5);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(5, 8);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(10, 15);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else
+                    {
+                        float temp = randObj.Next(16, 20);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+
                     occupiedRect[ran] = true;
                     occupiedRect[ran + 1] = true;
                     occupiedRect[ran + 9] = true;
@@ -247,6 +281,37 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Armor[i], armorPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Armor;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(2, 5);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(5, 8);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(10, 15);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else
+                    {
+                        float temp = randObj.Next(16, 20);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+
                     occupiedRect[ran + 1] = true;
                     occupiedRect[ran + 2] = true;
                     occupiedRect[ran + 10] = true;
@@ -271,6 +336,37 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Armor[i], armorPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Armor;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(2, 5);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(5, 8);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(10, 15);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+                    else
+                    {
+                        float temp = randObj.Next(16, 20);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.defense = temp;
+                    }
+
                     occupiedRect[ran + 2] = true;
                     occupiedRect[ran + 3] = true;
                     occupiedRect[ran + 11] = true;
@@ -309,6 +405,36 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Sword[i], swordPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Sword;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(5, 10);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(10, 16);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(20, 40);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else
+                    {
+                        
+                        itemComponent.damage = 50;
+                    }
+
                     occupiedRect[ran] = true;
                     occupiedRect[ran + 1] = true;
                     occupiedRect[ran + 2] = true;
@@ -330,6 +456,36 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Sword[i], swordPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Sword;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(5, 10);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(10, 16);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(20, 40);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else
+                    {
+
+                        itemComponent.damage = 50;
+                    }
+
                     occupiedRect[ran + 2] = true;
                     occupiedRect[ran + 3] = true;
                     occupiedRect[ran + 4] = true;
@@ -351,6 +507,36 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Sword[i], swordPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Sword;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(5, 10);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(10, 16);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(20, 40);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else
+                    {
+
+                        itemComponent.damage = 50;
+                    }
+
                     occupiedRect[ran + 4] = true;
                     occupiedRect[ran + 5] = true;
                     occupiedRect[ran + 6] = true;
@@ -372,6 +558,36 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Sword[i], swordPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Sword;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(5, 10);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(10, 16);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(20, 40);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.damage = temp;
+                    }
+                    else
+                    {
+
+                        itemComponent.damage = 50;
+                    }
+
                     occupiedRect[ran + 6] = true;
                     occupiedRect[ran + 7] = true;
                     occupiedRect[ran + 8] = true;
@@ -408,6 +624,37 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Shield[i], shieldPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Shield;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(5, 8);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(7, 11);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(10, 15);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else
+                    {
+                        float temp = randObj.Next(14, 20);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+
                     occupiedRect[ran] = true;
                     occupiedRect[ran + 1] = true;
                     occupiedRect_shield[ran] = i;
@@ -427,6 +674,37 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Shield[i], shieldPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Shield;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(5, 8);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(7, 11);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(10, 15);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else
+                    {
+                        float temp = randObj.Next(14, 20);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+
                     occupiedRect[ran + 1] = true;
                     occupiedRect[ran + 2] = true;
                     occupiedRect_shield[ran + 1] = i;
@@ -446,6 +724,37 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Shield[i], shieldPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Shield;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(5, 8);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(7, 11);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(10, 15);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else
+                    {
+                        float temp = randObj.Next(14, 20);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+
                     occupiedRect[ran + 2] = true;
                     occupiedRect[ran + 3] = true;
                     occupiedRect_shield[ran + 2] = i;
@@ -465,6 +774,37 @@ public class testInvCon : MonoBehaviour
                 {
                     var go = Instantiate(Shield[i], shieldPosList[ran], Quaternion.identity);
                     go.transform.SetParent(item.transform, false);
+
+                    var itemInst = Instantiate(itemTemplate);
+                    itemInst.transform.SetParent(itemTemplates.transform, false);
+                    Items itemComponent = itemInst.GetComponent<Items>();
+                    itemComponent.item = ItemType.Shield;
+                    System.Random randObj = new System.Random();
+                    if (i == 0)
+                    {
+                        float temp = randObj.Next(5, 8);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else if (i == 1)
+                    {
+                        float temp = randObj.Next(7, 11);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else if (i == 2)
+                    {
+                        float temp = randObj.Next(10, 15);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+                    else
+                    {
+                        float temp = randObj.Next(14, 20);
+                        temp += (float)randObj.NextDouble();
+                        itemComponent.shieldDamage = temp;
+                    }
+
                     occupiedRect[ran + 3] = true;
                     occupiedRect[ran + 4] = true;
                     occupiedRect_shield[ran + 3] = i;
@@ -497,6 +837,36 @@ public class testInvCon : MonoBehaviour
             {
                 var go = Instantiate(Shoe[i], shoePosList[ran], Quaternion.identity);
                 go.transform.SetParent(item.transform, false);
+
+                var itemInst = Instantiate(itemTemplate);
+                itemInst.transform.SetParent(itemTemplates.transform, false);
+                Items itemComponent = itemInst.GetComponent<Items>();
+                itemComponent.item = ItemType.Boots;
+                System.Random randObj = new System.Random();
+                if (i == 0)
+                {
+                    float temp = (float)randObj.NextDouble();
+                    temp = (temp / 10) + 1.1f;
+                    itemComponent.moveSpeed = temp;
+                }
+                else if (i == 1)
+                {
+                    float temp = (float)randObj.NextDouble();
+                    temp = (temp / 10) + 1.2f;
+                    itemComponent.moveSpeed = temp;
+                }
+                else if (i == 2)
+                {
+                    float temp = (float)randObj.NextDouble();
+                    temp = (temp / 10) + 1.3f;
+                    itemComponent.moveSpeed = temp;
+                }
+                else
+                {
+                    
+                    itemComponent.moveSpeed = 1.5f;
+                }
+
                 occupiedRect[ran] = true;
                 occupiedRect[ran + 9] = true;
                 occupiedRect_shoe[ran] = i;
@@ -528,6 +898,36 @@ public class testInvCon : MonoBehaviour
             {
                 var go = Instantiate(Ring[i], ringPosList[ran], Quaternion.identity);
                 go.transform.SetParent(item.transform, false);
+
+                var itemInst = Instantiate(itemTemplate);
+                itemInst.transform.SetParent(itemTemplates.transform, false);
+                Items itemComponent = itemInst.GetComponent<Items>();
+                itemComponent.item = ItemType.Shield;
+                System.Random randObj = new System.Random();
+                if (i == 0)
+                {
+                    float temp = (float)randObj.NextDouble();
+                    temp += 1;
+                    itemComponent.tenacity = temp;
+                }
+                else if (i == 1)
+                {
+                    float temp = (float)randObj.NextDouble();
+                    temp += 3;
+                    itemComponent.tenacity = temp;
+                }
+                else if (i == 2)
+                {
+                    float temp = (float)randObj.NextDouble();
+                    temp += 5;
+                    itemComponent.tenacity = temp;
+                }
+                else
+                {
+                    
+                    itemComponent.tenacity = 7;
+                }
+
                 occupiedRect[ran] = true;
                 occupiedRect_ring[ran] = i;
                 ringRan[i] = ran;
@@ -550,7 +950,7 @@ public class testInvCon : MonoBehaviour
         {
             while (true)
             {
-                randArray[i] = Random.Range(min, max);
+                randArray[i] = UnityEngine.Random.Range(min, max);
                 isSame = false;
 
                 for (int j = 0; j < i; ++j)

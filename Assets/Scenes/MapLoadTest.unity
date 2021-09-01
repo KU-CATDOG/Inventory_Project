@@ -11727,6 +11727,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 359732638042822107, guid: e5508cffd825b124ca674c49085ab301, type: 3}
   m_PrefabInstance: {fileID: 1111066052}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1496811845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1496811846}
+  m_Layer: 0
+  m_Name: ItemTemplates
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1496811846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496811845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1500321728
 GameObject:
   m_ObjectHideFlags: 0
@@ -12139,11 +12169,11 @@ PrefabInstance:
       objectReference: {fileID: 1955532313}
     - target: {fileID: 7870126863497452341, guid: 1587898a9efabc04a9bd1fc5effd1142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.79
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 7870126863497452341, guid: 1587898a9efabc04a9bd1fc5effd1142, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.44
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1587898a9efabc04a9bd1fc5effd1142, type: 3}
@@ -18436,6 +18466,8 @@ MonoBehaviour:
   playerPositionArrow: {fileID: 1424438620}
   MapLoad: {fileID: 418968166}
   playerPosition: 0
+  itemTemplate: {fileID: 6090163993170685725, guid: e6daf8f3c112e0e4b839985fd1ec86ca, type: 3}
+  itemTemplates: {fileID: 1496811845}
   armorRan: 
   shieldRan: 
   shoeRan: 
