@@ -36,7 +36,8 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
 
-    public List<Items> Inventory;
+    public Items[] Inventory;
+    public GameObject inv;
 
     public testInvCon invCon;
 
@@ -50,6 +51,8 @@ public class Player : MonoBehaviour
     private Vector3 oldPos, newPos;
     public PlayerDirection playerDirection;
 
+    public int curItemCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +64,20 @@ public class Player : MonoBehaviour
         additionalDMG = attackDamage;
         additionalMS = moveSpeed;
 
-        for (int i = 0; i < Inventory.Count; i++)
+        //for (int i = 0; i < Inventory.Count; i++)
+        //{
+        //    shieldDmg += Inventory[i].shieldDamage;
+        //    defense += Inventory[i].defense;
+        //    additionalMS += Inventory[i].moveSpeed;
+        //    additionalDMG += Inventory[i].damage;
+        //    tenacity += Inventory[i].tenacity;
+        //}
+
+        inv = GameObject.Find("ItemTemplates");
+        Inventory = inv.GetComponentsInChildren<Items>();
+        curItemCount = Inventory.Length;
+
+        for(int i=0; i<Inventory.Length; i++)
         {
             shieldDmg += Inventory[i].shieldDamage;
             defense += Inventory[i].defense;
@@ -69,6 +85,7 @@ public class Player : MonoBehaviour
             additionalDMG += Inventory[i].damage;
             tenacity += Inventory[i].tenacity;
         }
+
         oldPos = gameObject.transform.position;
     }
 
@@ -155,8 +172,34 @@ public class Player : MonoBehaviour
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
+
+        Inventory = inv.GetComponentsInChildren<Items>();
+        int invCount = Inventory.Length;
+        if(invCount != curItemCount)
+        {
+            curItemCount = invCount;
+            addItem();
+        }
     }
 
+
+    public void addItem()
+    {
+        Inventory = inv.GetComponentsInChildren<Items>();
+        shieldDmg = 0f;
+        defense = 0f;
+        additionalMS = 0f;
+        additionalDMG = 0f;
+        tenacity = 0f;
+        for (int i = 0; i < Inventory.Length; i++)
+        {
+            shieldDmg += Inventory[i].shieldDamage;
+            defense += Inventory[i].defense;
+            additionalMS += Inventory[i].moveSpeed;
+            additionalDMG += Inventory[i].damage;
+            tenacity += Inventory[i].tenacity;
+        }
+    }
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * additionalMS * Time.fixedDeltaTime);
@@ -190,7 +233,9 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Damage taken  " + damage);
                 SoundManager.instance.PlayerDamaged();
-                health -= damage;
+                float Damage = damage - defense;
+                if (Damage < 0) health -= 0;
+                else health -= Damage;
                 StartCoroutine(DamagedRoutine());
                 if (health <= 0)
                 {
