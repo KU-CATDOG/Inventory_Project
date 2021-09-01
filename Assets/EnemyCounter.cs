@@ -6,6 +6,7 @@ public class EnemyCounter : MonoBehaviour
 {
     MonsterClass[] Monsters;
     public int MonsterCount;
+    public bool Clear = false;
     // Start is called before the first frame update
     void Start()
     {

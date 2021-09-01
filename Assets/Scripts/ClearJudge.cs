@@ -90,16 +90,20 @@ public class ClearJudge : MonoBehaviour
             Debug.Log("GameOver");
         }
 
-        int Cnt = curRoom.GetComponent<EnemyCounter>().MonsterCount;
-        if (Cnt == 0 && !Clear)
+        if (curRoom != null)
         {
-            Clear = true;
-            Debug.Log("Clear");
-        }
-        if (Cnt != 0 && Clear)
-        {
-            Clear = false;
-            Debug.Log("not Clear");
+            int Cnt = curRoom.GetComponent<EnemyCounter>().MonsterCount;
+            if (Cnt == 0 && !Clear && !curRoom.GetComponent<EnemyCounter>().Clear)
+            {
+                curRoom.GetComponent<EnemyCounter>().Clear = true;
+                Clear = true;
+                Debug.Log("Clear");
+            }
+            if (Cnt != 0 && Clear)
+            {
+                Clear = false;
+                Debug.Log("not Clear");
+            }
         }
     }
 }
