@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InGameUI : MonoBehaviour
 {
@@ -10,9 +11,23 @@ public class InGameUI : MonoBehaviour
     public GameObject settingScreen;
     public GameObject exitScreen;
     public GameObject itemSelectScreen;
+    public GameObject gameOverScreen;
     public ItemDropSelect itemDropSelect;
+    public ClearJudge clearJudge;
     public testInvCon invCon;
 
+    void Update()
+    {
+        if (clearJudge.GameOver|| invCon.playerPosition==36)
+        {
+            gameScreen.SetActive(false);
+            pauseScreen.SetActive(false);
+            settingScreen.SetActive(false);
+            exitScreen.SetActive(false);
+            itemSelectScreen.SetActive(false);
+            gameOverScreen.SetActive(true);
+        }
+    }
     public void PauseButton()
     {
         pauseScreen.SetActive(true);
@@ -38,6 +53,7 @@ public class InGameUI : MonoBehaviour
     {
         exitScreen.SetActive(true);
         pauseScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
     }
     public void ExitYesButton()
     {
@@ -59,6 +75,10 @@ public class InGameUI : MonoBehaviour
         itemSelectScreen.SetActive(false);
     }
    
+    public void gameRestartButton()
+    {
+        SceneManager.LoadScene("Main");
+    }
     public void item1Button()
     {
         switch (itemDropSelect.Item1)

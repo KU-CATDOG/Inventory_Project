@@ -39,4 +39,8 @@ public class MainUI : MonoBehaviour
         exitScreen.SetActive(false);
         mainScreen.SetActive(true);
     }
+    public void gameRestartButton()
+    {
+        SceneManager.LoadScene("Main");
+    }
 }

@@ -8,8 +8,8 @@ public class TimeText : MonoBehaviour
 
     public Text timeText;
     public MapTag Tag;
-    private float time;
-    private int min;
+    public float time;
+    public int min;
     private void Start()
     {
         min = 0;
