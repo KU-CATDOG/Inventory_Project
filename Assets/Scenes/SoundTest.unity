@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1194808202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,8 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b370d0f519baf44ba88784d1c71fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolumeSFX: 1
-  masterVolumeBGM: 1
   BGMClip: {fileID: 0}
   clips:
   - {fileID: 0}
