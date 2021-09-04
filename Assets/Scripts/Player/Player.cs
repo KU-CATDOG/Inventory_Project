@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
         }
         if (direction == 4)
         {
-            anim.SetInteger("Direction", 2);
+            anim.SetInteger("Direction", 4);
 
         }
 
@@ -215,6 +215,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * additionalMS * Time.fixedDeltaTime);
+        if(movement.x != 0 || movement.y != 0)
+        {
+            anim.SetTrigger("Walking");
+        }
         playerDirection = MoveDirDetection();
         Debug.Log(playerDirection);
     }
