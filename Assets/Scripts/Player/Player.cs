@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
     private Vector3 oldPos, newPos;
     public PlayerDirection playerDirection;
 
+    public GameObject hitEffect;
+
     public int curItemCount;
 
     // Start is called before the first frame update
@@ -243,6 +245,10 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Damage taken  " + damage);
                 SoundManager.instance.PlayerDamaged();
+                //««∞› ¿Ã∆Â∆Æ
+                GameObject clone = Instantiate(hitEffect, transform);
+                Destroy(clone, 1f);
+                health -= damage;
                 float Damage = damage - defense;
                 if (Damage < 0) health -= 0;
                 else health -= Damage;
