@@ -6,8 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public float masterVolumeSFX = 1f;
-    public float masterVolumeBGM = 1f;
+    public static float masterVolumeSFX = 1f;
+    public static float masterVolumeBGM = 0.3f;
 
     [SerializeField] AudioClip BGMClip;
     [SerializeField] AudioClip[] clips;
@@ -35,7 +35,8 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        sfxPlayer.volume = masterVolumeSFX;
+        bgmPlayer.volume = masterVolumeBGM;
     }
 
     void SetUpBGM()
