@@ -215,7 +215,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * additionalMS * Time.fixedDeltaTime);
-        if(movement.x != 0 || movement.y != 0)
+        if (movement.x != 0 || movement.y != 0)
         {
             anim.SetTrigger("Walking");
         }
@@ -338,7 +338,28 @@ public class Player : MonoBehaviour
         }
         else if (xDiff != 0)
         {
-            return PlayerDirection.diagonal;                        //not really used but for debugging
+            if (xDiff > 0)
+            {
+                if (yDiff > 0)
+                {
+                    return PlayerDirection.rightUp;
+                }
+                else
+                {
+                    return PlayerDirection.rightDown;
+                }
+            }
+            else
+            {
+                if (yDiff > 0)
+                {
+                    return PlayerDirection.leftUp;
+                }
+                else
+                {
+                    return PlayerDirection.leftDown;
+                }
+            }
         }
         else
         {
@@ -361,5 +382,5 @@ public class Player : MonoBehaviour
         InventoryManager.gameObject.SetActive(false);
     }
 
-    public enum PlayerDirection { left, right, up, down, still, diagonal };
+    public enum PlayerDirection { left, right, up, down, still, leftUp, leftDown, rightUp, rightDown };
 }

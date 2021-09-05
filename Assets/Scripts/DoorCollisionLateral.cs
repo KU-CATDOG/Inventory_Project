@@ -9,6 +9,8 @@ public class DoorCollisionLateral : MonoBehaviour
     private Vector2 savePos;
     public MapLoadTest mapLoad;
 
+    private Player.PlayerDirection saveDirection;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,37 +31,47 @@ public class DoorCollisionLateral : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         savePos = collision.transform.position;
+        saveDirection = player.playerDirection;
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         bool isSuccess;
-        if (player.playerDirection == Player.PlayerDirection.left)
+        if (player.playerDirection == Player.PlayerDirection.left || player.playerDirection == Player.PlayerDirection.leftDown || player.playerDirection == Player.PlayerDirection.leftUp)
         {
-            isSuccess = invCon.PlayerPositionShiftLeft();
-            if (!isSuccess)
+            if (saveDirection == Player.PlayerDirection.left || saveDirection == Player.PlayerDirection.leftDown || saveDirection == Player.PlayerDirection.leftUp)
             {
-                collision.transform.position = savePos;
+                isSuccess = invCon.PlayerPositionShiftLeft();
+                if (!isSuccess)
+                {
+                    collision.transform.position = savePos;
+                }
+                else
+                {
+                    mapLoad.DestroySpawnedMap();
+                    invCon.GetNearbyItems();
+                    mapLoad.SpawnMap();
+                }
             }
-            else
-            {
-                mapLoad.DestroySpawnedMap();
-                invCon.GetNearbyItems();
-                mapLoad.SpawnMap();
-            }
+
         }
-        else if (player.playerDirection == Player.PlayerDirection.right)
+        else if (player.playerDirection == Player.PlayerDirection.right || player.playerDirection == Player.PlayerDirection.rightUp || player.playerDirection == Player.PlayerDirection.rightDown)
         {
-            isSuccess = invCon.PlayerPositionShiftRight();
-            if (!isSuccess)
+            if (saveDirection == Player.PlayerDirection.right || saveDirection == Player.PlayerDirection.rightUp || saveDirection == Player.PlayerDirection.rightDown)
             {
-                collision.transform.position = savePos;
+                isSuccess = invCon.PlayerPositionShiftRight();
+                if (!isSuccess)
+                {
+                    collision.transform.position = savePos;
+                }
+                else
+                {
+                    mapLoad.DestroySpawnedMap();
+                    invCon.GetNearbyItems();
+                    mapLoad.SpawnMap();
+                }
             }
-            else
-            {
-                mapLoad.DestroySpawnedMap();
-                invCon.GetNearbyItems();
-                mapLoad.SpawnMap();
-            }
+
         }
         else
         {
